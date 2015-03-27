@@ -14,9 +14,12 @@ alias find='sudo find / -name $1'
 alias free='free -hw'
 alias ls='ls --color=auto --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --noconfirm'
-alias mkdir='mkdir -pv'
 alias mv='mv -v'
 alias rm='rm -Rv'
+
+function mkdir {
+	command mkdir -pv $1 && cd $1
+}
 
 ex() {
 	if [ -f $1 ] ; then

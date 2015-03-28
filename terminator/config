@@ -1,0 +1,29 @@
+[global_config]
+	title_hide_sizetext = True
+[keybindings]
+	close_window = <Primary>q
+	next_tab = <Primary>Tab
+	split_horiz = <Primary><Shift>h
+	prev_tab = <Primary><Shift>Tab
+	close_term = <Primary><Shift>w
+	new_tab = <Primary>t
+	copy = <Primary><Shift>c
+	hide_window = None
+[profiles]
+	[[default]]
+		background_image = None
+		background_darkness = 0.68
+		background_type = transparent
+		scrollbar_position = hidden
+		foreground_color = "#ffffff"
+		show_titlebar = False
+		scrollback_infinite = True
+[layouts]
+	[[default]]
+	[[[child1]]]
+		type = Terminal
+		parent = window0
+	[[[window0]]]
+		type = Window
+		parent = ""
+[plugins]

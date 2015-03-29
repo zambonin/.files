@@ -16,7 +16,7 @@ alias ls='ls --color=auto --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --noconfirm'
 alias mv='mv -v'
 alias pacman='sudo pacman --noconfirm'
-alias rm='rm -Rv'
+alias rm='rm -iRv'
 
 function mkdir {
 	command mkdir -pv $1 && cd $1

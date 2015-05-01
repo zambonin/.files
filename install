@@ -1,6 +1,5 @@
 #!/bin/bash
 
 rm README.md .git
-mv .i3/i3status.conf $HOME/.config/i3status/config
 mv terminator/config $HOME/.config/terminator/config
 mv * $HOME

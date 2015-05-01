@@ -9,38 +9,40 @@ alias cat='cat -ns'
 alias chmod='chmod -Rv'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
-alias down='cd'
+alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty $1'
+alias du='du -sh $1'
 alias find='sudo find / -name $1'
 alias free='free -hw'
 alias ls='ls --color=auto --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --noconfirm'
 alias mv='mv -v'
-alias pacman='sudo pacman --noconfirm'
+alias pacman='pacman --noconfirm'
 alias rm='rm -iRv'
+alias sudo='sudo '
 
 function mkdir {
-	command mkdir -pv $1 && cd $1
+	command mkdir -pv "$1" && cd "$1"
 }
 
 ex() {
-	if [ -f $1 ] ; then
-	case $1 in
-		*.tar.bz2)	tar xjf $1	;;
-		*.tar.gz)	tar xzf $1	;;
-		*.bz2)		bunzip2 $1	;;
-		*.rar)		unrar x $1	;;
-		*.gz)		gunzip $1	;;
-		*.tar)		tar xf $1	;;
-		*.tbz2)		tar xjf $1	;;
-		*.tgz)		tar xzf $1	;;
-		*.zip)		unzip $1	;;
-		*.Z)		uncompress $1 ;;
-		*.7z)		7z x $1	;;
-		*)			echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+	while [ -n "$1" ]
+		do
+			case "$1" in
+				*.tar.bz2)	tar xjf "$1"	;;
+				*.tar.gz)	tar xzf "$1"	;;
+				*.bz2)		bunzip2 "$1"	;;
+				*.rar)		unrar x "$1"	;;
+				*.gz)		gunzip "$1"		;;
+				*.tar)		tar xf "$1"		;;
+				*.tbz2)		tar xjf "$1"	;;
+				*.tgz)		tar xzf "$1"	;;
+				*.zip)		unzip "$1"		;;
+				*.Z)		uncompress "$1" ;;
+				*.7z)		7z x "$1"		;;
+				*)			echo "'$1' cannot be extracted via ex()" ;;
+			esac
+			shift
+		done
 }
 
 up() {
@@ -58,3 +60,4 @@ up() {
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;32m\]\u\[\e[0m\]\[\e[01;37m\]@\h \[\e[0m\]\[\e[01;32m\]\w\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '
+source /usr/share/doc/pkgfile/command-not-found.bash

@@ -1,5 +1,10 @@
 #!/bin/bash
 
-rm README.md .git
+rm -rf README.md .git
 mv terminator/config $HOME/.config/terminator/config
+mkdir $HOME/.i3
+mv .i3/config $HOME/.i3/config
+mv .i3/touchpad.sh $HOME/.i3/touchpad.sh
 mv * $HOME
+cd ..
+rm -rf dotfiles/

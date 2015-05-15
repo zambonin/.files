@@ -1,129 +1,129 @@
-     1	set $mod Mod4
-     2	
-     3	font pango:DejaVu Sans Mono 8
-     4	
-     5	focus_follows_mouse no
-     6	
-     7	# Use Mouse+$mod to drag floating windows to their wanted position
-     8	floating_modifier $mod
-     9	
-    10	# start a terminal
-    11	bindsym $mod+Return exec i3-sensible-terminal
-    12	
-    13	# kill focused window
-    14	bindsym $mod+Shift+q kill
-    15	
-    16	# start dmenu (a program launcher)
-    17	bindsym $mod+d exec dmenu_run
-    18	# There also is the (new) i3-dmenu-desktop which only displays applications
-    19	# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-    20	# installed.
-    21	# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-    22	
-    23	# change focus
-    24	bindsym $mod+Left focus left
-    25	bindsym $mod+Down focus down
-    26	bindsym $mod+Up focus up
-    27	bindsym $mod+Right focus right
-    28	
-    29	# move focused window
-    30	bindsym $mod+Shift+Left move left
-    31	bindsym $mod+Shift+Down move down
-    32	bindsym $mod+Shift+Up move up
-    33	bindsym $mod+Shift+Right move right
-    34	
-    35	# split in horizontal orientation
-    36	bindsym $mod+h split h
-    37	
-    38	# split in vertical orientation
-    39	bindsym $mod+v split v
-    40	
-    41	# enter fullscreen mode for the focused container
-    42	bindsym $mod+f fullscreen
-    43	
-    44	# change container layout (stacked, tabbed, toggle split)
-    45	bindsym $mod+s layout stacking
-    46	bindsym $mod+w layout tabbed
-    47	bindsym $mod+e layout toggle split
-    48	
-    49	# switch to workspace
-    50	bindsym $mod+1 workspace 1
-    51	bindsym $mod+2 workspace 2
-    52	bindsym $mod+3 workspace 3
-    53	bindsym $mod+4 workspace 4
-    54	bindsym $mod+5 workspace 5
-    55	bindsym $mod+6 workspace 6
-    56	bindsym $mod+7 workspace 7
-    57	bindsym $mod+8 workspace 8
-    58	bindsym $mod+9 workspace 9
-    59	bindsym $mod+0 workspace 10
-    60	
-    61	# move focused container to workspace
-    62	bindsym $mod+Shift+1 move container to workspace 1
-    63	bindsym $mod+Shift+2 move container to workspace 2
-    64	bindsym $mod+Shift+3 move container to workspace 3
-    65	bindsym $mod+Shift+4 move container to workspace 4
-    66	bindsym $mod+Shift+5 move container to workspace 5
-    67	bindsym $mod+Shift+6 move container to workspace 6
-    68	bindsym $mod+Shift+7 move container to workspace 7
-    69	bindsym $mod+Shift+8 move container to workspace 8
-    70	bindsym $mod+Shift+9 move container to workspace 9
-    71	bindsym $mod+Shift+0 move container to workspace 10
-    72	
-    73	# reload the configuration file
-    74	bindsym $mod+Shift+c reload
-    75	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    76	bindsym $mod+Shift+r restart
-    77	# exit i3 (logs you out of your X session)
-    78	bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-    79	
-    80	# resize window (you can also use the mouse for that)
-    81	mode "resize" {
-    82	        # These bindings trigger as soon as you enter the resize mode
-    83	
-    84	        # Pressing left will shrink the window’s width.
-    85	        # Pressing right will grow the window’s width.
-    86	        # Pressing up will shrink the window’s height.
-    87	        # Pressing down will grow the window’s height.
-    88	        bindsym j resize shrink width 10 px or 10 ppt
-    89	        bindsym k resize grow height 10 px or 10 ppt
-    90	        bindsym l resize shrink height 10 px or 10 ppt
-    91	        bindsym semicolon resize grow width 10 px or 10 ppt
-    92	
-    93	        # same bindings, but for the arrow keys
-    94	        bindsym Left resize shrink width 10 px or 10 ppt
-    95	        bindsym Down resize grow height 10 px or 10 ppt
-    96	        bindsym Up resize shrink height 10 px or 10 ppt
-    97	        bindsym Right resize grow width 10 px or 10 ppt
-    98	
-    99	        # back to normal: Enter or Escape
-   100	        bindsym Return mode "default"
-   101	        bindsym Escape mode "default"
-   102	}
-   103	
-   104	bindsym $mod+r mode "resize"
-   105	
-   106	# Start i3bar to display a workspace bar (plus the system information i3status
-   107	# finds out, if available)
-   108	bar {
-   109	  		status_command i3status
-   110	  		separator_symbol " · "
-   111	  		position top
-   112	  		workspace_buttons no
-   113	  		
-   114	  		colors {
-   115	  				background #1A1A1A
-   116	  		}
-   117	}
-   118	
-   119	bindsym XF86AudioRaiseVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5%
-   120	bindsym XF86AudioLowerVolume exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5%
-   121	bindsym XF86AudioMute exec pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle 
-   122	
-   123	bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-   124	bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-   125	
-   126	bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
-   127	
-   128	bindsym Print exec scrot
-   129	bindsym $mod+Print exec scrot -s
+set $mod Mod4
+
+font pango:DejaVu Sans Mono 8
+
+focus_follows_mouse no
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status
+    separator_symbol " · "
+    position top
+    workspace_buttons no
+
+    colors {
+        background #1A1A1A
+    }
+}
+
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+bindsym XF86AudioMute exec amixer -q sset Master toggle
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
+
+bindsym Print exec scrot
+bindsym $mod+Print exec scrot -s

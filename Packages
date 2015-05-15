@@ -6,6 +6,7 @@ bash
 bash-completion
 binutils
 bison
+bumblebee
 bzip2
 chromium
 coreutils
@@ -13,6 +14,7 @@ cryptsetup
 deluge
 device-mapper
 dhcpcd
+dia
 diffutils
 dmenu
 dosfstools
@@ -23,6 +25,7 @@ feh
 file
 filesystem
 findutils
+firefox
 flex
 gawk
 gcc
@@ -34,13 +37,17 @@ grep
 groff
 gummiboot
 gzip
+higan-gtk
 i3-wm
 i3status
+icedtea-web
 inetutils
 iproute2
 iputils
 jfsutils
 less
+lib32-alsa-plugins
+lib32-nvidia-utils
 libtool
 licenses
 links
@@ -56,7 +63,9 @@ mplayer
 nano
 netctl
 networkmanager
+nvidia
 openssh
+p7zip
 pacman
 patch
 pciutils
@@ -67,12 +76,17 @@ pkgfile
 procps-ng
 psmisc
 pulseaudio
+python-lxml
+python-pip
+python2-virtualenv
 ranger
 reiserfsprogs
 s-nail
 screenfetch
+scrot
 sed
 shadow
+steam
 sudo
 sxiv
 sysfsutils
@@ -80,6 +94,8 @@ systemd-sysvcompat
 tar
 terminator
 texinfo
+ttf-dejavu
+unrar
 unzip
 usbutils
 util-linux
@@ -91,3 +107,5 @@ xf86-video-vesa
 xfsprogs
 xorg-xbacklight
 xorg-xinit
+zathura
+zathura-pdf-poppler

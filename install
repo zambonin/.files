@@ -2,6 +2,7 @@
 
 rm -rf README.md .git/
 mv terminator/ $HOME/.config/
+mv 50-synaptics.conf /etc/X11/xorg.conf.d/
 mv * $HOME
 cd ..
 rm -rf dotfiles/

@@ -4,6 +4,14 @@
 
 [ -z "$PS1" ] && return
 
+export TERM=terminator
+
+if [ -n "$DISPLAY" ]; then
+    export BROWSER=chromium
+else 
+    export BROWSER=links
+fi
+
 alias back='cd $OLDPWD'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'

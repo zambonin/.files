@@ -4,8 +4,6 @@
 
 [ -z "$PS1" ] && return
 
-export TERM=terminator
-
 if [ -n "$DISPLAY" ]; then
     export BROWSER=chromium
 else 

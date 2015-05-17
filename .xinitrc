@@ -3,5 +3,5 @@
 xbacklight -dec 1000
 /opt/urserver/urserver --daemon
 setxkbmap br
-feh --bg-scale makepkg_not_war_by_galantyshow-d4g9n98.png
+feh --bg-scale wallpaper.png
 exec i3

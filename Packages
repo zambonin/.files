@@ -13,8 +13,8 @@ coreutils
 cryptsetup
 deluge
 device-mapper
-dhcpcd
 dia
+dialog
 diffutils
 dmenu
 dosfstools
@@ -38,13 +38,17 @@ groff
 gummiboot
 gzip
 higan-gtk
-i3-wm
+i3lock
 i3status
 icedtea-web
+ifplugd
+imagemagick
 inetutils
 iproute2
 iputils
 jfsutils
+julia
+keychain
 less
 lib32-alsa-plugins
 lib32-nvidia-utils
@@ -94,6 +98,7 @@ systemd-sysvcompat
 tar
 terminator
 texinfo
+texlive-core
 ttf-dejavu
 unrar
 unzip
@@ -101,6 +106,8 @@ usbutils
 util-linux
 vi
 which
+wpa_actiond
+x11-ssh-askpass
 xf86-input-synaptics
 xf86-video-intel
 xf86-video-vesa

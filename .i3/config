@@ -123,8 +123,8 @@ bar {
     status_command i3status
 }
 
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 1%+
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 1%-
+bindsym XF86AudioRaiseVolume exec amixer -q -c 1 sset Master 1%+
+bindsym XF86AudioLowerVolume exec amixer -q -c 1 sset Master 1%-
 bindsym XF86AudioMute exec amixer -q sset Master toggle && amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset "Bass Speaker" unmute
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10

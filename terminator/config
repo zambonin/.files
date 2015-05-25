@@ -1,36 +1,36 @@
 [global_config]
-    title_hide_sizetext = True
-    enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
-    borderless = True
+  title_hide_sizetext = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  borderless = True
 [keybindings]
-    close_window = <Primary>q
-    next_tab = <Primary>Tab
-    split_horiz = <Primary><Shift>h
-    prev_tab = <Primary><Shift>Tab
-    close_term = <Primary><Shift>w
-    new_tab = <Primary>t
-    copy = <Primary><Shift>c
-    hide_window = None
+  close_window = <Primary>q
+  next_tab = <Primary>Tab
+  split_horiz = <Primary><Shift>h
+  prev_tab = <Primary><Shift>Tab
+  close_term = <Primary><Shift>w
+  new_tab = <Primary>t
+  copy = <Primary><Shift>c
+  hide_window = None
 [profiles]
-    [[default]]
-        scrollbar_position = hidden
-        use_system_font = False
-        background_darkness = 0.68
-        background_type = transparent
-        background_image = None
-        cursor_color = "#ffffff"
-        foreground_color = "#ffffff"
-        icon_bell = False
-        show_titlebar = False
-        cursor_shape = underline
-        font = Monospace 9
-        scrollback_infinite = True
+  [[default]]
+    scrollbar_position = hidden
+    use_system_font = False
+    background_darkness = 0.68
+    background_type = transparent
+    background_image = None
+    cursor_color = "#ffffff"
+    foreground_color = "#ffffff"
+    icon_bell = False
+    show_titlebar = False
+    cursor_shape = underline
+    font = Monospace 9
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
-        type = Terminal
-        parent = window0
+      type = Terminal
+      parent = window0
     [[[window0]]]
-        type = Window
-        parent = ""
+      type = Window
+      parent = ""
 [plugins]

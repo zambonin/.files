@@ -4,6 +4,9 @@
 
 [ -z "$PS1" ] && return
 
+export EDITOR=nano
+export VISUAL=subl3
+
 if [ -n "$DISPLAY" ]; then
     export BROWSER=chromium
 else 

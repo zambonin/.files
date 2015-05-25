@@ -13,10 +13,10 @@ coreutils
 cryptsetup
 deluge
 device-mapper
+dhcpcd
 dia
 dialog
 diffutils
-dmenu
 dosfstools
 e2fsprogs
 efibootmgr
@@ -29,6 +29,7 @@ firefox
 flex
 gawk
 gcc
+gcc-fortran
 gcc-libs
 gettext
 git
@@ -66,7 +67,6 @@ mdadm
 mplayer
 nano
 netctl
-networkmanager
 nvidia
 openssh
 p7zip
@@ -114,5 +114,6 @@ xf86-video-vesa
 xfsprogs
 xorg-xbacklight
 xorg-xinit
+xorg-xrandr
 zathura
 zathura-pdf-poppler

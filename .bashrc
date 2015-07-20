@@ -13,7 +13,7 @@ else
     export BROWSER=links
 fi
 
-alias back='cd $OLDPWD'
+alias back='cd -'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'
 alias cp='cp -dpruv'

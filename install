@@ -8,11 +8,8 @@ ln -s $HOME/dotfiles/terminator/config $HOME/.config/terminator/config
 ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
 
 # various config files
-ln -s $HOME/dotfiles/.asoundrc $HOME
-ln -s $HOME/dotfiles/.bashrc $HOME
-ln -s $HOME/dotfiles/.conkyrc $HOME
-ln -s $HOME/dotfiles/.nanorc $HOME
-ln -s $HOME/dotfiles/.xinitrc $HOME
+ln -s $HOME/dotfiles/.{asound,bash,nano,xinit}rc $HOME
+cp -r $HOME/dotfiles/.nanorc $HOME
 
 # i3-gaps settings
 mkdir $HOME/.i3
@@ -20,4 +17,4 @@ ln -s $HOME/dotfiles/.i3/* $HOME/.i3/
 ln -s $HOME/dotfiles/.i3status.conf $HOME
 
 # pretty images
-ln -s $HOME/dotfiles/*.png $HOME
+cp -r $HOME/dotfiles/.{wallpaper,icon}.png $HOME

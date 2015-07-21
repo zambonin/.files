@@ -4,6 +4,8 @@
 
 [ -z "$PS1" ] && return
 
+shopt -s checkwinsize
+
 export EDITOR=nano
 export VISUAL=subl3
 

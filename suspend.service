@@ -1,0 +1,11 @@
+[Unit]
+Description=Starts i3lock at suspend time
+
+[Service]
+User=stenny
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/stenny/.i3/i3lock.sh
+
+[Install]
+WantedBy=suspend.target

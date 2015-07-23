@@ -14,7 +14,9 @@ ln -P $HOME/dotfiles/.{conky,nano}rc $HOME
 # i3-gaps settings
 mkdir $HOME/.i3
 ln -s $HOME/dotfiles/.i3/* $HOME/.i3/
-ln -s $HOME/dotfiles/.i3status.conf $HOME
+
+# systemctl service that starts i3lock after regaining from suspend state
+cp -r $HOME/dotfiles/suspend.service /etc/systemd/system/
 
 # pretty images
 ln -P $HOME/dotfiles/.{wallpaper,icon}.png $HOME

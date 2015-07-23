@@ -120,12 +120,12 @@ bar {
     }
     separator_symbol " · "
     position top
-    status_command i3status
+    status_command i3status -c $HOME/.i3/i3status | $HOME/.i3/weather.py --wrap-i3-status 458705 --unit c --format "{temp}°{unit_temperature}, {text}"
 }
 
 bindsym XF86AudioRaiseVolume exec amixer -q -c 1 sset Master 1%+
 bindsym XF86AudioLowerVolume exec amixer -q -c 1 sset Master 1%-
-bindsym XF86AudioMute exec amixer -q sset Master toggle && amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset "Bass Speaker" unmute
+bindsym XF86AudioMute exec amixer -q -c 1 sset Master toggle && amixer -q -c 1 sset Speaker unmute && amixer -q -c 1 sset Headphone unmute && amixer -q -c 1 sset "Bass Speaker" unmute
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10

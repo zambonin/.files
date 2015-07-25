@@ -120,7 +120,8 @@ bar {
     }
     separator_symbol " · "
     position top
-    status_command i3status -c $HOME/.i3/i3status | $HOME/.i3/weather.py --wrap-i3-status 458705 --unit c --format "{temp}°{unit_temperature}, {text}"
+    # status_command i3status -c $HOME/.i3/i3status | $HOME/.i3/weather.py --wrap-i3-status 458705 --unit c --format "{temp}°{unit_temperature}, {text}"
+    status_command python $HOME/.i3/bar.py
 }
 
 bindsym XF86AudioRaiseVolume exec amixer -q -c 1 sset Master 1%+

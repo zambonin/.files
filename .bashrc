@@ -1,6 +1,4 @@
 # ~/.bashrc
-#
-# If not running interactively, don't do anything
 
 [ -z "$PS1" ] && return
 
@@ -25,7 +23,7 @@ alias du='du -sh $1'
 alias find='sudo find / -name $1'
 alias free='free -hw'
 alias ls='ls --color=auto --group-directories-first -AFgho'
-alias makepkg='makepkg -sCcir --noconfirm'
+alias makepkg='makepkg -sCcir --needed --noconfirm'
 alias mv='mv -v'
 alias pacman='pacman --noconfirm'
 alias rm='rm -iRv'
@@ -33,6 +31,15 @@ alias sudo='sudo '
 
 function mkdir {
     command mkdir -pv "$1" && cd "$1"
+}
+
+aur() {
+    ex $1
+    IFS='.' read filename extension <<< $1
+    cd ${filename}
+    makepkg
+    cd ..
+    rm -rf ${filename} $1
 }
 
 ex() {
@@ -89,3 +96,4 @@ PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 source /usr/share/doc/pkgfile/command-not-found.bash
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+

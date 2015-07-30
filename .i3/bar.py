@@ -9,7 +9,6 @@ status.register("clock",
 status.register("weather",
 	location_code="BRXX0035",
 	interval=30,
-	colorize=True,
 	on_leftclick=["exec chromium weather.com/weather/today/l/BRXX0035", 1])
 
 status.register("battery",
@@ -25,17 +24,19 @@ status.register("network",
     interface="wlp3s0",
     format_up="{essid} | {quality}%",
     format_down="W: ↓",
-    dynamic_color=True,
     on_rightclick=None,
     on_upscroll=None,
-    on_downscroll=None)
+    on_downscroll=None,
+    color_up="#FFFFFF",
+    color_down="#FFFFFF")
 
 status.register("updates",
    	format = "🔧  {count}",
     format_no_updates = "",
     backends = [pacman.Pacman()],
     on_leftclick=["terminator -e \"sudo pacman -Syyu --noconfirm\"", 1],
-    interval=900)
+    interval=900,
+    color="#FFFFFF")
 
 status.register("pulseaudio",
     unmuted="🔊",

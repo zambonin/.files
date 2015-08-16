@@ -8,13 +8,13 @@ focus_follows_mouse yes
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -120,24 +120,23 @@ bar {
     }
     separator_symbol " · "
     position top
-    # status_command i3status -c $HOME/.i3/i3status | $HOME/.i3/weather.py --wrap-i3-status 458705 --unit c --format "{temp}°{unit_temperature}, {text}"
     status_command python $HOME/.i3/bar.py
 }
 
-bindsym XF86AudioRaiseVolume exec amixer -q -c 1 sset Master 1%+
-bindsym XF86AudioLowerVolume exec amixer -q -c 1 sset Master 1%-
-bindsym XF86AudioMute exec amixer -q -c 1 sset Master toggle && amixer -q -c 1 sset Speaker unmute && amixer -q -c 1 sset Headphone unmute && amixer -q -c 1 sset "Bass Speaker" unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 1 sset Master 1%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -c 1 sset Master 1%-
+bindsym XF86AudioMute exec --no-startup-id amixer -q -c 1 sset Master toggle && amixer -q -c 1 sset Speaker unmute && amixer -q -c 1 sset Headphone unmute && amixer -q -c 1 sset "Bass Speaker" unmute
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
-bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.i3/touchpad.sh
 
-bindsym Print exec scrot
+bindsym Print exec --no-startup-id scrot
 
 set $Locker $HOME/.i3/i3lock.sh && sleep 1
 
-set $mode_system (o) screen off, (l) lock, (s) suspend, (r) reboot, (Shift+s) shutdown
+set $mode_system (o) screen off · (l) lock · (s) suspend · (r) reboot · (Shift+s) shutdown
 
 mode "$mode_system" {
     bindsym o exec --no-startup-id xset dpms force off, mode "default"

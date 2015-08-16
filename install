@@ -19,4 +19,7 @@ ln -P $HOME/dotfiles/.i3/* $HOME/.i3/
 ln -P $HOME/dotfiles/suspend.service /etc/systemd/system/
 
 # pretty images
-ln -P $HOME/dotfiles/.{wallpaper,icon}.png $HOME
+ln -P $HOME/dotfiles/.wallpaper.png $HOME
+
+# dns settings
+# echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf

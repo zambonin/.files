@@ -3,7 +3,7 @@ from i3pystatus.updates import pacman
 
 status = Status(standalone=True)
 
-status.register("clock", 
+status.register("clock",
 	format="%A, %d de %B, %H:%M")
 
 status.register("weather",

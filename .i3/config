@@ -137,9 +137,10 @@ bindsym Print exec scrot
 
 set $Locker $HOME/.i3/i3lock.sh && sleep 1
 
-set $mode_system (l) lock, (s) suspend, (r) reboot, (Shift+s) shutdown
+set $mode_system (o) screen off, (l) lock, (s) suspend, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
+    bindsym o exec --no-startup-id xset dpms force off, mode "default"
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"

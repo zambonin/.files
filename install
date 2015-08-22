@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# terminal emulator preferences
-mkdir $HOME/.config/terminator
-ln -s $HOME/dotfiles/terminator/config $HOME/.config/terminator/
-
 # touchpad settings
 ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
 
 # various config files
 ln -fs $HOME/dotfiles/.{asound,bash,xinit}rc $HOME
-ln -P $HOME/dotfiles/.{conky,nano}rc $HOME
+ln -P $HOME/dotfiles/.{{conky,nano}rc,Xresources} $HOME
 
 # i3-gaps settings
 mkdir $HOME/.i3
@@ -22,4 +18,4 @@ ln -P $HOME/dotfiles/suspend.service /etc/systemd/system/
 ln -P $HOME/dotfiles/.wallpaper.png $HOME
 
 # dns settings
-# echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf
+echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf

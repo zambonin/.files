@@ -7,6 +7,7 @@ URxvt*.shading: 40
 ! font settings
 URxvt.font:xft:Monospace:pixelsize=12
 URxvt.boldfont:xft:Monospace-Bold:pixelsize=12
+URxvt.letterSpace: 0
 
 ! prevent ctrl+shift from screwing things
 URxvt*iso14755: false

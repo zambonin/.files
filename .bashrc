@@ -51,7 +51,7 @@ ex() {
                 *.zip)      unzip "$1"      ;;
                 *.Z)        uncompress "$1" ;;
                 *.7z)       7z x "$1"       ;;
-                *)          echo "'$1' cannot be extracted via ex()" ;;
+                *)          echo "'$1' cannot be extracted" ;;
             esac
             shift
         done
@@ -69,7 +69,7 @@ man() {
 }
 
 pacsize() {
-	packages=$(comm -23 <(pacman -Qqen) <(pacman -Qqg base base-devel|sort))
+	packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
 	expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
 }
 

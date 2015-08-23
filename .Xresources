@@ -1,6 +1,8 @@
-! general settings including true transparency
+! general settings including transparency
 URxvt*depth:                32
 URxvt*background:           [70]#000000
+URxvt*transparent:          true
+URxvt*shading:              40
 URxvt*foreground:           White
 URxvt*cursorBlink:          true
 URxvt*cursorUnderline:      true

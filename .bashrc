@@ -7,12 +7,6 @@ shopt -s checkwinsize
 export EDITOR=nano
 export VISUAL=subl3
 
-if [ -n "$DISPLAY" ]; then
-    export BROWSER=chromium
-else 
-    export BROWSER=links
-fi
-
 alias back='cd -'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'
@@ -75,11 +69,8 @@ man() {
 }
 
 pacsize() {
-	( echo "PACKAGE SIZE(K)";
-	for A in /var/lib/pacman/local/*/desc; do
-        egrep -A1 '%(NAME|SIZE)' $A  \
-			| gawk '/^[a-z]/ { printf "%s ", $1 }; /^[0-9]/ { printf "%.0f\n", $1/1024 }'
-	done | sort -nrk2 ) | column -t
+	packages=$(comm -23 <(pacman -Qqen) <(pacman -Qqg base base-devel|sort))
+	expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
 }
 
 up() {

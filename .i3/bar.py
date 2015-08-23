@@ -35,7 +35,7 @@ status.register("updates",
    	format = "🔧  {count}",
     format_no_updates = "",
     backends = [pacman.Pacman()],
-    on_leftclick=["terminator -e \"sudo pacman -Syyu --noconfirm\"", 1],
+    on_leftclick=["urxvt -e bash -c \"sudo pacman -Syyu --noconfirm\"", 1],
     interval=900,
     color="#FFFFFF")
 

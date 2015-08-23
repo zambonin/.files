@@ -14,6 +14,7 @@ status.register("weather",
 status.register("battery",
     format="{remaining:%H:%M:%S} {status} {percentage:.0f}%",
     charging_color="#ffffff",
+    full_color="#ffffff",
     status={
         "DIS": "⚡",
         "CHR": "⚇",

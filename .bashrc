@@ -2,7 +2,7 @@
 
 [ -z "$PS1" ] && return
 
-shopt -s checkwinsize
+shopt -s autocd cdspell dirspell checkwinsize
 
 export EDITOR=nano
 export VISUAL=subl3

@@ -36,26 +36,27 @@ aur() {
     rm -rf ${filename} $1
 }
 
+backup() {
+    cp $1 ${1}-`date +%Y%m%d%H%M`.backup;
+}
+
 ex() {
-    while [ -n "$1" ]
-        do
-            case "$1" in
-                *.tar.bz2)  tar xjf "$1"    ;;
-                *.tar.gz)   tar xzf "$1"    ;;
-                *.bz2)      bunzip2 "$1"    ;;
-                *.rar)      unrar x "$1"    ;;
-                *.gz)       gunzip "$1"     ;;
-                *.tar)      tar xf "$1"     ;;
-                *.tbz2)     tar xjf "$1"    ;;
-                *.tgz)      tar xzf "$1"    ;;
-                *.zip)      unzip "$1"      ;;
-                *.Z)        uncompress "$1" ;;
-                *.7z)       7z x "$1"       ;;
-                *.001)      7z x "$1"       ;;
-                *)          echo "'$1' cannot be extracted" ;;
-            esac
-            shift
-        done
+    if [ -n "$1" ] ; then
+        case "$1" in
+            *.7z|*.001)                7z x "$1"       ;;
+            *.bz2)                     bunzip2 "$1"    ;;
+            *.gz)                      gunzip "$1"     ;;
+            *.lzma)                    unlzma "$1"     ;;
+            *.rar)                     unrar x "$1"    ;;
+            *.tar)                     tar xf "$1"     ;;
+            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$1"   ;;
+            *.tar.gz|*.tgz)            tar xvzf "$1"   ;;
+            *.xz)                      unxz "$1"       ;;
+            *.Z)                       uncompress "$1" ;;
+            *.zip)                     unzip "$1"      ;;
+            *) echo "'$1' cannot be extracted by ex()" ;;
+        esac
+    fi
 }
 
 man() {
@@ -70,8 +71,8 @@ man() {
 }
 
 pacsize() {
-	packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
-	expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
+    packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
+    expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
 }
 
 up() {

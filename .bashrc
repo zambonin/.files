@@ -12,10 +12,10 @@ alias cat='cat -ns'
 alias chmod='chmod -Rv'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
-alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty $1'
-alias du='du -sh $1'
-alias find='sudo find / -name $1'
-alias free='free -hw'
+alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty'
+alias du='du -sh'
+alias find='sudo find / -name'
+alias free='free -h | head -2'
 alias ls='ls --color=auto --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --needed --noconfirm'
 alias mv='mv -v'
@@ -36,25 +36,27 @@ aur() {
     rm -rf ${filename} $1
 }
 
+backup() {
+    cp $1 ${1}-`date +%Y-%m-%d-%H%M%S`.backup
+}
+
 ex() {
-    while [ -n "$1" ]
-        do
-            case "$1" in
-                *.tar.bz2)  tar xjf "$1"    ;;
-                *.tar.gz)   tar xzf "$1"    ;;
-                *.bz2)      bunzip2 "$1"    ;;
-                *.rar)      unrar x "$1"    ;;
-                *.gz)       gunzip "$1"     ;;
-                *.tar)      tar xf "$1"     ;;
-                *.tbz2)     tar xjf "$1"    ;;
-                *.tgz)      tar xzf "$1"    ;;
-                *.zip)      unzip "$1"      ;;
-                *.Z)        uncompress "$1" ;;
-                *.7z)       7z x "$1"       ;;
-                *)          echo "'$1' cannot be extracted" ;;
-            esac
-            shift
-        done
+    if [ -n "$1" ] ; then
+        case "$1" in
+            *.7z|*.001)                7z x "$1"       ;;
+            *.bz2)                     bunzip2 "$1"    ;;
+            *.gz)                      gunzip "$1"     ;;
+            *.lzma)                    unlzma "$1"     ;;
+            *.rar)                     unrar x "$1"    ;;
+            *.tar)                     tar xf "$1"     ;;
+            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$1"   ;;
+            *.tar.gz|*.tgz)            tar xvzf "$1"   ;;
+            *.xz)                      unxz "$1"       ;;
+            *.Z)                       uncompress "$1" ;;
+            *.zip)                     unzip "$1"      ;;
+            *) echo "'$1' cannot be extracted by ex()" ;;
+        esac
+    fi
 }
 
 man() {
@@ -69,8 +71,8 @@ man() {
 }
 
 pacsize() {
-	packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
-	expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
+    packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
+    expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
 }
 
 up() {

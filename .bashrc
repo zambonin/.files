@@ -37,7 +37,7 @@ aur() {
 }
 
 backup() {
-    cp $1 ${1}-`date +%Y%m%d%H%M`.backup;
+    cp $1 ${1}-`date +%Y-%m-%d-%H%M%S`.backup
 }
 
 ex() {

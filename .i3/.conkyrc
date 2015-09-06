@@ -15,8 +15,7 @@ ${execp amixer -c 1 get Master | awk '{print $6}' | sed "5q;d"}"},
 
 {"full_text": "${battery_time} ⚡ ${battery_percent}%"},
 
-{"full_text": "${weather weather.noaa.gov/pub/data/observations/metar/stations/ SBFL temperature}°C"},
-{"full_text": "${weather weather.noaa.gov/pub/data/observations/metar/stations/ SBFL weather}"},
+{"full_text": "${execi 900 $HOME/.i3/weather.sh}"},
 
 {"full_text": "${time %A, %d de %B, %H:%M}"}
 ],

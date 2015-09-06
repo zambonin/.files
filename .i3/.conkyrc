@@ -1,0 +1,22 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+update_interval 1.0
+total_run_times 0
+short_units yes
+
+TEXT
+[
+{"full_text": "${execp amixer -c 1 get Master | awk '{print $4}' | sed "s/.//;s/.$//;5q;d"} \
+${execp amixer -c 1 get Master | awk '{print $6}' | sed "5q;d"}"},
+
+{"full_text": "${wireless_essid wlp3s0} [${wireless_link_qual_perc wlp3s0}%]"},
+
+{"full_text": "${battery_time} ⚡ ${battery_percent}%"},
+
+{"full_text": "${weather weather.noaa.gov/pub/data/observations/metar/stations/ SBFL temperature}°C"},
+{"full_text": "${weather weather.noaa.gov/pub/data/observations/metar/stations/ SBFL weather}"},
+
+{"full_text": "${time %A, %d de %B, %H:%M}"}
+],

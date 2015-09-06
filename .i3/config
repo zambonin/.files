@@ -96,7 +96,7 @@ bar {
     }
     separator_symbol " · "
     position top
-    status_command python $HOME/.i3/bar.py
+    status_command $HOME/.i3/conkysh
 }
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 1 sset Master 1%+

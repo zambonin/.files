@@ -55,14 +55,8 @@ bindsym $mod+Shift+0 move container to workspace ω
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
-
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
@@ -99,19 +93,7 @@ bar {
     status_command $HOME/.i3/conkysh
 }
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 1 sset Master 1%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -c 1 sset Master 1%-
-bindsym XF86AudioMute exec --no-startup-id amixer -q -c 1 sset Master toggle && amixer -q -c 1 sset Speaker unmute && amixer -q -c 1 sset Headphone unmute && amixer -q -c 1 sset "Bass Speaker" unmute
-
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-
-bindsym XF86TouchpadToggle exec --no-startup-id ~/.i3/touchpad.sh
-
-bindsym Print exec --no-startup-id scrot
-
 set $Locker $HOME/.i3/i3lock.sh && sleep 1
-
 set $mode_system (o) screen off · (l) lock · (s) suspend · (r) reboot · (Shift+s) shutdown
 
 mode "$mode_system" {
@@ -126,4 +108,12 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+l mode "$mode_system"
+bindsym XF86Sleep mode "$mode_system"
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.i3/touchpad.sh
+# F3 - xrandr something
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86AudioMute exec --no-startup-id amixer -q -c 1 set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 1 sset Master 1%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -c 1 sset Master 1%-
+bindsym Print exec --no-startup-id scrot

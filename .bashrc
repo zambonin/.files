@@ -97,3 +97,6 @@ PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 
 source /usr/share/doc/pkgfile/command-not-found.bash
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+

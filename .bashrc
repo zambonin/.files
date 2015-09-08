@@ -10,11 +10,12 @@ export VISUAL=subl3
 alias back='cd -'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'
+alias compress='tar cvzf'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
 alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty'
 alias du='du -chs .[!.]* * | sort -h | less'
-alias find='sudo find / -name'
+alias find='sudo find / -iname'
 alias free='free -h | head -2'
 alias ls='ls --color=auto --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --needed --noconfirm'
@@ -29,7 +30,8 @@ function mkdir {
 
 aur() {
     ex $1
-    IFS='.' read filename extension <<< $1
+    IFS='.' read filename ext1 ext2 <<< $1
+    ex ${filename}.${ext1}
     cd ${filename}
     makepkg
     cd ..
@@ -95,5 +97,3 @@ PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 
 source /usr/share/doc/pkgfile/command-not-found.bash
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

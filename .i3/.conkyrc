@@ -8,12 +8,12 @@ short_units yes
 
 TEXT
 [
-{"full_text": "${execp amixer -c 1 get Master | awk '{print $4}' | sed "s/.//;s/.$//;5q;d"} \
-${execp amixer -c 1 get Master | awk '{print $6}' | sed "5q;d"}"},
+{"full_text": "${execp amixer -c 1 get Master | awk '{print $6}' | sed 's/\[//;s/\]//;5q;d'} \
+[${execp amixer -c 1 get Master | awk '{print $4}' | sed 's/.//;s/.$//;5q;d'}]"},
 
 {"full_text": "${wireless_essid wlp3s0} ${if_up wlp3s0}[${wireless_link_qual_perc wlp3s0}%]${endif}"},
 
-{"full_text": "${battery_time} ⚡ ${battery_percent}%"},
+{"full_text": "${battery_time} [${battery_percent}%]"},
 
 {"full_text": "${execi 900 $HOME/.i3/weather.sh}"},
 

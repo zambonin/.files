@@ -30,8 +30,7 @@ function mkdir {
 
 aur() {
     ex $1
-    IFS='.' read filename ext1 ext2 <<< $1
-    ex ${filename}.${ext1}
+    IFS='.' read filename ext1 <<< $1
     cd ${filename}
     makepkg
     cd ..
@@ -43,19 +42,19 @@ backup() {
 }
 
 ex() {
-    if [ -n "$1" ] ; then
-        case "$1" in
-            *.7z|*.001)                7z x "$1"       ;;
-            *.bz2)                     bunzip2 "$1"    ;;
-            *.gz)                      gunzip "$1"     ;;
-            *.lzma)                    unlzma "$1"     ;;
-            *.rar)                     unrar x "$1"    ;;
-            *.tar)                     tar xf "$1"     ;;
-            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$1"   ;;
-            *.tar.gz|*.tgz)            tar xvzf "$1"   ;;
-            *.xz)                      unxz "$1"       ;;
-            *.Z)                       uncompress "$1" ;;
-            *.zip)                     unzip "$1"      ;;
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf $1   ;;
+            *.tar.gz|*.tgz)            tar xvzf $1   ;;
+            *.7z|*.001)                7z x $1       ;;
+            *.bz2)                     bunzip2 $1    ;;
+            *.gz)                      gunzip $1     ;;
+            *.lzma)                    unlzma $1     ;;
+            *.rar)                     unrar x $1    ;;
+            *.tar)                     tar xf $1     ;;
+            *.xz)                      unxz $1       ;;
+            *.Z)                       uncompress $1 ;;
+            *.zip)                     unzip $1      ;;
             *) echo "'$1' cannot be extracted by ex()" ;;
         esac
     fi
@@ -99,4 +98,3 @@ PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 source /usr/share/doc/pkgfile/command-not-found.bash
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-

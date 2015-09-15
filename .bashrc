@@ -1,7 +1,5 @@
 # ~/.bashrc
 
-[ -z "$PS1" ] && return
-
 shopt -s autocd cdspell dirspell checkwinsize
 
 export EDITOR=nano
@@ -17,7 +15,8 @@ alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty'
 alias du='du -chs .[!.]* * | sort -h | less'
 alias find='sudo find / -iname'
 alias free='free -h | head -2'
-alias ls='ls --color=auto --group-directories-first -AFgho'
+alias less='less -R'
+alias ls='ls --color=always --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --needed --noconfirm'
 alias mv='mv -v'
 alias pacman='pacman --noconfirm'
@@ -95,6 +94,8 @@ PS1+='\[\e[0m\]\[\e[01;34m\]\u\[\e[0m\]\[\e[01;37m\]@\h '   # user@host
 PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 
-source /usr/share/doc/pkgfile/command-not-found.bash
+if [ command -v pkgfile 2>/dev/null ] ; then
+    source /usr/share/doc/pkgfile/command-not-found.bash
+fi
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

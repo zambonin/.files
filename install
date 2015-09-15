@@ -11,9 +11,6 @@ ln -P $HOME/dotfiles/redshift.conf $HOME/.config
 # i3-gaps settings
 cp -al $HOME/dotfiles/.i3 $HOME
 
-# systemctl service that starts i3lock after regaining from suspend state
-ln -P $HOME/dotfiles/suspend.service /etc/systemd/system
-
 # pretty images
 ln -P $HOME/dotfiles/.wallpaper.png $HOME
 

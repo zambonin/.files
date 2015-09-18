@@ -19,42 +19,39 @@ alias grep='grep -i --color=always'
 alias less='less -R'
 alias ls='ls --color=always --group-directories-first -AFgho'
 alias makepkg='makepkg -sCcir --needed --noconfirm'
+alias mkdir='mkdir -p'
 alias mv='mv -v'
 alias pacman='pacman --noconfirm'
 alias rm='rm -iRv'
 alias sudo='sudo '
 
-function mkdir {
-    command mkdir -pv "$1" && cd "$1"
-}
-
 aur() {
-    ex $1
-    IFS='.' read filename ext1 <<< $1
-    cd ${filename}
+    ex "$1"
+    IFS='.' read -r filename _ <<< "$1"
+    cd "${filename}" || exit
     makepkg
     cd ..
-    rm -rf ${filename} $1
+    rm -rf "${filename}" "$1"
 }
 
 backup() {
-    cp $1 ${1}-`date +%Y-%m-%d-%H%M%S`.backup
+    cp "$1" "${1}-$(date +%Y-%m-%d-%H%M%S)".backup
 }
 
 ex() {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf $1   ;;
-            *.tar.gz|*.tgz)            tar xvzf $1   ;;
-            *.7z|*.001)                7z x $1       ;;
-            *.bz2)                     bunzip2 $1    ;;
-            *.gz)                      gunzip $1     ;;
-            *.lzma)                    unlzma $1     ;;
-            *.rar)                     unrar x $1    ;;
-            *.tar)                     tar xf $1     ;;
-            *.xz)                      unxz $1       ;;
-            *.Z)                       uncompress $1 ;;
-            *.zip)                     unzip $1      ;;
+    if [ -f "$1" ] ; then
+        case "$1" in
+            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$1"   ;;
+            *.tar.gz|*.tgz)            tar xvzf "$1"   ;;
+            *.7z|*.001)                7z x "$1"       ;;
+            *.bz2)                     bunzip2 "$1"    ;;
+            *.gz)                      gunzip "$1"     ;;
+            *.lzma)                    unlzma "$1"     ;;
+            *.rar)                     unrar x "$1"    ;;
+            *.tar)                     tar xf "$1"     ;;
+            *.xz)                      unxz "$1"       ;;
+            *.Z)                       uncompress "$1" ;;
+            *.zip)                     unzip "$1"      ;;
             *) echo "'$1' cannot be extracted by ex()" ;;
         esac
     fi
@@ -72,8 +69,8 @@ man() {
 }
 
 pacsize() {
-    packages=$(comm -23 <(pacman -Qqe) <(pacman -Qqg base base-devel | sort))
-    expac -HM "%011m\t%-20n\t%10d" $packages | sort -n
+    packages=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
+    expac -HM "%011m\t%-20n\t%10d" $packages | sort -n | less
 }
 
 up() {
@@ -87,7 +84,7 @@ up() {
     if [ -z "$d" ]; then
         d=..
     fi
-    cd $d
+    cd $d || exit
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]
@@ -95,7 +92,7 @@ PS1+='\[\e[0m\]\[\e[01;34m\]\u\[\e[0m\]\[\e[01;37m\]@\h '   # user@host
 PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 
-if [ command -v pkgfile 2>/dev/null ] ; then
+if pkgfile 2>/dev/null ; then
     source /usr/share/doc/pkgfile/command-not-found.bash
 fi
 

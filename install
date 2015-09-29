@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# touchpad settings
-ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
-
 # various config files
 ln -fs $HOME/dotfiles/.{asound,bash,xinit}rc $HOME
 ln -P $HOME/dotfiles/.{{conky,nano}rc,Xresources} $HOME
@@ -14,10 +11,19 @@ cp -al $HOME/dotfiles/.i3 $HOME
 # pretty images
 ln -P $HOME/dotfiles/.wallpaper.png $HOME
 
+# keyboard settings
+keyboard="/etc/vconsole.conf"
+if [[ ! -e "$keyboard" ]]; then
+    echo "KEYMAP=br-abnt2" > "$keyboard"
+fi
+
 # opendns settings
-if [ -a /etc/dhcpcd.conf ]; then
+if [[ -e /etc/dhcpcd.conf ]]; then
     dhcp=$(grep "static domain" /etc/dhcpcd.conf)
     if [ -z "$dhcp" ]; then
         echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf
     fi
 fi
+
+# touchpad settings
+ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/

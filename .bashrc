@@ -6,6 +6,7 @@ export EDITOR=nano
 export VISUAL=subl3
 
 alias back='cd -'
+alias calcf='bc -l <<<'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'
 alias compress='tar cvzf'
@@ -36,6 +37,10 @@ aur() {
 
 backup() {
     cp "$1" "${1}-$(date +%Y-%m-%d-%H%M%S)".backup
+}
+
+calc () {
+    echo "scale=2;" "$@" | bc
 }
 
 ex() {
@@ -85,6 +90,10 @@ up() {
         d=..
     fi
     cd $d || exit
+}
+
+usd() {
+    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' | awk '{print $6}' | sed 's/<br//'
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]

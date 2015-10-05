@@ -24,6 +24,7 @@ alias mkdir='mkdir -p'
 alias mv='mv -v'
 alias pacman='pacman --noconfirm'
 alias rm='rm -iRv'
+alias rml='rm -f *.{aux,fdb_latexmk,log,out,synctex.gz,txt}'
 alias sudo='sudo '
 
 aur() {

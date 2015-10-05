@@ -6,7 +6,6 @@ export EDITOR=nano
 export VISUAL=subl3
 
 alias back='cd -'
-alias calcf='bc -l <<<'
 alias cat='cat -ns'
 alias chmod='chmod -Rv'
 alias compress='tar cvzf'
@@ -39,8 +38,8 @@ backup() {
     cp "$1" "${1}-$(date +%Y-%m-%d-%H%M%S)".backup
 }
 
-calc () {
-    echo "scale=2;" "$@" | bc
+calc() {
+    bc -l <<< "$@"
 }
 
 ex() {
@@ -74,8 +73,8 @@ man() {
 }
 
 pacsize() {
-    packages=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
-    expac -HM "%011m\t%-20n\t%10d" $packages | sort -n | less
+    pkg=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
+    expac -HM "%011m\t%-20n\t%10d" $pkg | sort -n | less
 }
 
 up() {
@@ -93,7 +92,16 @@ up() {
 }
 
 usd() {
-    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' | awk '{print $6}' | sed 's/<br//'
+    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' \
+    | awk '{print $6}' | sed 's/<br//'
+}
+
+vm() {
+    if [[ ! -f "$HOME/image_file" ]] ; then
+        qemu-img create -f raw "$HOME/image_file" 4G
+    fi
+    qemu-system-x86_64 -m 1G -cpu host -machine type=pc,accel=kvm \
+    -drive file="$HOME/image_file",index=0,media=disk,format=raw -cdrom "$1"
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]

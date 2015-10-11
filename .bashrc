@@ -12,7 +12,7 @@ alias compress='tar cvzf'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
 alias diff='diff -rsy --suppress-common-lines --suppress-blank-empty'
-alias du='du -chs .[!.]* * | sort -h | less'
+alias du='du -chs .[!.]* * | sort -h'
 alias find='sudo find / -iname'
 alias free='free -h | head -2'
 alias grep='grep -i --color=always'
@@ -73,18 +73,31 @@ man() {
     man "$@"
 }
 
+mgit() {
+    for d in */ ; do
+        if [ -d "$d/.git" ] ; then
+            local output=$(git -C "$d" "$1")
+            grep -q nothing <<< $(sed '3q;d' <<< "$output")
+            if [[ "$1" = "status" && ! $? -eq 0 ]] || \
+               [[ "$1" = "diff" && "$output" ]] ; then
+                echo -e "\033[1m$d\033[0m"
+                echo "$output"
+            fi
+        fi
+    done
+}
+
 pacsize() {
     pkg=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
-    expac -HM "%011m\t%-20n\t%10d" $pkg | sort -n | less
+    expac -HM "%011m\t%-20n\t%10d" <<< "$pkg" | sort -nr | less
 }
 
 up() {
     local d=""
     limit=$1
-    for ((i = 1; i <= limit; i++))
-        do
-            d=$d/..
-        done
+    for ((i = 1; i <= limit; i++)); do
+        d=$d/..
+    done
     d=$(echo $d | sed 's/^\///')
     if [ -z "$d" ]; then
         d=..
@@ -93,8 +106,8 @@ up() {
 }
 
 usd() {
-    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' \
-    | awk '{print $6}' | sed 's/<br//'
+    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' | \
+    awk '{print $6}' | sed 's/<br//'
 }
 
 vm() {

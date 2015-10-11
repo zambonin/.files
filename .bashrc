@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc
 
 shopt -s autocd cdspell dirspell checkwinsize
@@ -76,8 +77,8 @@ man() {
 mgit() {
     for d in */ ; do
         if [ -d "$d/.git" ] ; then
-            local output=$(git -C "$d" "$1")
-            grep -q nothing <<< $(sed '3q;d' <<< "$output")
+            output=$(git -C "$d" "$1")
+            grep -q nothing <<< "$(sed '3q;d' <<< "$output")"
             if [[ "$1" = "status" && ! $? -eq 0 ]] || \
                [[ "$1" = "diff" && "$output" ]] ; then
                 echo -e "\033[1m$d\033[0m"
@@ -112,7 +113,7 @@ usd() {
 
 vm() {
     if [[ ! -f "$HOME/image_file" ]] ; then
-        qemu-img create -f raw "$HOME/image_file" 4G
+        qemu-img create -f raw "$HOME/image_file" 8G
     fi
     qemu-system-x86_64 -m 1G -cpu host -machine type=pc,accel=kvm \
     -drive file="$HOME/image_file",index=0,media=disk,format=raw -cdrom "$1"

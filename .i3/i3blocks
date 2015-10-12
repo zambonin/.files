@@ -1,0 +1,21 @@
+separator_block_width=20
+
+[volume]
+command=$HOME/.i3/volume.sh
+interval=1
+
+[wireless]
+command=$HOME/.i3/wireless.sh
+interval=1
+
+[battery]
+command=$HOME/.i3/battery.sh
+interval=1
+
+[weather]
+command=$HOME/.i3/weather.sh
+interval=1800
+
+[time]
+command=date '+%A, %d de %B, %H:%M'
+interval=1

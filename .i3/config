@@ -88,9 +88,9 @@ bar {
         inactive_workspace #1A1A1A #1A1A1A #999999
         urgent_workspace #1A1A1A #1A1A1A #ffffff
     }
-    separator_symbol " · "
+    separator_symbol "·"
     position top
-    status_command $HOME/.i3/conky.sh
+    status_command i3blocks -c $HOME/.i3/i3blocks
 }
 
 set $Locker $HOME/.i3/i3lock.sh && sleep 1

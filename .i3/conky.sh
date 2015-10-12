@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo '{"version":1} ['
-exec conky -c $HOME/.i3/.conkyrc
+exec conky -c $HOME/.i3/conkyrc

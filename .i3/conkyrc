@@ -15,7 +15,7 @@ TEXT
 
 {"full_text": "${battery_time} [${battery_percent}%]"},
 
-{"full_text": "${execi 900 $HOME/.i3/weather.sh}"},
+{"full_text": "${execi 3600 $HOME/.i3/weather.sh}"},
 
 {"full_text": "${time %A, %d de %B, %H:%M}"}
 ],

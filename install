@@ -6,23 +6,20 @@ ln -P $HOME/dotfiles/.{{conky,nano}rc,Xresources} $HOME
 ln -P $HOME/dotfiles/redshift.conf $HOME/.config
 
 # i3-gaps settings
-cp -al $HOME/dotfiles/.i3 $HOME
+mkdir $HOME/.i3
+ln -s $HOME/dotfiles/.i3/* $HOME/.i3
 
 # pretty images
-ln -P $HOME/dotfiles/.wallpaper.png $HOME
+cp -al $HOME/dotfiles/.wallpaper $HOME
 
 # keyboard settings
 keyboard="/etc/vconsole.conf"
-if [[ ! -e "$keyboard" ]]; then
-    echo "KEYMAP=br-abnt2" > "$keyboard"
-fi
+[[ ! -e "$keyboard" ]] && echo "KEYMAP=br-abnt2" > "$keyboard"
 
 # opendns settings
 if [[ -e /etc/dhcpcd.conf ]]; then
     dhcp=$(grep "static domain" /etc/dhcpcd.conf)
-    if [ -z "$dhcp" ]; then
-        echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf
-    fi
+    [ -z "$dhcp" ] && echo "static domain_name_servers=208.67.222.222 208.67.220.220" >> /etc/dhcpcd.conf
 fi
 
 # touchpad settings

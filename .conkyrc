@@ -37,7 +37,7 @@ ${font sans-serif:bold:size=8}RAM ${font sans-serif:normal:size=8}(${mem} used) 
 ${memgraph -l -t}
 ${font sans-serif:bold:size=8}SSD ${font sans-serif:normal:size=8}(${fs_used /} + ${fs_used /home}) ${hr 2}
 ${diskiograph /dev/sda -l -t}
-${font sans-serif:bold:size=8}HDD ${font sans-serif:normal:size=8}(${fs_used_perc /run/media/stenny/Storage}%) ${hr 2}
+${font sans-serif:bold:size=8}HDD ${font sans-serif:normal:size=8}(${fs_used_perc /run/media/zambonin/Storage}%) ${hr 2}
 ${diskiograph /dev/sdb -l -t}
 ${font sans-serif:bold:size=8}NETWORK ${hr 2}
 ${font sans-serif:normal:size=8}${downspeedgraph enp3s0 -l -t}

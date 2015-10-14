@@ -10,7 +10,7 @@ interval=1
 
 [battery]
 command=$HOME/.i3/battery.sh
-interval=1
+interval=30
 
 [weather]
 command=$HOME/.i3/weather.sh

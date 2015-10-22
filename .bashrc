@@ -112,11 +112,12 @@ usd() {
 }
 
 vm() {
-    if [[ ! -f "$HOME/image_file" ]] ; then
-        qemu-img create -f raw "$HOME/image_file" 8G
+    if [[ ! -f "$HOME/vmdisk" ]] ; then
+        qemu-img create -f raw "$HOME/vmdisk" 8G
     fi
     qemu-system-x86_64 -m 1G -cpu host -machine type=pc,accel=kvm \
-    -drive file="$HOME/image_file",index=0,media=disk,format=raw -cdrom "$1"
+    -monitor stdio -cdrom "$1" \
+    -drive file="$HOME/vmdisk",index=0,media=disk,format=raw
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]

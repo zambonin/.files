@@ -4,6 +4,10 @@ separator_block_width=20
 command=$HOME/.i3/volume.sh
 interval=1
 
+[ethernet]
+command=$HOME/.i3/ethernet.sh
+interval=15
+
 [wireless]
 command=$HOME/.i3/wireless.sh
 interval=1

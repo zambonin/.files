@@ -1,5 +1,9 @@
 separator_block_width=20
 
+[pacman]
+command=$HOME/.i3/pacman.sh
+interval=1800
+
 [volume]
 command=$HOME/.i3/volume.sh
 interval=1

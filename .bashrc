@@ -13,7 +13,7 @@ alias compress='tar cvzf'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
 alias diff='diff -rs --suppress-common-lines --suppress-blank-empty'
-alias du='du -chs .[!.]* * | sort -h'
+alias du='du -chs * | sort -h'
 alias find='sudo find / -iname'
 alias free='free -h | head -2'
 alias grep='grep -i --color=always'
@@ -23,6 +23,7 @@ alias makepkg='makepkg -sCcir --needed --noconfirm'
 alias mkdir='mkdir -p'
 alias mv='mv -v'
 alias pacman='pacman --noconfirm'
+alias pingg='ping -c 3 8.8.8.8'
 alias rm='rm -iRv'
 alias rml='rm -f *.{aux,fdb_latexmk,log,nav,out,snm,synctex.gz,toc}'
 alias sudo='sudo '
@@ -90,7 +91,7 @@ mgit() {
 
 pacsize() {
     pkg=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
-    expac -HM "%011m\t%-20n\t%10d" <<< "$pkg" | sort -nr | less
+    expac -HM "%011m\t%-25n\t%10d" <<< "$pkg" | sort -nr | less
 }
 
 up() {
@@ -107,8 +108,7 @@ up() {
 }
 
 usd() {
-    curl -s dolarhoje.net.br | grep "<br />" | sed '2q;d' | \
-    awk '{print $6}' | sed 's/<br//'
+    curl -s dolarhoje.net.br | awk 'NR==161 {print substr($6,0,6)}'
 }
 
 vm() {

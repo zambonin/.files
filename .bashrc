@@ -13,7 +13,7 @@ alias compress='tar cvzf'
 alias cp='cp -dpruv'
 alias df='df -hTx tmpfs --total'
 alias diff='diff -rs --suppress-common-lines --suppress-blank-empty'
-alias du='du -chs * | sort -h'
+alias du='du -hs'
 alias find='sudo find / -iname'
 alias free='free -h | head -2'
 alias grep='grep -i --color=always'
@@ -38,7 +38,9 @@ aur() {
 }
 
 backup() {
-    cp "$1" "${1}-$(date +%Y-%m-%d-%H%M%S)".backup
+    for file in "$@"; do
+        cp "$file" "${file}-$(date +%Y-%m-%d-%H%M%S)".backup
+    done
 }
 
 calc() {
@@ -46,22 +48,24 @@ calc() {
 }
 
 ex() {
-    if [ -f "$1" ] ; then
-        case "$1" in
-            *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$1"   ;;
-            *.tar.gz|*.tgz)            tar xvzf "$1"   ;;
-            *.7z|*.001)                7z x "$1"       ;;
-            *.bz2)                     bunzip2 "$1"    ;;
-            *.gz)                      gunzip "$1"     ;;
-            *.lzma)                    unlzma "$1"     ;;
-            *.rar)                     unrar x "$1"    ;;
-            *.tar)                     tar xf "$1"     ;;
-            *.xz)                      unxz "$1"       ;;
-            *.Z)                       uncompress "$1" ;;
-            *.zip)                     unzip "$1"      ;;
-            *) echo "'$1' cannot be extracted by ex()" ;;
-        esac
-    fi
+    for file in "$@"; do
+        if [ -f "$file" ] ; then
+            case "$file" in
+                *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$file"   ;;
+                *.tar.gz|*.tgz)            tar xvzf "$file"   ;;
+                *.7z|*.001)                7z x "$file"       ;;
+                *.bz2)                     bunzip2 "$file"    ;;
+                *.gz)                      gunzip "$file"     ;;
+                *.lzma)                    unlzma "$file"     ;;
+                *.rar)                     unrar x "$file"    ;;
+                *.tar)                     tar xf "$file"     ;;
+                *.xz)                      unxz "$file"       ;;
+                *.Z)                       uncompress "$file" ;;
+                *.zip)                     unzip "$file"      ;;
+                *) echo "'$file' cannot be extracted by ex()" ;;
+            esac
+        fi
+    done
 }
 
 man() {

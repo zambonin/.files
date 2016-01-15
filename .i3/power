@@ -8,9 +8,9 @@ case "$cmd" in
     dark)
         xset dpms force off ;;
     lock)
-        $HOME/.i3/i3lock.sh && sleep 1 ;;
+        $HOME/dotfiles/.i3/i3lock && sleep 1 ;;
     halt)
-        $HOME/.i3/i3lock.sh && systemctl suspend ;;
+        $HOME/dotfiles/.i3/i3lock && systemctl suspend ;;
     warm)
         systemctl reboot ;;
     kill)

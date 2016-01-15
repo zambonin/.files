@@ -1,29 +1,29 @@
 separator_block_width=20
 
 [pacman]
-command=$HOME/.i3/pacman.sh
+command=$HOME/dotfiles/.i3/pacman
 interval=1800
 
 [volume]
-command=$HOME/.i3/volume.sh
+command=$HOME/dotfiles/.i3/volume
 interval=1
 
 [ethernet]
-command=$HOME/.i3/ethernet.sh
+command=$HOME/dotfiles/.i3/ethernet
 interval=15
 
-[wireless]
-command=$HOME/.i3/wireless.sh
+[wifi]
+command=$HOME/dotfiles/.i3/wireless
 interval=1
 
 [battery]
-command=$HOME/.i3/battery.sh
+command=$HOME/dotfiles/.i3/battery
 interval=30
 
 [weather]
-command=$HOME/.i3/weather.sh
+command=$HOME/dotfiles/.i3/weather
 interval=1800
 
 [time]
-command=date '+%A, %d de %B, %H:%M'
+command=$HOME/dotfiles/.i3/date
 interval=1

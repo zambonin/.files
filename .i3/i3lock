@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 tmpbg='/tmp/screen.png'
 scrot "$tmpbg"

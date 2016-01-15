@@ -5,4 +5,4 @@ xbacklight -dec 1000
 feh --bg-fill --randomize $HOME/.wallpaper/* &
 urxvtd -q -o -f
 redshift &
-exec i3
+exec i3 -c $HOME/dotfiles/.i3/config

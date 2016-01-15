@@ -3,8 +3,7 @@
 
 shopt -s autocd cdspell dirspell checkwinsize
 
-export EDITOR=nano
-export VISUAL=subl3
+export EDITOR=vim
 
 alias back='cd -'
 alias cat='cat -ns'
@@ -134,3 +133,4 @@ if pkgfile 2>/dev/null ; then
 fi
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+

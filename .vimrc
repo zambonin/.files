@@ -1,6 +1,8 @@
 filetype indent plugin on
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 set autoindent
 set backspace=indent,eol,start
+set colorcolumn=80
 set confirm
 set expandtab
 set ignorecase

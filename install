@@ -11,13 +11,7 @@ cp -al $HOME/dotfiles/.wallpaper $HOME
 # keyboard settings
 localectl set-keymap --no-convert br-abnt2
 
-# opendns settings
-if [[ -e /etc/dhcpcd.conf ]]; then
-    dhcp=$(grep "static domain" /etc/dhcpcd.conf)
-    dnsdata="static domain_name_servers=208.67.222.222 208.67.220.220"
-    [ -z "$dhcp" ] && echo "$dnsdata" >> /etc/dhcpcd.conf
-fi
-
-# touchpad settings
+sudo -s <<EOF
 ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
-
+echo $'static domain_name_servers=208.67.222.222 208.67.220.220\nnoarp' >> /etc/dhcpcd.conf
+EOF

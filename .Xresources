@@ -12,7 +12,7 @@ URxvt*internalBorder:       1
 
 ! font settings
 URxvt*font:                 xft:Monospace:pixelsize=12
-URxvt*letterSpace:          0
+URxvt*letterSpace:          -2
 
 ! ambience terminator colors
 ! black

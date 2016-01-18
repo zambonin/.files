@@ -4,6 +4,10 @@ separator_block_width=20
 command=$HOME/dotfiles/.i3/pacman
 interval=1800
 
+[brightness]
+command=$HOME/dotfiles/.i3/brightness
+interval=1
+
 [volume]
 command=$HOME/dotfiles/.i3/volume
 interval=1

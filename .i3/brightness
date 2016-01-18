@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+    2) xset dpms force off ;;
+    4) xbacklight -inc 2 ;;
+    5) xbacklight -dec 5 ;;
+esac
+
+value=$(xbacklight -get)
+echo "☀ [${value%.*}%]"

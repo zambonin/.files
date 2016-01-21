@@ -1,3 +1,4 @@
+colorscheme zellner
 filetype indent plugin on
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set autoindent

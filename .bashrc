@@ -110,10 +110,6 @@ up() {
     cd $d || exit
 }
 
-usd() {
-    curl -s dolarhoje.net.br | awk 'NR==161 {print substr($6,0,6)}'
-}
-
 vm() {
     if [[ ! -f "$HOME/vmdisk" ]] ; then
         qemu-img create -f raw "$HOME/vmdisk" 8G

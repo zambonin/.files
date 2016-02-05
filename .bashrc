@@ -111,12 +111,14 @@ up() {
 }
 
 vm() {
-    if [[ ! -f "$HOME/vmdisk" ]] ; then
-        qemu-img create -f raw "$HOME/vmdisk" 8G
-    fi
-    qemu-system-x86_64 -m 1G -cpu host -machine type=pc,accel=kvm \
-    -monitor stdio -cdrom "$1" \
-    -drive file="$HOME/vmdisk",index=0,media=disk,format=raw
+    [[ ! -f "$HOME/vmdisk" ]] && qemu-img create -f raw "$HOME/vmdisk" 8G
+    qemu-system-x86_64 \
+        -m 1G \
+        -cpu host \
+        -machine type=pc,accel=kvm \
+        -monitor stdio \
+        -cdrom "$1" \
+        -drive file="$HOME/vmdisk",index=0,media=disk,format=raw
 }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]
@@ -129,4 +131,3 @@ if pkgfile 2>/dev/null ; then
 fi
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-

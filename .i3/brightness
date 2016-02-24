@@ -6,5 +6,5 @@ case $BLOCK_BUTTON in
     5) xbacklight -dec 5 ;;
 esac
 
-value=$(xbacklight -get)
-echo "☀ [${value%.*}%]"
+VALUE=$(xbacklight -get)
+echo "☀ [${VALUE%.*}%]"

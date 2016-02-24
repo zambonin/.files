@@ -1,11 +1,11 @@
 #!/bin/sh
 
-cmd=$(printf "dark\nlock\nhalt\nwarm\nkill" | \
+MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" | \
 dmenu -h 18 -w 370 -y 1 -nb "#1A1A1A" -sb "#1A1A1A" -fn "DejaVu Sans Mono-8")
 
-[[ -z "$cmd" ]] && exit 0
+[[ -z "$MENU" ]] && exit 0
 
-case "$cmd" in
+case "$MENU" in
     dark)
         xset dpms force off ;;
     lock)

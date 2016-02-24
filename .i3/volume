@@ -6,4 +6,5 @@ case $BLOCK_BUTTON in
     5) amixer -q -c 1 sset Master 1%- ;;
 esac
 
-echo "$(amixer -c 1 get Master | awk 'FNR==5 {print substr($6,2,length($6)-2), $4}')"
+echo "$(amixer -c 1 get Master | \
+        awk 'FNR==5 {print substr($6,2,length($6)-2), $4}')"

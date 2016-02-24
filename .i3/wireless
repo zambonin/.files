@@ -1,10 +1,8 @@
 #!/bin/sh
 
-interface="wlp3s0"
+INTERFACE="${BLOCK_INSTANCE:-wlan0}"
 
-if [[ ! "$(cat /sys/class/net/$interface/operstate)" = 'down' ]] ; then
-    quality=$(grep "$interface" /proc/net/wireless | awk '{print int($3 * 100 / 70)}')
+[[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
 
-    # iwgetid needs wireless_tools
-    echo "$(iwgetid -r) [$quality%]"
-fi
+QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{print int($3 * 100 / 70)}')
+echo "$(iwgetid -r) [$QUALITY%]"  # iwgetid needs wireless_tools

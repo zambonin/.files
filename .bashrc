@@ -28,6 +28,7 @@ alias rml='rm -f *.{aux,fdb_latexmk,log,nav,out,snm,synctex.gz,toc}'
 alias sudo='sudo '
 
 aur() {
+    curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$1" > "$1"
     ex "$1"
     IFS='.' read -r filename _ <<< "$1"
     cd "${filename}" || exit
@@ -44,6 +45,13 @@ backup() {
 
 calc() {
     bc -l <<< "$@"
+}
+
+downiso() {
+    link="$(\grep -m 3 -o http.* /etc/pacman.d/mirrorlist | cut -d\$ -f1)"
+    path="$link/iso/latest/"
+    file="$(curl -s "$path" | \grep -m 1 "\.iso" | cut -d\" -f8)"
+    curl -s "$path$file" > "$file" &
 }
 
 ex() {

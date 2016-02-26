@@ -125,9 +125,9 @@ vm() {
         -cpu host \
         -machine type=pc,accel=kvm \
         -monitor stdio \
-        -cdrom "$1" \
-        -drive file="$HOME/vmdisk",index=0,media=disk,format=raw
-}
+        -drive file="$HOME/vmdisk",index=0,media=disk,format=raw \
+        "$@"
+    }
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]
 PS1+='\[\e[0m\]\[\e[01;34m\]\u\[\e[0m\]\[\e[01;37m\]@\h '   # user@host

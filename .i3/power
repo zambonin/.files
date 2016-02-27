@@ -3,15 +3,15 @@
 MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" | \
 dmenu -h 18 -w 370 -y 1 -nb "#1A1A1A" -sb "#1A1A1A" -fn "DejaVu Sans Mono-8")
 
-[[ -z "$MENU" ]] && exit 0
+[ -z "$MENU" ] && exit 0
 
 case "$MENU" in
     dark)
         xset dpms force off ;;
     lock)
-        $HOME/dotfiles/.i3/i3lock && sleep 1 ;;
+        "$HOME/dotfiles/.i3/i3lock" && sleep 1 ;;
     halt)
-        $HOME/dotfiles/.i3/i3lock && systemctl suspend ;;
+        "$HOME/dotfiles/.i3/i3lock" && systemctl suspend ;;
     warm)
         systemctl reboot ;;
     kill)

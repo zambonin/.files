@@ -2,11 +2,11 @@
 
 ICAO="${BLOCK_INSTANCE:-NWWW}"
 SITE="http://weather.noaa.gov/weather/current/$ICAO.html"
-NOAA="$(curl -s $SITE)"
+NOAA="$(curl -s "$SITE")"
 
-CONDITION="$(awk -F">  " 'NR==150 {print $2}' <<< "$NOAA")"
-TEMPERATURE="$(sed -n '/Temp/{n;n;p;q}' <<< "$NOAA" | \
+CONDITION="$(printf '%s' "$NOAA" | awk -F">  " 'NR==150 {print $2}')"
+TEMPERATURE="$(printf '%s' "$NOAA" | sed -n '/Temp/{n;n;p;q}' | \
                awk -F "[()]" '{print $2}')"
 
 echo "$CONDITION [$TEMPERATURE]"
-[[ "$BLOCK_BUTTON" -eq 1 ]] && chromium "$SITE" &
+[ "$BLOCK_BUTTON" -eq 1 ] && chromium "$SITE" &

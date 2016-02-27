@@ -2,7 +2,7 @@
 
 INTERFACE="${BLOCK_INSTANCE:-wlan0}"
 
-[[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
+[ "$(cat /sys/class/net/"$INTERFACE"/operstate)" = 'down' ] && exit
 
-QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{print int($3 * 100 / 70)}')
+QUALITY=$(grep "$INTERFACE" /proc/net/wireless | awk '{print int($3 * 100 / 70)}')
 echo "$(iwgetid -r) [$QUALITY%]"  # iwgetid needs wireless_tools

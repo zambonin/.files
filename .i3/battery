@@ -1,9 +1,11 @@
 #!/bin/sh
 
 OUTPUT="$(acpi)"
-REMAINING="$(awk '{print $5}' <<< $OUTPUT)"
-PERCENTAGE="$(awk -F', ' '{print $2}' <<< $OUTPUT)"
+REMAINING="$(printf '%s' "$OUTPUT" | awk '{print $5}')"
+PERCENTAGE="$(printf '%s' "$OUTPUT" | awk -F', ' '{print $2}')"
 
 echo "$REMAINING [$PERCENTAGE]"
 echo
-(( $(sed 's/%//' <<< "$PERCENTAGE") < 10 )) && echo \#FF0000 || exit 0
+
+COLOR=$(( $(printf '%s' "$PERCENTAGE" | sed 's/%//') < 10 ))
+[ ! "$COLOR" ] && echo \#FF0000 || exit 0

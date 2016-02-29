@@ -8,5 +8,5 @@ CONDITION="$(printf '%s' "$NOAA" | awk -F">  " 'NR==150 {print $2}')"
 TEMPERATURE="$(printf '%s' "$NOAA" | sed -n '/Temp/{n;n;p;q}' | \
                awk -F "[()]" '{print $2}')"
 
-echo "$CONDITION [$TEMPERATURE]"
+[ -n "$CONDITION" ] && [ -n "$TEMPERATURE" ] && echo "$CONDITION [$TEMPERATURE]"
 [ "$BLOCK_BUTTON" -eq 1 ] && chromium "$SITE" &

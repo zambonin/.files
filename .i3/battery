@@ -8,4 +8,4 @@ echo "$REMAINING [$PERCENTAGE]"
 echo
 
 COLOR=$(( $(printf '%s' "$PERCENTAGE" | sed 's/%//') < 10 ))
-[ ! "$COLOR" ] && echo \#FF0000 || exit 0
+[ "$COLOR" -eq 1 ] && echo \#FF0000 || exit 0

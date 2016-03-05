@@ -1,0 +1,9 @@
+$include /etc/inputrc
+
+set bell-style none
+set completion-ignore-case on
+set completion-map-case on
+set expand-tilde on
+set match-hidden-files on
+set show-all-if-ambiguous on
+set skip-completed-text on

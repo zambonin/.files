@@ -1,40 +1,23 @@
-#!/bin/bash
 # ~/.bashrc
 
-shopt -s autocd cdspell dirspell checkwinsize
+shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
 
-export EDITOR=vim
-
-alias back='cd -'
-alias cat='cat -ns'
-alias chmod='chmod -Rv'
-alias compress='tar cvzf'
-alias cp='cp -dpruv'
-alias df='df -hTx tmpfs --total'
-alias diff='diff -rs --suppress-common-lines --suppress-blank-empty'
-alias du='du -hs'
-alias find='sudo find / -iname'
-alias free='free -h | head -2'
-alias grep='grep -i --color=always'
-alias less='less -R'
-alias ls='ls --color=always --group-directories-first -AFghoN'
-alias makepkg='makepkg -sCcir --needed --noconfirm'
-alias mkdir='mkdir -p'
-alias mv='mv -v'
-alias pacman='pacman --noconfirm'
-alias pingg='ping -c 3 8.8.8.8'
-alias rm='rm -iRv'
-alias rml='rm -f *.{aux,fdb_latexmk,log,nav,out,snm,synctex.gz,toc}'
-alias sudo='sudo '
+EDITOR="vim"
+HISTFILE="$HOME/.history"
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a'
 
 aur() {
-    curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$1" > "$1"
-    ex "$1"
-    IFS='.' read -r filename _ <<< "$1"
+    pkg="$1.tar.gz"
+    curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg" > "$pkg"
+    ex "$pkg"
+    IFS='.' read -r filename _ <<< "$pkg"
     cd "${filename}" || exit
     makepkg
     cd ..
-    rm -rf "${filename}" "$1"
+    rm -rf "${filename}" "$pkg"
 }
 
 backup() {
@@ -48,9 +31,9 @@ calc() {
 }
 
 downiso() {
-    link="$(\grep -m 3 -o http.* /etc/pacman.d/mirrorlist | cut -d\$ -f1)"
+    link="$(\grep -m1 -o "http.*" /etc/pacman.d/mirrorlist | cut -d\$ -f1)"
     path="$link/iso/latest/"
-    file="$(curl -s "$path" | \grep -m 1 "\.iso" | cut -d\" -f8)"
+    file="$(curl -s "$path" | \grep -m1 "\.iso" | cut -d\" -f2)"
     curl -s "$path$file" > "$file" &
 }
 
@@ -71,6 +54,8 @@ ex() {
                 *.zip)                     unzip "$file"      ;;
                 *) echo "'$file' cannot be extracted by ex()" ;;
             esac
+        else
+            echo "'$file' does not exist!"
         fi
     done
 }
@@ -127,15 +112,17 @@ vm() {
         -monitor stdio \
         -drive file="$HOME/vmdisk",index=0,media=disk,format=raw \
         "$@"
-    }
+}
 
 PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]
 PS1+='\[\e[0m\]\[\e[01;34m\]\u\[\e[0m\]\[\e[01;37m\]@\h '   # user@host
 PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
 
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
+
 if pkgfile 2>/dev/null ; then
-    source /usr/share/doc/pkgfile/command-not-found.bash
+    . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

@@ -2,7 +2,7 @@
 
 # various config files
 ln -fs $HOME/dotfiles/.{asound,bash,xinit}rc $HOME
-ln -P $HOME/dotfiles/.{vimrc,Xresources} $HOME
+ln -P $HOME/dotfiles/.{aliases,{input,vim}rc,Xresources} $HOME
 ln -P $HOME/dotfiles/redshift.conf $HOME/.config
 
 # keyboard settings

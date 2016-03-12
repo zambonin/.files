@@ -2,14 +2,14 @@
 
 # various config files
 ln -fs $HOME/dotfiles/.{asound,bash,xinit}rc $HOME
-ln -P $HOME/dotfiles/.{aliases,{input,vim}rc,Xresources} $HOME
-ln -P $HOME/dotfiles/redshift.conf $HOME/.config
+ln -fP $HOME/dotfiles/.{aliases,{input,vim}rc,Xresources} $HOME
+ln -fP $HOME/dotfiles/redshift.conf $HOME/.config
 
 # keyboard settings
 localectl set-keymap --no-convert br-abnt2
 
 sudo -s <<EOF
-ln -s $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
+ln -fs $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
 echo "static domain_name_servers=208.67.222.222 208.67.220.220
 noarp" >> /etc/dhcpcd.conf
 sed -i 's/#MAKEFLAGS=-j2/MAKEFLAGS=-j4/;

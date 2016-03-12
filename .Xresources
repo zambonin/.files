@@ -16,13 +16,13 @@ URxvt*font:                 xft:Monospace:pixelsize=12
 URxvt*letterSpace:          -2
 
 ! font rendering
-Xft.antialias: true
-Xft.autohint: 0
-Xft.dpi: 96
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgb
+Xft.antialias:              true
+Xft.autohint:               0
+Xft.dpi:                    96
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+Xft.lcdfilter:              lcddefault
+Xft.rgba:                   rgb
 
 ! ambience Terminator color scheme
 ! black

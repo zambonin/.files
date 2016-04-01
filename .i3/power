@@ -9,9 +9,9 @@ case "$MENU" in
     dark)
         xset dpms force off ;;
     lock)
-        "$HOME/dotfiles/.i3/i3lock" && sleep 1 ;;
+        "$HOME/dotfiles/.i3/lock" && sleep 1 ;;
     halt)
-        "$HOME/dotfiles/.i3/i3lock" && systemctl suspend ;;
+        "$HOME/dotfiles/.i3/lock" && systemctl suspend ;;
     warm)
         systemctl reboot ;;
     kill)

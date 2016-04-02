@@ -9,15 +9,17 @@ HISTSIZE=1000000
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
+
 aur() {
     pkg="$1.tar.gz"
-    curl "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg" > "$pkg"
+    curl -O "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg"
     ex "$pkg"
     IFS='.' read -r filename _ <<< "$pkg"
     cd "${filename}" || exit
     makepkg
     cd ..
-    rm -rf "${filename}" "$pkg"
+    rm -f "${filename}" "$pkg"
 }
 
 backup() {
@@ -118,8 +120,6 @@ PS1='\[\e[01;37m\][\A]\[\e[0m\]\[\e[00;37m\] '              # [HH:MM]
 PS1+='\[\e[0m\]\[\e[01;34m\]\u\[\e[0m\]\[\e[01;37m\]@\h '   # user@host
 PS1+='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '      # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
-
-[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 if pkgfile 2>/dev/null ; then
     . /usr/share/doc/pkgfile/command-not-found.bash

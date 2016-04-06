@@ -4,9 +4,13 @@ ICAO="${BLOCK_INSTANCE:-NWWW}"
 SITE="http://weather.noaa.gov/weather/current/$ICAO.html"
 NOAA="$(curl -s "$SITE")"
 
-CONDITION="$(printf '%s' "$NOAA" | awk -F">  " 'NR==150 {print $2}')"
-TEMPERATURE="$(printf '%s' "$NOAA" | sed -n '/Temp/{n;n;p;q}' | \
-               awk -F "[()]" '{print $2}')"
+TEMPERATURE="$(echo "$NOAA" | grep -Po '(?<=\().*(?=\))' | grep -m1 " C")"
+CONDITION="$(echo "$NOAA" | sed -n '/Sky/{n;n;p;q}' | cut -d" " -f4,5)"
 
-[ -n "$CONDITION" ] && [ -n "$TEMPERATURE" ] && echo "$CONDITION [$TEMPERATURE]"
+if [ -n "$CONDITION" ] && [ -n "$TEMPERATURE" ] ; then
+    echo "$CONDITION [$TEMPERATURE]"
+elif [ -z "$CONDITION" ] && [ -n "$TEMPERATURE" ]; then
+    echo "$TEMPERATURE"
+fi
+
 [ "$BLOCK_BUTTON" -eq 1 ] && chromium "$SITE" &

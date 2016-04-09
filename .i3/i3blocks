@@ -14,12 +14,12 @@ interval=1
 instance=wlp3s0
 interval=1
 
-[battery]
-interval=30
-
 [weather]
 instance=SBFL
 interval=1800
+
+[battery]
+interval=30
 
 [date]
 command=date '+%A, %-d de %B, %R '

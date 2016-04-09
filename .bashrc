@@ -110,9 +110,13 @@ vm() {
     qemu-system-x86_64 \
         -m 1G \
         -cpu host \
+        -smp 2 \
         -machine type=pc,accel=kvm \
         -monitor stdio \
-        -drive file="$HOME/vmdisk",index=0,media=disk,format=raw \
+        -drive file="$HOME/vmdisk",format=raw,if=virtio,cache=none,aio=native \
+        -net user,hostfwd=tcp::10022-:22 \
+        -net nic,model=virtio \
+        -boot menu=on \
         "$@"
 }
 

@@ -88,8 +88,8 @@ mgit() {
 }
 
 pacsize() {
-    pkg=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort))
-    expac -HM "%011m\t%-25n\t%10d" <<< "$pkg" | sort -nr | less
+    expac -HM "%011m\t%-25n\t%10d" $(comm -23 <(pacman -Qqen | sort) \
+        <(pacman -Qqg base base-devel | sort)) | sort -nr | less
 }
 
 up() {

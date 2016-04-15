@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # various config files
-ln -fs $HOME/dotfiles/.{asound,bash,xinit}rc $HOME
-ln -fP $HOME/dotfiles/.{aliases,{input,vim}rc,Xresources} $HOME
+ln -fs $HOME/dotfiles/.{aliases,Xresources,{asound,bash,input,vim,xinit}rc} $HOME
 ln -fP $HOME/dotfiles/redshift.conf $HOME/.config
 
 # keyboard settings
@@ -17,4 +16,3 @@ s/x86-64 -mtune=generic/native/;
 s/.tar.xz/.tar/;
 s/#B/B/' /etc/makepkg.conf
 EOF
-

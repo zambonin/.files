@@ -13,7 +13,8 @@ PROMPT_COMMAND='history -a'
 
 aur() {
     pkg="$1.tar.gz"
-    curl -O "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg"
+    curl --fail -O "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg"
+    [ "$?" -ne 0 ] && rm -f "$pkg"
     ex "$pkg"
     IFS='.' read -r filename _ <<< "$pkg"
     cd "${filename}" || exit
@@ -129,4 +130,4 @@ if pkgfile 2>/dev/null ; then
     . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx

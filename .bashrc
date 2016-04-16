@@ -130,4 +130,9 @@ if pkgfile 2>/dev/null ; then
     . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+    ssh-add
+fi
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

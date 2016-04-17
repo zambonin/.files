@@ -1,43 +1,8 @@
 pcm.!default {
-    type asym
-    playback.pcm {
-        type plug
-        slave.pcm "dmixer"
-    }
-    capture.pcm {
-        type plug
-        slave.pcm "usb"
+    type plug
+    slave.pcm {
+        type hw;
+        card PCH;
     }
 }
 
-pcm.dmixer {
-    type dmix
-    ipc_key 1024
-    slave {
-        # pcm "hw:0,3" for HDMI
-        pcm "hw:1,0"
-        period_time 0
-        period_size 1024
-        buffer_size 4096
-        rate 48000
-    }
-    bindings {
-        0 0
-        1 1
-    }
-}
-
-pcm.usb {
-    type hw
-    card PCH
-}
-
-pcm.intelcard {
-    type hw
-    card 1
-}
-
-ctl.intelcard {
-    type hw
-    card 1
-}

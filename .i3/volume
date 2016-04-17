@@ -1,9 +1,9 @@
 #!/bin/sh
 
 case $BLOCK_BUTTON in
-    2) amixer -q -c 1 set Master toggle ;;
-    4) amixer -q -c 1 sset Master 1%+ ;;
-    5) amixer -q -c 1 sset Master 1%- ;;
+    2) amixer -q  set Master toggle ;;
+    4) amixer -q  sset Master 1%+ ;;
+    5) amixer -q  sset Master 1%- ;;
 esac
 
-amixer -c 1 get Master -M | awk -F'[][]' '/Mono:/ {print $6, "["$2"]"}'
+amixer  get Master -M | awk -F'[][]' '/%/ {print $6, "["$2"]"}'

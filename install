@@ -9,8 +9,7 @@ localectl set-keymap --no-convert br-abnt2
 
 sudo -s <<EOF
 ln -fs $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
-echo "static domain_name_servers=208.67.222.222 208.67.220.220
-noarp" >> /etc/dhcpcd.conf
+echo "noarp" >> /etc/dhcpcd.conf
 sed -i 's/#MAKEFLAGS=-j2/MAKEFLAGS=-j4/;
 s/x86-64 -mtune=generic/native/;
 s/.tar.xz/.tar/;

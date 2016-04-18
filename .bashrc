@@ -24,7 +24,7 @@ aur() {
 }
 
 backup() {
-    for file in "$@"; do
+    for file in "$@" ; do
         cp "$file" "${file}-$(date +%Y-%m-%d-%H%M%S)".backup
     done
 }
@@ -41,7 +41,7 @@ downiso() {
 }
 
 ex() {
-    for file in "$@"; do
+    for file in "$@" ; do
         if [ -f "$file" ] ; then
             case "$file" in
                 *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$file"   ;;
@@ -64,7 +64,7 @@ ex() {
 }
 
 ll() {
-    less <(LC_ALL=C \ls --color=always --group-directories-first -AFghoN "$@")
+    LC_ALL=C \ls --color=always --group-directories-first -AFghoN "$@"
 }
 
 man() {
@@ -140,3 +140,5 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
+
+[[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"

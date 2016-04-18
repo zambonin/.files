@@ -64,7 +64,7 @@ ex() {
 }
 
 ll() {
-    LC_ALL=C \ls --color=always --group-directories-first -AFghoN "$@"
+    ls "$@" | less
 }
 
 man() {

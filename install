@@ -10,7 +10,7 @@ localectl set-keymap --no-convert br-abnt2
 sudo -s <<EOF
 ln -fs $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
 echo "noarp" >> /etc/dhcpcd.conf
-sed -i 's/#MAKEFLAGS=-j2/MAKEFLAGS=-j4/;
+sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;
 s/x86-64 -mtune=generic/native/;
 s/.tar.xz/.tar/;
 s/#B/B/' /etc/makepkg.conf

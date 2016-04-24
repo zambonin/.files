@@ -1,6 +1,7 @@
 #!/bin/sh
 
-MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" | rofi -dmenu)
+MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" \
+        | rofi -location 5 -columns 5 -lines 1 -regex -dmenu)
 
 [ -z "$MENU" ] && exit 0
 

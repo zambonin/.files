@@ -1,7 +1,6 @@
 #!/bin/sh
 
-MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" | \
-dmenu -h 18 -w 370 -y 1 -nb "#1A1A1A" -sb "#1A1A1A" -fn "DejaVu Sans Mono-8")
+MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" | rofi -dmenu)
 
 [ -z "$MENU" ] && exit 0
 

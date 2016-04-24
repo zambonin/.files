@@ -7,8 +7,7 @@ focus_follows_mouse yes
 floating_modifier $mod
 
 bindsym $mod+Return exec --no-startup-id urxvtc
-bindsym $mod+d exec --no-startup-id dmenu_run -h 18 -w 342 -y 1 \
--nb "#1A1A1A" -sb "#1A1A1A" -q -fn "DejaVu Sans Mono-8"
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -67,9 +66,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border 1pixel
-smart_gaps on
-gaps inner 4
-gaps outer 4
 
 # class                 border  backgr. text    indicator
 client.focused          #333333 #444444 #ffffff #000000

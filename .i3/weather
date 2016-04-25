@@ -1,11 +1,12 @@
 #!/bin/sh
 
 ICAO="${BLOCK_INSTANCE:-NWWW}"
-SITE="http://weather.noaa.gov/weather/current/$ICAO.html"
+SITE="http://weather.noaa.gov/pub/data/observations/metar/decoded/$ICAO.TXT"
 NOAA="$(curl -s "$SITE")"
+PRETTY="http://weather.noaa.gov/weather/current/$ICAO.html"
 
-TEMPERATURE="$(echo "$NOAA" | grep -Po '(?<=\().*(?=\))' | grep -m1 " C")"
-CONDITION="$(echo "$NOAA" | sed -n '/Sky/{n;n;p;q}' | cut -d" " -f4,5)"
+TEMPERATURE="$(echo "$NOAA" | awk -F"[()]" '/Temp/ {print $2}')"
+CONDITION="$(echo "$NOAA" | awk -F": " '/Sky/ {print $2}')"
 
 if [ -n "$CONDITION" ] && [ -n "$TEMPERATURE" ] ; then
     echo "$CONDITION [$TEMPERATURE]"
@@ -13,4 +14,4 @@ elif [ -z "$CONDITION" ] && [ -n "$TEMPERATURE" ]; then
     echo "$TEMPERATURE"
 fi
 
-[ "$BLOCK_BUTTON" -eq 1 ] && chromium "$SITE" &
+[ -n "$BLOCK_BUTTON" ] && chromium "$PRETTY" &

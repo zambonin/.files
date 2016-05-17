@@ -1,0 +1,23 @@
+[user]
+    email = gzmbnn@gmail.com
+    name  = Gustavo Zambonin
+
+[push]
+    default = simple
+
+[color]
+    branch = always
+    diff = always
+    interactive = always
+    status = always
+
+[core]
+    editor = vim
+    excludesfile = ~/dotfiles/.gitignore_global
+    pager = less -+FSX
+
+[alias]
+    contributors = shortlog --summary --numbered
+    df = "!f() { for i in $(git diff --name-only) ; do git diff "$i"; done }; f"
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr - %an <%ce>)%Creset %n %B'
+    ss = status -bs

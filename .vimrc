@@ -11,10 +11,11 @@ set laststatus=2
 set mouse=a
 set nostartofline
 set number
+set pastetoggle=<F2>
 set shiftwidth=4
 set showcmd
 set smartcase
-set softtabstop=4
+set tabstop=4
 syntax on
 
 function! Tab_Or_Complete()

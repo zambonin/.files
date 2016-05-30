@@ -40,29 +40,6 @@ downiso() {
     curl -s "$path$file" > "$file" &
 }
 
-ex() {
-    for file in "$@" ; do
-        if [ -f "$file" ] ; then
-            case "$file" in
-                *.tar.bz2|*.tbz2|*.tar.xz) tar xvjf "$file"   ;;
-                *.tar.gz|*.tgz)            tar xvzf "$file"   ;;
-                *.7z|*.001)                7z x "$file"       ;;
-                *.bz2)                     bunzip2 "$file"    ;;
-                *.gz)                      gunzip "$file"     ;;
-                *.lzma)                    unlzma "$file"     ;;
-                *.rar)                     unrar x "$file"    ;;
-                *.tar)                     tar xf "$file"     ;;
-                *.xz)                      unxz "$file"       ;;
-                *.Z)                       uncompress "$file" ;;
-                *.zip)                     unzip "$file"      ;;
-                *) echo "'$file' cannot be extracted by ex()" ;;
-            esac
-        else
-            echo "'$file' does not exist!"
-        fi
-    done
-}
-
 ll() {
     ls "$@" | less
 }

@@ -1,4 +1,4 @@
-colorscheme torte
+colorscheme badwolf
 filetype indent plugin on
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set autoindent
@@ -28,3 +28,6 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/share/dict/cracklib-small"
 
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }

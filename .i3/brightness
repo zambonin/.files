@@ -1,14 +1,12 @@
 #!/bin/sh
 
-PATH_TO_BIN="${BLOCK_INSTANCE:-/usr/bin/xbacklight}"
-
 case $BLOCK_BUTTON in
     2) xset dpms force off ;;
-    4) xbacklight -inc 2 ;;
-    5) xbacklight -dec 5 ;;
+    4) light -A 2 ;;
+    5) light -U 5 ;;
 esac
 
-if [ -e "$PATH_TO_BIN" ] ; then
-    VALUE=$("$PATH_TO_BIN" -get)
+if [ -e "$BLOCK_INSTANCE" ] ; then
+    VALUE="$("$BLOCK_INSTANCE")"
     echo "☀ [${VALUE%.*}%]"
 fi

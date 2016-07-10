@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xbacklight -dec 1000
 [[ -f ~/.Xresources ]] && xrdb -merge $HOME/.Xresources
 feh --bg-fill $HOME/.wallpaper.{jpg,png}
 urxvtd -q -o -f

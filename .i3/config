@@ -6,9 +6,6 @@ focus_follows_mouse yes
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id urxvtc
-bindsym $mod+d exec --no-startup-id rofi -show run
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -87,11 +84,13 @@ bar {
     status_command i3blocks -c $HOME/dotfiles/.i3/i3blocks
 }
 
-bindsym XF86TouchpadToggle exec --no-startup-id $HOME/dotfiles/.i3/touchpad
-bindsym $mod+F1 exec --no-startup-id $HOME/dotfiles/.i3/power
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 1%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 1%+
-bindsym Print exec --no-startup-id scrot
+bindsym $mod+Return             exec urxvtc
+bindsym $mod+d                  exec rofi -show run
+bindsym XF86TouchpadToggle      exec $HOME/dotfiles/.i3/touchpad
+bindsym $mod+F1                 exec $HOME/dotfiles/.i3/power
+bindsym XF86MonBrightnessDown   exec light -U 2%
+bindsym XF86MonBrightnessUp     exec light -A 2%
+bindsym XF86AudioMute           exec amixer -q set Master toggle
+bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
+bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
+bindsym Print                   exec scrot

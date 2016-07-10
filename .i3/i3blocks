@@ -5,6 +5,7 @@ command=$HOME/dotfiles/.i3/$BLOCK_NAME
 interval=1800
 
 [brightness]
+instance=/usr/bin/light
 interval=1
 
 [volume]

@@ -16,8 +16,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+a split h
+bindsym $mod+q split v
 bindsym $mod+f fullscreen
 
 bindsym $mod+s layout stacking
@@ -85,7 +85,7 @@ bar {
 }
 
 bindsym $mod+Return             exec urxvtc
-bindsym $mod+d                  exec rofi -show run
+bindsym $mod+z                  exec rofi -show run
 bindsym XF86TouchpadToggle      exec $HOME/dotfiles/.i3/touchpad
 bindsym $mod+F1                 exec $HOME/dotfiles/.i3/power
 bindsym XF86MonBrightnessDown   exec light -U 2%

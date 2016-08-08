@@ -1,6 +1,7 @@
 # ~/.bashrc
 
 shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
+set -o noclobber
 
 EDITOR="vim"
 HISTFILE="$HOME/.history"

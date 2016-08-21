@@ -8,12 +8,13 @@ URxvt*cursorBlink:          true
 URxvt*cursorUnderline:      true
 URxvt*iso14755:             false
 URxvt*scrollBar:            false
-URxvt*internalBorder:       1
+URxvt*internalBorder:       4
 URxvt*saveLines:            65535
 
 ! font settings
-URxvt*font:                 xft:Monospace:pixelsize=12
+URxvt*font:                 xft:Monospace:pixelsize=14
 URxvt*letterSpace:          -1
+URxvt*lineSpace:            1
 
 ! font rendering
 Xft.antialias:              true

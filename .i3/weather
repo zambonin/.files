@@ -7,7 +7,8 @@ PRETTY="http://weather.noaa.gov/weather/current/$ICAO.html"
 
 TEMPERATURE="$(echo "$NOAA" | awk -F"[()]" '/Temp/ {print $2}')"
 CONDITION="$(echo "$NOAA" | awk -F": " '/Sky/ {print $2}')"
-WEATHER="$(echo "$NOAA" | awk -F": " '/Weather/ {print $2}')"
+WEATHER="$(echo "$NOAA" | awk -F": " '/Weather/ {
+    gsub(";", ","); print tolower($2)}')"
 
 if [ -n "$WEATHER" ] && [ -n "$CONDITION" ] && [ -n "$TEMPERATURE" ] ; then
     echo "$CONDITION, $WEATHER [$TEMPERATURE]"

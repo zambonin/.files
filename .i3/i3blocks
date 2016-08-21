@@ -23,5 +23,5 @@ interval=1800
 interval=30
 
 [date]
-command=date '+%A, %-d de %B, %R '
+command=date '+%A, %-d de %B, %R'
 interval=1

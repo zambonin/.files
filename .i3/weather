@@ -3,7 +3,7 @@
 ICAO="${BLOCK_INSTANCE:-NWWW}"
 SITE="http://tgftp.nws.noaa.gov/data/observations/metar/decoded/$ICAO.TXT"
 NOAA="$(curl -s "$SITE")"
-PRETTY="http://weather.noaa.gov/weather/current/$ICAO.html"
+PRETTY="http://tgftp.nws.noaa.gov/weather/current/$ICAO.html"
 
 TEMPERATURE="$(echo "$NOAA" | awk -F"[()]" '/Temp/ {print $2}')"
 CONDITION="$(echo "$NOAA" | awk -F": " '/Sky/ {print $2}')"

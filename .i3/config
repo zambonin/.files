@@ -81,13 +81,13 @@ bar {
     }
     separator_symbol "·"
     position top
-    status_command i3blocks -c $HOME/dotfiles/.i3/i3blocks
+    status_command i3blocks -c $HOME/.files/.i3/i3blocks
 }
 
 bindsym $mod+Return             exec urxvtc
 bindsym $mod+z                  exec rofi -show run
-bindsym XF86TouchpadToggle      exec $HOME/dotfiles/.i3/touchpad
-bindsym $mod+F1                 exec $HOME/dotfiles/.i3/power
+bindsym XF86TouchpadToggle      exec $HOME/.files/.i3/touchpad
+bindsym $mod+F1                 exec $HOME/.files/.i3/power
 bindsym XF86MonBrightnessDown   exec light -U 2%
 bindsym XF86MonBrightnessUp     exec light -A 2%
 bindsym XF86AudioMute           exec amixer -q set Master toggle

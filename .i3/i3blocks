@@ -1,5 +1,5 @@
 separator_block_width=20
-command=$HOME/dotfiles/.i3/$BLOCK_NAME
+command=$HOME/.files/.i3/$BLOCK_NAME
 
 [pacman]
 interval=1800

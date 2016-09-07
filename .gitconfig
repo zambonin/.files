@@ -13,7 +13,7 @@
 
 [core]
     editor = vim
-    excludesfile = ~/dotfiles/.gitignore_global
+    excludesfile = ~/.files/.gitignore_global
     pager = less -+FSX
 
 [alias]

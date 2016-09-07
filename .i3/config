@@ -86,10 +86,7 @@ bar {
 
 bindsym $mod+Return             exec urxvtc
 bindsym $mod+z                  exec rofi -show run
-bindsym XF86TouchpadToggle      exec $HOME/.files/.i3/touchpad
 bindsym $mod+F1                 exec $HOME/.files/.i3/power
-bindsym XF86MonBrightnessDown   exec light -U 2%
-bindsym XF86MonBrightnessUp     exec light -A 2%
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+

@@ -8,7 +8,6 @@ ln -fP $HOME/.files/redshift.conf $HOME/.config
 localectl set-keymap --no-convert br-abnt2
 
 sudo -s <<EOF
-ln -fs $HOME/.files/50-synaptics.conf /etc/X11/xorg.conf.d/
 sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;
 s/x86-64 -mtune=generic/native/;
 s/.tar.xz/.tar/;

@@ -1,15 +1,14 @@
 #!/bin/bash
 
 # various config files
-ln -fs $HOME/dotfiles/.{aliases,gitconfig,Xresources,{asound,bash,input,vim,xinit}rc} $HOME
-ln -fP $HOME/dotfiles/redshift.conf $HOME/.config
+ln -fs $HOME/.files/.{aliases,gitconfig,Xresources,{asound,bash,input,vim,xinit}rc} $HOME
+ln -fP $HOME/.files/redshift.conf $HOME/.config
 
 # keyboard settings
 localectl set-keymap --no-convert br-abnt2
 
 sudo -s <<EOF
-ln -fs $HOME/dotfiles/50-synaptics.conf /etc/X11/xorg.conf.d/
-echo "noarp" >> /etc/dhcpcd.conf
+ln -fs $HOME/.files/50-synaptics.conf /etc/X11/xorg.conf.d/
 sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;
 s/x86-64 -mtune=generic/native/;
 s/.tar.xz/.tar/;

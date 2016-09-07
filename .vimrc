@@ -31,3 +31,5 @@ endfunction
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
+
+vnoremap <C-c> "*y

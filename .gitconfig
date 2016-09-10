@@ -17,7 +17,8 @@
     pager = less -+FSX
 
 [alias]
-    contributors = shortlog --summary --numbered
+    ct = shortlog --summary --numbered
     df = "!f() { for i in $(git diff --name-only) ; do git diff "$i"; done }; f"
+    ds = diff --staged
     lg = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr - %an <%ce>)%Creset %n %B'
     ss = status -bs

@@ -90,4 +90,9 @@ bindsym $mod+F1                 exec $HOME/.files/.i3/power
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
-bindsym Print                   exec scrot
+bindsym --release Print         exec scrot
+bindsym --release Shift+Print   exec scrot -s
+
+for_window [instance="__scratchpad"] move scratchpad
+exec --no-startup-id IGNOREEOF=5 urxvtc -name __scratchpad
+bindsym F10 scratchpad show

@@ -4,4 +4,5 @@
 feh --bg-fill $HOME/.wallpaper.{jpg,png}
 urxvtd -q -o -f
 redshift &
+xcompmgr -cCfF &
 exec i3 -c $HOME/.files/.i3/config

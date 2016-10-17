@@ -46,6 +46,9 @@ inoremap {}     {}
 " remap tab to auto-complete
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
+" esc twice to save
+map <Esc><Esc> :w<CR>
+
 " toggle between relative and normal numbering
 nnoremap <F3> :call ToggleNumber()<CR>
 

@@ -95,4 +95,4 @@ bindsym --release Shift+Print   exec scrot -s
 
 for_window [instance="__scratchpad"] move scratchpad
 exec --no-startup-id IGNOREEOF=5 urxvtc -name __scratchpad
-bindsym F10 scratchpad show
+bindsym $mod+BackSpace scratchpad show

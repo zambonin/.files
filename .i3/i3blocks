@@ -1,9 +1,6 @@
 separator_block_width=20
 command=$HOME/.files/.i3/$BLOCK_NAME
 
-[pacman]
-interval=1800
-
 [volume]
 interval=1
 
@@ -11,6 +8,5 @@ interval=1
 instance=SBFL
 interval=1800
 
-[date]
-command=date '+%A, %-d de %B, %R'
+[datetime]
 interval=1

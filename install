@@ -5,7 +5,8 @@ ln -fs $HOME/.files/.{aliases,gitconfig,Xresources,{asound,bash,input,vim,xinit}
 ln -fP $HOME/.files/redshift.conf $HOME/.config
 
 # keyboard settings
-localectl set-keymap --no-convert br-abnt2
+localectl --no-convert set-keymap us-acentos
+localectl --no-convert set-x11-keymap us pc105 intl
 
 sudo -s <<EOF
 sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;

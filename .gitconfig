@@ -6,10 +6,7 @@
     default = simple
 
 [color]
-    branch = always
-    diff = always
-    interactive = always
-    status = always
+    ui = auto
 
 [core]
     editor = vim
@@ -17,8 +14,11 @@
     pager = less -+FSX
 
 [alias]
-    ct = shortlog --summary --numbered
+    ch = checkout
+    cm = commit --verbose
+    ct = !git --no-pager shortlog --summary --numbered --email
     df = "!f() { for i in $(git diff --name-only) ; do git diff "$i"; done }; f"
     ds = diff --staged
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr - %an <%ce>)%Creset %n %B'
+    lg = log --graph --pretty=format:'%C(12)%h • %ar by %an <%ae> %n%B'
+    nb = checkout -b
     ss = status -bs

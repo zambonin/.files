@@ -67,14 +67,8 @@ man() {
 
 mgit() {
     for d in */ ; do
-        if [ -d "$d/.git" ] ; then
-            output=$(git -C "$d" "$1")
-            grep -q nothing <<< "$(sed '3q;d' <<< "$output")"
-            if [[ "$1" = "status" && ! $? -eq 0 ]] || \
-               [[ "$1" = "diff" && "$output" ]] ; then
-                echo -e "\033[1m$d\033[0m"
-                echo "$output"
-            fi
+        if [[ ! -z "$(git -C "$d" status -s 2>/dev/null)" ]] ; then
+            paste <(echo "$d") <(git -C "$d" ss) | expand -t 18
         fi
     done
 }

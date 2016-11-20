@@ -336,3 +336,5 @@ ENV/
 
 # mine
 *.json
+*.fd
+*.swp

@@ -2,6 +2,7 @@
 
 shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
 set -o noclobber
+stty -ixon
 
 EDITOR="vim"
 HISTFILE="$HOME/.history"

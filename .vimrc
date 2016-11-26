@@ -46,11 +46,19 @@ inoremap {}     {}
 " remap tab to auto-complete
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
-" esc twice to save
-map <Esc><Esc> :w<CR>
+" ctrl+s to save
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> :w<CR>
 
 " toggle between relative and normal numbering
+inoremap <F3> <Esc>:call ToggleNumber()<CR>
 nnoremap <F3> :call ToggleNumber()<CR>
+
+" move lines up and down
+inoremap <C-Up>     <Esc>:m-2<CR>==gi
+inoremap <C-Down>   <Esc>:m+1<CR>==gi
+nnoremap <C-Up>     :m-2<CR>==
+nnoremap <C-Down>   :m+1<CR>==
 
 " keep indent from previous line if no filetype indent is specified
 set autoindent

@@ -46,6 +46,9 @@ bindsym $mod+Shift+8 move container to workspace π
 bindsym $mod+Shift+9 move container to workspace σ
 bindsym $mod+Shift+0 move container to workspace ω
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
@@ -55,7 +58,6 @@ mode "resize" {
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
     bindsym Right resize grow width 10 px or 10 ppt
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -72,6 +74,9 @@ client.urgent           #333333 #222222 #ffffff #000000
 client.placeholder      #333333 #222222 #ffffff #000000
 
 bar {
+    mode hide
+    hidden_state hide
+    modifier $mod
     colors {
         background #1A1A1A
         focused_workspace #1A1A1A #1A1A1A #ffffff

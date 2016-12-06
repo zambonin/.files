@@ -14,9 +14,10 @@ PROMPT_COMMAND='history -a'
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 aur() {
-    pkg="$1.tar.gz"
+    trap "rm -f "${filename}" "$pkg"" INT
+    pkg="${1,,}.tar.gz"
     curl --fail -O "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg"
-    [ "$?" -ne 0 ] && rm -f "$pkg"
+    [ "$?" -ne 0 ] && rm -f "$pkg" && return
     ex "$pkg"
     IFS='.' read -r filename _ <<< "$pkg"
     cd "${filename}" || exit
@@ -53,8 +54,8 @@ lt() {
     if [ -d "${ARG/tex/bib}" ] ; then
         bibtex "$FILE"
         texfot pdflatex "$FILE"
-        texfot pdflatex "$FILE"
     fi
+    texfot pdflatex "$FILE"
 }
 
 man() {

@@ -338,3 +338,8 @@ ENV/
 *.json
 *.fd
 *.swp
+
+# pyvenv
+bin/
+lib64
+pyvenv.cfg

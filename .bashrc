@@ -51,8 +51,8 @@ lt() {
     ARG="$1"
     FILE="${ARG%.*}"
     texfot pdflatex "$FILE"
-    if [ -d "${ARG/tex/bib}" ] ; then
-        bibtex "$FILE"
+    if [ -s "${ARG/tex/bib}" ] ; then
+        texfot bibtex "$FILE"
         texfot pdflatex "$FILE"
     fi
     texfot pdflatex "$FILE"

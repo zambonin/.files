@@ -14,6 +14,7 @@ function! Tab_Or_Complete()
 endfunction
 
 " toggle between relative and normal line numbering
+" (http://vim.wikia.com/wiki/Autocomplete_with_TAB_when_typing_words)
 function! ToggleNumber()
     if (&relativenumber == 1)
         set norelativenumber
@@ -22,6 +23,15 @@ function! ToggleNumber()
         set relativenumber
     endif
 endfunction
+
+" remove trailing whitespaces (http://vi.stackexchange.com/a/456)
+function! TrimWhitespace()
+    let vsave = winsaveview()
+    %s/\s\+$//e
+    call winrestview(vsave)
+endfunction
+
+autocmd BufWritePre * :call TrimWhitespace()
 
 " insert characters automatically
 inoremap <      <><Left>

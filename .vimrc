@@ -69,6 +69,8 @@ inoremap <C-Up>     <Esc>:m-2<CR>==gi
 inoremap <C-Down>   <Esc>:m+1<CR>==gi
 nnoremap <C-Up>     :m-2<CR>==
 nnoremap <C-Down>   :m+1<CR>==
+xnoremap <C-Up>     :m-2<CR>gv=gv
+xnoremap <C-Down>   :m'>+<CR>gv=gv
 
 " keep indent from previous line if no filetype indent is specified
 set autoindent

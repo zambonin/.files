@@ -93,6 +93,12 @@ set dictionary="/usr/share/dict/cracklib-small"
 " expand tabs to spaces
 set expandtab
 
+" better undo history
+set hidden
+
+" highlight searches
+set hlsearch
+
 " case insensitive search
 set ignorecase
 

@@ -8,6 +8,11 @@ ln -fP $HOME/.files/redshift.conf $HOME/.config
 localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
 
+# vim stuff
+mkdir $HOME/.vim/colors
+curl -Lso "!$/badwolf.vim" https://git.io/vMQP2
+
+# makepkg settings
 sudo -s <<EOF
 sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;
 s/x86-64 -mtune=generic/native/;

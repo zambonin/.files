@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # various config files
-ln -fs $HOME/.files/.{aliases,gitconfig,Xresources,{asound,bash,input,vim,xinit}rc} $HOME
-ln -fP $HOME/.files/redshift.conf $HOME/.config
+ln -fs $HOME/.files/.{aliases,gitconfig,Xresources} $HOME
+ln -fs $HOME/.files/.{asound,bash,input,vim,xinit}rc $HOME
+ln -fP $HOME/.files/conf/redshift.conf $HOME/.config
+ln -fP $HOME/.files/conf/.makepkg.conf $HOME
+mkdir /etc/systemd/journald.conf.d
+ln -fs $HOME/.files/conf/20-journal-rules.conf !$
 
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
@@ -11,11 +15,3 @@ localectl --no-convert set-x11-keymap us pc105 intl
 # vim stuff
 mkdir $HOME/.vim/colors
 curl -Lso "!$/badwolf.vim" https://git.io/vMQP2
-
-# makepkg settings
-sudo -s <<EOF
-sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/;
-s/x86-64 -mtune=generic/native/;
-s/.tar.xz/.tar/;
-s/#B/B/' /etc/makepkg.conf
-EOF

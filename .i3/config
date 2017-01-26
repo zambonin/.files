@@ -46,7 +46,7 @@ bindsym $mod+Shift+8 move container to workspace π
 bindsym $mod+Shift+9 move container to workspace σ
 bindsym $mod+Shift+0 move container to workspace ω
 
-bindsym $mod+Tab workspace next
+bindsym $mod+Ctrl+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 bindsym $mod+Shift+c reload
@@ -90,8 +90,9 @@ bar {
 }
 
 bindsym $mod+Return             exec urxvtc
-bindsym $mod+z                  exec rofi -show run
-bindsym $mod+F1                 exec $HOME/.files/.i3/power
+bindsym $mod+apostrophe         exec rofi -show run
+bindsym $mod+Tab                exec rofi -show window -columns 1 -lines 5
+bindsym $mod+z                  exec $HOME/.files/.i3/power
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+

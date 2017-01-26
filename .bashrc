@@ -126,3 +126,5 @@ fi
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
 
 [[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"
+
+trap 'echo -ne "\033]2;$(HISTTIMEFORMAT="" history 1 | cut -c 8-)\007"' DEBUG

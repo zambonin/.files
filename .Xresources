@@ -63,18 +63,19 @@ URxvt*keysym.Control-Right: \033[1;5C
 
 ! rofi settings
 rofi.color-enabled:         true
-rofi.color-active:          #273238, #80cbc4, #273238, #394249, #80cbc4
-rofi.color-normal:          #273238, #c1c1c1, #273238, #394249, #ffffff
-rofi.color-urgent:          #273238, #ff1844, #273238, #394249, #ff1844
-rofi.color-window:          #273238, #273238, #1e2529
+rofi.color-active:          #000000, #80cbc4, #000000, #232323, #80cbc4
+rofi.color-normal:          #000000, #ffffff, #000000, #232323, #ffffff
+rofi.color-urgent:          #000000, #ff1844, #000000, #232323, #ff1844
+rofi.color-window:          #000000, #000000, #1e2529
+rofi.columns:               8
 rofi.fake-transparency:     true
 rofi.fixed-num-lines:       true
-rofi.font:                  mono 10
+rofi.font:                  mono 8
 rofi.hide-scrollbar:        true
-rofi.location:              1
-rofi.lines:                 10
-rofi.modi:                  run,window
+rofi.location:              6
+rofi.lines:                 1
+rofi.modi:                  run
 rofi.padding:               0
 rofi.separator-style:       none
-rofi.sidebar-mode:          true
-rofi.width:                 20
+rofi.sidebar-mode:          false
+rofi.width:                 35

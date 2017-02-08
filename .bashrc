@@ -82,6 +82,10 @@ pacsize() {
         <(pacman -Qqg base base-devel | sort)) | sort -nr | less
 }
 
+transfer() {
+    curl -sH "Max-Downloads: 1" -T "$1" "transfer.sh/$(basename $1)"
+}
+
 up() {
     local d=""
     limit=$1

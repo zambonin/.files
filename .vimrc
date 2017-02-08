@@ -64,6 +64,10 @@ nnoremap <C-s> :w<CR>
 inoremap <F3> <Esc>:call ToggleNumber()<CR>
 nnoremap <F3> :call ToggleNumber()<CR>
 
+" enable or disable search highlighting
+inoremap <F4> <Esc>:set hlsearch!<CR>
+nnoremap <F4> :set hlsearch!<CR>
+
 " move lines up and down
 inoremap <C-Up>     <Esc>:m-2<CR>==gi
 inoremap <C-Down>   <Esc>:m+1<CR>==gi
@@ -95,9 +99,6 @@ set expandtab
 
 " better undo history
 set hidden
-
-" highlight searches
-set hlsearch
 
 " case insensitive search
 set ignorecase

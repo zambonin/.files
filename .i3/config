@@ -90,7 +90,7 @@ bar {
 }
 
 bindsym $mod+Return             exec urxvtc
-bindsym Shift+z                 exec rofi -show run
+bindsym $mod+dead_grave         exec rofi -show run
 bindsym $mod+Tab                exec rofi -show window -columns 1 -lines 5
 bindsym $mod+z                  exec $HOME/.files/.i3/power
 bindsym XF86AudioMute           exec amixer -q set Master toggle

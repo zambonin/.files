@@ -5,8 +5,8 @@ ln -fs $HOME/.files/.{aliases,gitconfig,tmux.conf,Xresources} $HOME
 ln -fs $HOME/.files/.{asound,bash,input,vim,xinit}rc $HOME
 ln -fP $HOME/.files/conf/redshift.conf $HOME/.config
 ln -fP $HOME/.files/conf/.makepkg.conf $HOME
-mkdir /etc/systemd/journald.conf.d
-ln -fs $HOME/.files/conf/20-journal-rules.conf !$
+sudo mkdir /etc/systemd/journald.conf.d
+sudo ln -fs $HOME/.files/conf/20-journal-rules.conf /etc/systemd/journald.conf.d
 
 # keyboard settings
 localectl --no-convert set-keymap us-acentos

@@ -4,6 +4,13 @@ let g:lightline = { 'colorscheme': 'seoul256' }
 " smart auto-indenting
 filetype indent plugin on
 
+" disable Background Color Erase (BCE) so that color schemes
+" render properly when inside 256-color tmux and GNU screen.
+" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+if &term =~ '256color'
+  set t_ut=
+endif
+
 " auto-complete words based on files and a dictionary
 function! Tab_Or_Complete()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'

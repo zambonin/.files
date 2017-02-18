@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # various config files
-ln -fs $HOME/.files/.{aliases,gitconfig,Xresources} $HOME
+ln -fs $HOME/.files/.{aliases,gitconfig,tmux.conf,Xresources} $HOME
 ln -fs $HOME/.files/.{asound,bash,input,vim,xinit}rc $HOME
 ln -fP $HOME/.files/conf/redshift.conf $HOME/.config
 ln -fP $HOME/.files/conf/.makepkg.conf $HOME

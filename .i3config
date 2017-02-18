@@ -73,32 +73,13 @@ client.unfocused        #333333 #222222 #ffffff #000000
 client.urgent           #333333 #222222 #ffffff #000000
 client.placeholder      #333333 #222222 #ffffff #000000
 
-bar {
-    mode hide
-    hidden_state hide
-    modifier $mod
-    colors {
-        background #1A1A1A
-        focused_workspace #1A1A1A #1A1A1A #ffffff
-        active_workspace #1A1A1A #1A1A1A #ffffff
-        inactive_workspace #1A1A1A #1A1A1A #999999
-        urgent_workspace #1A1A1A #1A1A1A #ffffff
-    }
-    separator_symbol "·"
-    position top
-    status_command i3blocks -c $HOME/.files/.i3/i3blocks
-}
-
 bindsym $mod+Return             exec urxvtc
 bindsym $mod+dead_grave         exec rofi -show run
 bindsym $mod+Tab                exec rofi -show window -columns 1 -lines 5
-bindsym $mod+z                  exec $HOME/.files/.i3/power
+bindsym $mod+z                  exec $HOME/.files/scripts/power
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
 bindsym --release Print         exec scrot
 bindsym --release Shift+Print   exec scrot -s
-
-for_window [instance="__scratchpad"] move scratchpad
-exec --no-startup-id IGNOREEOF=5 urxvtc -name __scratchpad
-bindsym $mod+BackSpace scratchpad show
+bindsym --release $mod+Print    exec scrot -u

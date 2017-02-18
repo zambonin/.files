@@ -1,7 +1,0 @@
-#!/bin/sh
-
-[ "$BLOCK_BUTTON" -eq 1 ] && urxvtc -e sudo pacman -Syu &
-
-DATE="$(date '+%A, %-d de %B, %R')"
-[ "$(checkupdates | wc -l)" -ne 0 ] && UPDATE=" [!]"
-echo "${DATE}${UPDATE}"

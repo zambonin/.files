@@ -1,25 +1,34 @@
+# ~/.aliases
+
 alias back='cd -'
-alias chmod='chmod -Rv'
-alias compress='tar cvzf'
-alias cp='cp -dpruv'
+alias chmod='chmod --changes --recursive'
+alias cp='cp --archive --update --verbose'
 alias dd='dd status=progress'
-alias df='df -hTx tmpfs --total'
-alias diff='diff -rs --suppress-common-lines --suppress-blank-empty'
-alias du='du -hs'
-alias ex='aunpack'
-alias find='find -O3 / -iname $@ 2>/dev/null'
-alias free='free -h | head -2'
-alias gdb='gdb -q'
-alias grep='grep -i --color=always'
-alias less='less -fMR'
-alias ls='ls --color=always --group-directories-first -FN'
+alias df='df --human-readable --print-type --exclude-type=tmpfs --total'
+alias diff='diff --recursive --suppress-common-lines --suppress-blank-empty'
+alias du='du --human-readable --summarize'
+alias free='free --human --wide'
+alias gdb='gdb -quiet'
+alias less='less --force --LONG-PROMPT --RAW-CONTROL-CHARS'
+alias ls='ls --color=always --group-directories-first --classify --literal'
 alias makepkg='makepkg -sCcir --needed --noconfirm'
-alias mkdir='mkdir -p'
-alias mv='mv -v'
+alias makepkg='makepkg --clean --cleanbuild --install --needed --noconfirm --rmdeps --syncdeps'
+alias mkdir='mkdir --parents'
+alias mv='mv --interactive --update --verbose'
 alias pacman='pacman --noconfirm'
 alias pingg='ping -c 3 8.8.8.8'
-alias rm='rm -irv'
-alias rml='rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,nav,out,snm,synctex.gz,toc,vrb}'
+alias rm='rm --interactive=once --recursive --verbose'
 alias sudo='sudo '
-alias venv='python -m venv . && pip install -r requirements.txt'
 alias vim='vim -p'
+
+# create, folder, verbose, gzip
+alias compress='tar cfvz'
+
+# atool package
+alias ex='aunpack'
+
+# clean latex temporary files
+alias rml='rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,nav,out,snm,synctex.gz,toc,vrb}'
+
+# setup python virtual environment
+alias venv='python -m venv . && pip install -r requirements.txt'

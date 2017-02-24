@@ -93,6 +93,15 @@ up() {
   cd $d || exit
 }
 
+v_env() {
+  if [ -n "$1" ] ; then
+    python -m venv "$1"
+    source "${1}bin/activate"
+    pip install -r "${1}requirements.txt"
+    deactivate
+  fi
+}
+
 vm() {
   [[ ! -f "$HOME/vmdisk" ]] && qemu-img create -f raw "$HOME/vmdisk" 8G
   qemu-system-x86_64                                                        \

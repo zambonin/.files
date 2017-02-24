@@ -30,5 +30,5 @@ alias ex='aunpack'
 # clean latex temporary files
 alias rml='rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,nav,out,snm,synctex.gz,toc,vrb}'
 
-# setup python virtual environment
-alias venv='python -m venv . && pip install -r requirements.txt'
+# clean virtualenv files
+alias rmv='rm -f bin/ include/ lib* pyvenv.cfg pip-selfcheck.json'

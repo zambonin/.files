@@ -4,13 +4,6 @@ shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
 set -o noclobber
 stty -ixon
 
-EDITOR="vim"
-HISTFILE="$HOME/.history"
-HISTFILESIZE=1000000
-HISTSIZE=1000000
-HISTTIMEFORMAT='%F %T '
-PROMPT_COMMAND='history -a'
-
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 aur() {
@@ -121,16 +114,5 @@ wttr() {
 
 PS1='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '       # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
-
-pkgfile 2>/dev/null && . /usr/share/doc/pkgfile/command-not-found.bash
-
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval "$(ssh-agent -s)"
-    ssh-add
-fi
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
-
-[[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"
 
 [[ -z "$TMUX" ]] && exec tmux

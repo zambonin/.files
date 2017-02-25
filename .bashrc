@@ -7,16 +7,18 @@ stty -ixon
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 aur() {
-  trap 'rm -f ${filename} $pkg' INT
-  pkg="${1,,}.tar.gz"
-  aurlink="https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg"
-  curl --fail -O "$aurlink" && rm -f "$pkg" && return
-  ex "$pkg"
-  IFS='.' read -r filename _ <<< "$pkg"
-  cd "${filename}" || exit
-  makepkg
-  cd ..
-  rm -f "${filename}" "$pkg"
+  OLDDIR="$PWD"
+  for pkg in "$@" ; do
+    cd "$(mktemp -d)" || exit
+    curl -Os --fail \
+      "https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz"
+    if [ "$?" -ne 22 ] ; then
+      tar zxvf "${pkg}.tar.gz"
+      cd "$pkg" || exit
+      makepkg
+    fi
+  done
+  cd "$OLDDIR" || exit
 }
 
 backup() {
@@ -123,5 +125,9 @@ wttr() {
 
 PS1='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '       # absolute path
 PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
+
+if pacman -Qq | grep -q pkgfile ; then
+  source /usr/share/doc/pkgfile/command-not-found.bash
+fi
 
 [[ -z "$TMUX" ]] && exec tmux

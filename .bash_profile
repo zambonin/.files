@@ -12,10 +12,6 @@ if ! pstree | grep -q ssh-agent ; then
   ssh-add
 fi
 
-if pacman -Qq | grep -q pkgfile ; then
-  source /usr/share/doc/pkgfile/command-not-found.bash
-fi
-
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
   exec startx
 fi

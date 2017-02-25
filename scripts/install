@@ -13,5 +13,4 @@ localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
 
 # vim stuff
-mkdir $HOME/.vim/colors
-curl -Lso "$HOME/.vim/colors/badwolf.vim" https://git.io/vMQP2
+aur vim-{badwolf,gitgutter,lightline}-git

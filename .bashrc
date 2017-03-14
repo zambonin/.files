@@ -7,6 +7,7 @@ stty -ixon
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 aur() {
+  trap "cd $OLDDIR" INT
   OLDDIR="$PWD"
   for pkg in "$@" ; do
     cd "$(mktemp -d)" || exit
@@ -34,7 +35,7 @@ calc() {
 downiso() {
   link="$(awk -F'[ $]' '/^S/ {print $3; exit}' /etc/pacman.d/mirrorlist)"
   path="${link}/iso/latest/"
-  file="$(curl -s "$path" | awk -F\" '/[.]iso/ {print $2; exit}')"
+  file="$(curl -s "$path" | awk -F\" '/[.]iso/ {print $8; exit}')"
   curl -s "${path}${file}" > "$file" &
 }
 
@@ -123,8 +124,7 @@ wttr() {
   curl -sH "Accept-Language: ${LANG%_*}" "wttr.in/$1" | sed -n 2,7p ; echo
 }
 
-PS1='\[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\] '       # absolute path
-PS1+='\[\e[0m\]\[\e[01;37m\]\\$\[\e[0m\] '                  # $
+PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
 
 if pacman -Qq | grep -q pkgfile ; then
   source /usr/share/doc/pkgfile/command-not-found.bash

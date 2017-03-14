@@ -13,4 +13,11 @@ localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
 
 # vim stuff
+source $HOME/.bashrc
 aur vim-{badwolf,gitgutter,lightline}-git
+
+mkdir -p "$HOME/.vim/spell"
+aspell dump master | aspell expand | tr ' ' '\n' | LC_ALL=C sort -u > /tmp/ptbr
+aspell -l en dump master > /tmp/en
+vim -E -c "mkspell ~/.vim/spell/pt-BR /tmp/ptbr" \
+    -c "mkspell ~/.vim/spell/en /tmp/en" -c q

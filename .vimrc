@@ -73,6 +73,10 @@ nnoremap <F3> :call ToggleNumber()<CR>
 inoremap <F4> <Esc>:set hlsearch!<CR>
 nnoremap <F4> :set hlsearch!<CR>
 
+" toggle highlighting of unknown words
+inoremap <F5> <Esc>:set spell! spelllang=en,pt-BR<CR>
+nnoremap <F5> :set spell! spelllang=en,pt-BR<CR>
+
 " move lines up and down
 inoremap <C-Up>     <Esc>:m-2<CR>==gi
 inoremap <C-Down>   <Esc>:m+1<CR>==gi
@@ -80,6 +84,9 @@ nnoremap <C-Up>     :m-2<CR>==
 nnoremap <C-Down>   :m+1<CR>==
 xnoremap <C-Up>     :m-2<CR>gv=gv
 xnoremap <C-Down>   :m'>+<CR>gv=gv
+
+" do not create .netrwhist
+let g:netrw_dirhistmax = 0
 
 " keep indent from previous line if no filetype indent is specified
 set autoindent
@@ -95,9 +102,6 @@ set confirm
 
 " highlight current line
 set cursorline
-
-" dictionary file
-set dictionary="/usr/share/dict/cracklib-small"
 
 " expand tabs to spaces
 set expandtab

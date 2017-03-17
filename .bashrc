@@ -35,7 +35,7 @@ calc() {
 downiso() {
   link="$(awk -F'[ $]' '/^S/ {print $3; exit}' /etc/pacman.d/mirrorlist)"
   path="${link}/iso/latest/"
-  file="$(curl -s "$path" | awk -F\" '/[.]iso/ {print $8; exit}')"
+  file="$(curl -s "$path" | grep -oP -m1 '"\Karchl[^"]+')"
   curl -s "${path}${file}" > "$file" &
 }
 

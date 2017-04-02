@@ -11,7 +11,6 @@ alias free='free --human --wide'
 alias gdb='gdb -quiet'
 alias less='less --force --LONG-PROMPT --RAW-CONTROL-CHARS'
 alias ls='ls --color=always --group-directories-first --classify --literal'
-alias makepkg='makepkg -sCcir --needed --noconfirm'
 alias makepkg='makepkg --clean --cleanbuild --install --needed --noconfirm --rmdeps --syncdeps'
 alias mkdir='mkdir --parents'
 alias mv='mv --interactive --update --verbose'
@@ -26,6 +25,10 @@ alias compress='tar cfvz'
 
 # atool package
 alias ex='aunpack'
+
+# git status for all repositories under $PWD
+alias gss="parallel -j$(nproc) \
+  git -C {} status -s :::: <(find . -type d -name .git | sed 's/.git//')"
 
 # clean latex temporary files
 alias rml='rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,nav,out,snm,synctex.gz,toc,vrb}'

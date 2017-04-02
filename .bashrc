@@ -65,14 +65,6 @@ man() {
     man "$@"
 }
 
-mgit() {
-  for d in */ ; do
-    if [[ ! -z "$(git -C "$d" status -s 2>/dev/null)" ]] ; then
-      paste <(echo "$d") <(git -C "$d" ss) | expand -t 18
-    fi
-  done
-}
-
 pacsize() {
   expac -HM "%011m\t%-25n\t%10d"                                              \
     $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort))  \

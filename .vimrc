@@ -99,10 +99,10 @@ augroup configs
     autocmd FileType c compiler gcc
 
     " 2 spaces for indenting c files
-    autocmd FileType c setlocal tabstop=2
+    autocmd FileType c setlocal tabstop=2 shiftwidth=2
 
     " 2 spaces for indenting cpp files
-    autocmd FileType cpp setlocal tabstop=2
+    autocmd FileType cpp setlocal tabstop=2 shiftwidth=2
 
     " `make` is `python`
     autocmd FileType python setlocal makeprg=python\ '%'
@@ -114,7 +114,7 @@ augroup configs
     autocmd FileType tex setlocal makeprg=lt\ '%'
 
     " `make` is `bash`, 2 spaces for indenting
-    autocmd FileType sh setlocal makeprg=bash\ '%' tabstop=2
+    autocmd FileType sh setlocal makeprg=bash\ '%' tabstop=2 shiftwidth=2
 augroup END
 
 " keep indent from previous line if no filetype indent is specified

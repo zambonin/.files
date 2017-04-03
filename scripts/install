@@ -16,6 +16,7 @@ localectl --no-convert set-x11-keymap us pc105 intl
 source $HOME/.bashrc
 aur vim-{badwolf,gitgutter,lightline}-git
 
+sudo pacman -S aspell-en aspell-pt
 mkdir -p "$HOME/.vim/spell"
 aspell dump master | aspell expand | tr ' ' '\n' | LC_ALL=C sort -u > /tmp/ptbr
 aspell -l en dump master > /tmp/en

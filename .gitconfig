@@ -15,12 +15,14 @@
     pager = less -+FSX
 
 [alias]
+    br = branch -v
+    ca = commit --amend
     ch = checkout
     cm = commit --verbose
     ct = !git --no-pager shortlog --summary --numbered --email
-    df = "!f() { for i in $(git diff --name-only) ; do git diff "$i"; done }; f"
+    df = "!for i in $(git diff --name-only) ; do git diff "$i"; done"
     ds = diff --staged
-    lc = !git --no-pager log -1
+    lc = !git --no-pager log -1 --format=fuller
     lg = log --graph --pretty=format:'%C(12)%h • %ar by %an <%ae> %n%B'
     nb = checkout -b
     ss = status -bs

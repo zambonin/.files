@@ -31,7 +31,7 @@ alias gss="parallel -j$(nproc) \
   git -C {} status -s :::: <(find . -type d -name .git | sed 's/.git//')"
 
 # clean latex temporary files
-alias rml='rm -f *.{aux,bbl,blg,fdb_latexmk,fls,log,nav,out,snm,synctex.gz,toc,vrb}'
+alias rml='latexmk -c'
 
 # clean virtualenv files
 alias rmv='rm -f bin/ include/ lib* pyvenv.cfg pip-selfcheck.json'

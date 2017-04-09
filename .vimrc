@@ -110,8 +110,8 @@ augroup configs
     " set errorformat for tex files
     autocmd FileType tex compiler tex
 
-    " `make` is personal LaTeX compiling function
-    autocmd FileType tex setlocal makeprg=lt\ '%'
+    " `make` is `latexmk`
+    autocmd FileType tex setlocal makeprg=latexmk\ -silent\ -pdf\ '%'
 
     " `make` is `bash`, 2 spaces for indenting
     autocmd FileType sh setlocal makeprg=bash\ '%' tabstop=2 shiftwidth=2

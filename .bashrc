@@ -43,17 +43,6 @@ ll() {
   LC_COLLATE=C ls -Agho "$@" | less
 }
 
-lt() {
-  ARG="$1"
-  FILE="${ARG%.*}"
-  texfot pdflatex "$FILE"
-  if [ -s "${ARG/tex/bib}" ] ; then
-    texfot bibtex "$FILE"
-    texfot pdflatex "$FILE"
-  fi
-  texfot pdflatex "$FILE"
-}
-
 man() {
   env LESS_TERMCAP_mb=$'\E[01;31m'                                          \
     LESS_TERMCAP_md=$'\E[01;38;5;74m'                                       \

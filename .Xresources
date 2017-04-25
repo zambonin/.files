@@ -11,7 +11,7 @@ URxvt*internalBorder:       4
 URxvt*saveLines:            65535
 
 ! font settings
-URxvt*font:                 xft:Monospace:pixelsize=14
+URxvt*font:                 xft:Monospace:pixelsize=16
 URxvt*letterSpace:          -2
 URxvt*lineSpace:            1
 

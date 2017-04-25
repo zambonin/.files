@@ -47,6 +47,8 @@ Thumbs.db
 *.out
 *.toc
 *.fmt
+*.las
+*.lsb
 
 ## Intermediate documents:
 *.dvi

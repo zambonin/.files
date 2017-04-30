@@ -1,0 +1,4 @@
+#!/usr/bin/env awk -f
+
+/Total/ {f = $2}
+/Available/ {printf "ram [%.f%]", ((f - $2) * 100) / f; exit}

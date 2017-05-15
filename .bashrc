@@ -7,7 +7,7 @@ stty -ixon
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 aur() {
-  trap "cd $OLDDIR" INT
+  trap 'cd $OLDDIR' INT
   OLDDIR="$PWD"
   for pkg in "$@" ; do
     cd "$(mktemp -d)" || exit
@@ -30,6 +30,19 @@ backup() {
 
 calc() {
   bc -l <<< "$@"
+}
+
+cd() {
+  builtin cd "$@"
+  if [ -f bin/activate ] ; then
+    . bin/activate
+  elif [ -f requirements.txt ] ; then
+    python -m venv "$PWD"
+    . bin/activate
+    pip install -r requirements.txt
+  elif [[ "$VIRTUAL_ENV" == "$PWD"* ]] ; then
+    deactivate
+  fi
 }
 
 downiso() {
@@ -77,27 +90,19 @@ up() {
   cd $d || exit
 }
 
-v_env() {
-  if [ -n "$1" ] ; then
-    python -m venv "$1"
-    source "${1}bin/activate"
-    pip install -r "${1}requirements.txt"
-    deactivate
-  fi
-}
-
 vm() {
   [[ ! -f "$HOME/vmdisk" ]] && qemu-img create -f raw "$HOME/vmdisk" 8G
   qemu-system-x86_64                                                        \
-    -m 1G                                                                   \
+    -m 2G                                                                   \
     -cpu host                                                               \
     -smp 2                                                                  \
     -machine type=pc,accel=kvm                                              \
     -monitor stdio                                                          \
     -drive file="$HOME/vmdisk",format=raw,if=virtio,cache=none,aio=native   \
-    -net user,hostfwd=tcp::10022-:22                                        \
+    -net user,hostfwd=tcp::10022-:22,smb="$HOME"                            \
     -net nic,model=virtio                                                   \
     -boot menu=on                                                           \
+    -vga std                                                                \
     "$@"
 }
 
@@ -108,7 +113,7 @@ wttr() {
 PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
 
 if pacman -Qq | grep -q pkgfile ; then
-  source /usr/share/doc/pkgfile/command-not-found.bash
+  . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
 [[ -z "$TMUX" ]] && exec tmux

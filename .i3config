@@ -6,6 +6,8 @@ focus_follows_mouse yes
 
 floating_modifier $mod
 
+bindsym $mod+Shift+Return floating toggle
+
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -81,5 +83,4 @@ bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
 bindsym --release Print         exec scrot
-bindsym --release Shift+Print   exec scrot -s
 bindsym --release $mod+Print    exec scrot -u

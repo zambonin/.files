@@ -1,19 +1,17 @@
 #!/bin/sh
 
-MENU=$(printf "dark\nlock\nhalt\nwarm\nkill" \
-        | rofi -location 5 -columns 1 -lines 5 -width 6 -regex -dmenu)
+OPTION=$(printf "dark\nlock\nhalt\nwarm\nkill" \
+  | rofi -location 0 -dmenu -p ":" -font "DejaVu Sans Mono 20")
 
-[ -z "$MENU" ] && exit 0
-
-case "$MENU" in
-    dark)
-        xset dpms force off ;;
-    lock)
-        "$HOME/.files/scripts/lock" && sleep 1 ;;
-    halt)
-        "$HOME/.files/scripts/lock" && systemctl suspend ;;
-    warm)
-        systemctl reboot ;;
-    kill)
-        systemctl poweroff ;;
+case "$OPTION" in
+  dark)
+    xset dpms force off ;;
+  lock)
+    "$HOME/.files/scripts/lock" && sleep 1 ;;
+  halt)
+    "$HOME/.files/scripts/lock" && systemctl suspend ;;
+  warm)
+    systemctl reboot ;;
+  kill)
+    systemctl poweroff ;;
 esac

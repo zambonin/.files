@@ -19,6 +19,7 @@
     ca = commit --amend
     ch = checkout
     cm = commit --verbose
+    cp = cherry-pick
     ct = !git --no-pager shortlog --summary --numbered --email
     df = "!for i in $(git diff --name-only) ; do git diff "$i"; done"
     ds = diff --staged

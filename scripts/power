@@ -1,17 +1,9 @@
 #!/bin/sh
 
-OPTION=$(printf "dark\nlock\nhalt\nwarm\nkill" \
-  | rofi -location 0 -dmenu -p ":" -font "DejaVu Sans Mono 20")
-
-case "$OPTION" in
-  dark)
-    xset dpms force off ;;
-  lock)
-    "$HOME/.files/scripts/lock" && sleep 1 ;;
-  halt)
-    "$HOME/.files/scripts/lock" && systemctl suspend ;;
-  warm)
-    systemctl reboot ;;
-  kill)
-    systemctl poweroff ;;
+case $(printf "dark\nlock\nhalt\nwarm\nkill" | rofi -columns 5 -dmenu -p :) in
+  dark) xset dpms force off ;;
+  lock) "$HOME/.files/scripts/lock" ;;
+  halt) "$HOME/.files/scripts/lock" && systemctl suspend ;;
+  warm) systemctl reboot ;;
+  kill) systemctl poweroff ;;
 esac

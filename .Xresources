@@ -1,7 +1,15 @@
+! font rendering
+Xft.antialias:              true
+Xft.autohint:               0
+Xft.dpi:                    96
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+Xft.lcdfilter:              lcddefault
+Xft.rgba:                   rgb
+
 ! general settings including transparency
 URxvt*depth:                32
 URxvt*background:           rgba:0000/0000/0000/8000
-URxvt*shading:              40
 URxvt*foreground:           White
 URxvt*cursorBlink:          true
 URxvt*cursorUnderline:      true
@@ -14,15 +22,6 @@ URxvt*saveLines:            65535
 URxvt*font:                 xft:Monospace:pixelsize=16
 URxvt*letterSpace:          -2
 URxvt*lineSpace:            1
-
-! font rendering
-Xft.antialias:              true
-Xft.autohint:               0
-Xft.dpi:                    96
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
-Xft.lcdfilter:              lcddefault
-Xft.rgba:                   rgb
 
 ! ambience Terminator color scheme
 ! black
@@ -62,20 +61,23 @@ URxvt*keysym.Control-Left:  \033[1;5D
 URxvt*keysym.Control-Right: \033[1;5C
 
 ! rofi settings
+rofi.bw:                    20
 rofi.color-enabled:         true
-rofi.color-active:          #000000, #80cbc4, #000000, #232323, #80cbc4
-rofi.color-normal:          #000000, #ffffff, #000000, #232323, #ffffff
-rofi.color-urgent:          #000000, #ff1844, #000000, #232323, #ff1844
-rofi.color-window:          #000000, #000000, #1e2529
-rofi.columns:               8
-rofi.fake-transparency:     true
+! order of colors:          'bg',      'border',  'separator'
+rofi.color-window:          #a0000000, #a0000000, #00000000
+! order of colors:          'bg',      'fg',      'bgalt',   'hlbg',    'hlfg'
+rofi.color-normal:          #00000000, #ffffff,   #00000000, #00000000, #5bd7ff
+rofi.color-active:          #00000000, #ffffff,   #00000000, #00000000, #ffffff
+rofi.color-urgent:          #00000000, #ffffff,   #00000000, #00000000, #ffffff
+rofi.columns:               4
+rofi.display-run:
 rofi.fixed-num-lines:       true
-rofi.font:                  mono 8
+rofi.font:                  mono 16
 rofi.hide-scrollbar:        true
-rofi.location:              6
+rofi.location:              0
 rofi.lines:                 1
 rofi.modi:                  run
 rofi.padding:               0
 rofi.separator-style:       none
 rofi.sidebar-mode:          false
-rofi.width:                 35
+rofi.width:                 30

@@ -1,86 +1,82 @@
-set $mod Mod4
+set $mod                    Mod4
+floating_modifier           $mod
 
-font pango:DejaVu Sans Mono 8
+focus_follows_mouse         yes
+font                        pango:DejaVu Sans Mono 8
+for_window [class="^.*"]    border 1pixel
 
-focus_follows_mouse yes
+bindsym $mod+dead_grave     exec rofi -show run -no-show-match
+bindsym $mod+q              split vertical
+bindsym $mod+w              layout tabbed
+bindsym $mod+e              layout toggle split
+bindsym $mod+a              split horizontal
+bindsym $mod+s              layout stacking
+bindsym $mod+f              fullscreen
+bindsym $mod+z              exec --no-startup-id $HOME/.files/scripts/power
 
-floating_modifier $mod
+bindsym $mod+Up             focus up
+bindsym $mod+Down           focus down
+bindsym $mod+Left           focus left
+bindsym $mod+Right          focus right
+bindsym $mod+Return         exec urxvtc
+bindsym $mod+Tab            exec rofi -show window -no-show-match -lines 5
 
-bindsym $mod+Shift+Return floating toggle
+bindsym $mod+1              workspace α
+bindsym $mod+2              workspace β
+bindsym $mod+3              workspace γ
+bindsym $mod+4              workspace δ
+bindsym $mod+5              workspace ε
+bindsym $mod+6              workspace θ
+bindsym $mod+7              workspace λ
+bindsym $mod+8              workspace π
+bindsym $mod+9              workspace σ
+bindsym $mod+0              workspace ω
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Shift+q        kill
+bindsym $mod+Shift+r        restart
+bindsym $mod+Shift+c        reload
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Right    move right
+bindsym $mod+Shift+Return   floating toggle
 
-bindsym $mod+a split h
-bindsym $mod+q split v
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+1        move container to workspace α
+bindsym $mod+Shift+2        move container to workspace β
+bindsym $mod+Shift+3        move container to workspace γ
+bindsym $mod+Shift+4        move container to workspace δ
+bindsym $mod+Shift+5        move container to workspace ε
+bindsym $mod+Shift+6        move container to workspace θ
+bindsym $mod+Shift+7        move container to workspace λ
+bindsym $mod+Shift+8        move container to workspace π
+bindsym $mod+Shift+9        move container to workspace σ
+bindsym $mod+Shift+0        move container to workspace ω
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-bindsym $mod+1 workspace α
-bindsym $mod+2 workspace β
-bindsym $mod+3 workspace γ
-bindsym $mod+4 workspace δ
-bindsym $mod+5 workspace ε
-bindsym $mod+6 workspace θ
-bindsym $mod+7 workspace λ
-bindsym $mod+8 workspace π
-bindsym $mod+9 workspace σ
-bindsym $mod+0 workspace ω
-
-bindsym $mod+Shift+1 move container to workspace α
-bindsym $mod+Shift+2 move container to workspace β
-bindsym $mod+Shift+3 move container to workspace γ
-bindsym $mod+Shift+4 move container to workspace δ
-bindsym $mod+Shift+5 move container to workspace ε
-bindsym $mod+Shift+6 move container to workspace θ
-bindsym $mod+Shift+7 move container to workspace λ
-bindsym $mod+Shift+8 move container to workspace π
-bindsym $mod+Shift+9 move container to workspace σ
-bindsym $mod+Shift+0 move container to workspace ω
-
-bindsym $mod+Ctrl+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+r restart
-
-mode "resize" {
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-for_window [class="^.*"] border 1pixel
-
-# class                 border  backgr. text    indicator
-client.focused          #333333 #444444 #ffffff #000000
-client.focused_inactive #333333 #222222 #ffffff #000000
-client.unfocused        #333333 #222222 #ffffff #000000
-client.urgent           #333333 #222222 #ffffff #000000
-client.placeholder      #333333 #222222 #ffffff #000000
-
-bindsym $mod+Return             exec urxvtc
-bindsym $mod+dead_grave         exec rofi -show run
-bindsym $mod+Tab                exec rofi -show window -columns 1 -lines 5
-bindsym $mod+z                  exec $HOME/.files/scripts/power
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
 bindsym --release Print         exec scrot
 bindsym --release $mod+Print    exec scrot -u
+
+mode "resize" {
+  bindsym Up        resize shrink   height  5 px or 5 ppt
+  bindsym Down      resize grow     height  5 px or 5 ppt
+  bindsym Left      resize shrink   width   5 px or 5 ppt
+  bindsym Right     resize grow     width   5 px or 5 ppt
+  bindsym Escape    mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# color scheme              border  bg.     text    indicator
+client.focused              #333333 #444444 #ffffff #000000
+client.focused_inactive     #333333 #222222 #ffffff #000000
+client.unfocused            #333333 #222222 #ffffff #000000
+client.urgent               #333333 #222222 #ffffff #000000
+client.placeholder          #333333 #222222 #ffffff #000000
+
+exec --no-startup-id redshift -c $HOME/.files/conf/redshift.conf &
+exec --no-startup-id urxvtd -q -o -f
+exec --no-startup-id compton -b --no-fading-openclose
+exec --no-startup-id feh --bg-fill $HOME/.wallpaper.{jpg,png}
+exec --no-startup-id xrdb -merge $HOME/.Xresources

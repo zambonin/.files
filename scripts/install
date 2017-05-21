@@ -1,20 +1,20 @@
-#!/bin/bash
+#!/bin/sh
 
 # various config files
-ln -fs $HOME/.files/.{aliases,bash_profile,gitconfig,tmux.conf,Xresources} $HOME
-ln -fs $HOME/.files/.{asound,bash,input,vim,xinit}rc $HOME
-ln -fP $HOME/.files/conf/redshift.conf $HOME/.config
-ln -fP $HOME/.files/conf/.makepkg.conf $HOME
+echo "exec i3 -c \$HOME/.i3config" > "$HOME/.xinitrc"
+find "$PWD" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
+ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
 sudo mkdir /etc/systemd/journald.conf.d
-sudo ln -fs $HOME/.files/conf/20-journal-rules.conf /etc/systemd/journald.conf.d
+sudo ln -fs "$HOME/.files/conf/20-journal-rules.conf" \
+  /etc/systemd/journald.conf.d
 
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
 
 # vim stuff
-source $HOME/.bashrc
-aur vim-{badwolf,gitgutter,lightline}-git
+. "$HOME/.bashrc"
+aur vim-badwolf-git vim-gitgutter-git vim-lightline-git
 
 sudo pacman -S aspell-en aspell-pt
 mkdir -p "$HOME/.vim/spell"

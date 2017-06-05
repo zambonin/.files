@@ -74,7 +74,8 @@ pacsize() {
 }
 
 transfer() {
-  curl -sH "Max-Downloads: 1" -T "$1" "transfer.sh/$(basename "$1")"
+  curl -sH "Max-Downloads: 1" -T "$1" "https://transfer.sh/$(basename "$1")"
+  echo
 }
 
 up() {

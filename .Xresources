@@ -16,7 +16,7 @@ URxvt*cursorUnderline:      true
 URxvt*iso14755:             false
 URxvt*scrollBar:            false
 URxvt*internalBorder:       4
-URxvt*saveLines:            65535
+URxvt*saveLines:            0
 
 ! font settings
 URxvt*font:                 xft:Monospace:pixelsize=16

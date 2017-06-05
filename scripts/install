@@ -4,6 +4,10 @@
 echo "exec i3 -c \$HOME/.i3config" > "$HOME/.xinitrc"
 find "$PWD" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
 ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
+cp "$HOME/.files/conf/redshift.conf" "$HOME/.config"
+curl -s "https://ipinfo.io/geo"                                             \
+  | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \
+  >> "$HOME/.config/redshift.conf"
 sudo mkdir /etc/systemd/journald.conf.d
 sudo ln -fs "$HOME/.files/conf/20-journal-rules.conf" \
   /etc/systemd/journald.conf.d

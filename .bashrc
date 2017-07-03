@@ -79,16 +79,12 @@ transfer() {
 }
 
 up() {
-  local d=""
-  limit=$1
-  for ((i = 1; i <= limit; i++)); do
-    d=$d/..
+  dir=""
+  limit=${1:-1}
+  for _ in $(seq 1 "$limit") ; do
+    dir="../${dir}"
   done
-  d=$(echo $d | sed 's/^\///')
-  if [ -z "$d" ]; then
-    d=..
-  fi
-  cd $d || exit
+  cd "${dir}" || exit
 }
 
 vm() {
@@ -100,7 +96,7 @@ vm() {
     -machine type=pc,accel=kvm                                              \
     -monitor stdio                                                          \
     -drive file="$HOME/vmdisk",format=raw,if=virtio,cache=none,aio=native   \
-    -net user,hostfwd=tcp::10022-:22,smb="$HOME"                            \
+    -net user,hostfwd=tcp::10022-:22                                        \
     -net nic,model=virtio                                                   \
     -boot menu=on                                                           \
     -vga std                                                                \

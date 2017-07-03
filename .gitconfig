@@ -23,7 +23,7 @@
     ct = !git --no-pager shortlog --summary --numbered --email
     df = "!for i in $(git diff --name-only) ; do git diff "$i"; done"
     ds = diff --staged
-    lc = !git --no-pager log -1 --format=fuller
+    lc = !git --no-pager log -p -1 --format=fuller
     lg = log --graph --pretty=format:'%C(auto)%h • %ar by %an <%ae>%d %n%B'
     nb = checkout -b
     ss = status -bs

@@ -2,6 +2,6 @@
 
 TMPBG='/tmp/screen.png'
 scrot "$TMPBG"
-convert "$TMPBG" -blur 0x5 "$TMPBG"
+convert "$TMPBG" -scale 50% -blur 0x5 -scale 200% "$TMPBG"
 xset dpms force off
 i3lock -u -i "$TMPBG"

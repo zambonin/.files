@@ -2,8 +2,8 @@
 
 case $(printf "dark\nlock\nhalt\nwarm\nkill" | rofi -columns 5 -dmenu -p :) in
   dark) xset dpms force off ;;
-  lock) "$HOME/.files/scripts/lock" ;;
-  halt) "$HOME/.files/scripts/lock" && systemctl suspend ;;
+  lock) "$HOME/.files/scripts/lock" && xset dpms force off ;;
+  halt) systemctl suspend ;;
   warm) systemctl reboot ;;
   kill) systemctl poweroff ;;
 esac

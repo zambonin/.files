@@ -1,16 +1,24 @@
 #!/bin/sh
 
 # various config files
-find "$PWD" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
+find "$HOME/.files" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
 ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
+
+# i3 settings
 mkdir -p "$HOME/.config/i3"
 ln -fs "$HOME/.files/.i3config" "$HOME/.config/i3/config"
+
+# i3lock before suspend
 sudo cp "$HOME/.files/conf/suspend@.service" /etc/systemd/system
 systemctl enable "suspend@$(whoami)"
+
+# redshift locale config
 cp "$HOME/.files/conf/redshift.conf" "$HOME/.config"
-curl -s "https://ipinfo.io/geo"                                             \
+curl -s -N "https://ipinfo.io/geo"                                          \
   | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \
   >> "$HOME/.config/redshift.conf"
+
+# journald options
 sudo mkdir /etc/systemd/journald.conf.d
 sudo ln -fs "$HOME/.files/conf/20-journal-rules.conf" \
   /etc/systemd/journald.conf.d
@@ -19,10 +27,7 @@ sudo ln -fs "$HOME/.files/conf/20-journal-rules.conf" \
 localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
 
-# vim stuff
-. "$HOME/.bashrc"
-aur vim-badwolf-git vim-gitgutter-git vim-lightline-git
-
+# vim spellcheck dictionary files
 sudo pacman -S aspell-en aspell-pt
 mkdir -p "$HOME/.vim/spell"
 aspell dump master | aspell expand | tr ' ' '\n' | LC_ALL=C sort -u > /tmp/ptbr

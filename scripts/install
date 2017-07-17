@@ -19,9 +19,8 @@ curl -s -N "https://ipinfo.io/geo"                                          \
   >> "$HOME/.config/redshift.conf"
 
 # journald options
-sudo mkdir /etc/systemd/journald.conf.d
-sudo ln -fs "$HOME/.files/conf/20-journal-rules.conf" \
-  /etc/systemd/journald.conf.d
+sudo sed -E -i 's/#St/St/; s/auto/volatile/; s/#C/C/; s/#(R.*Use=)/\164M/'  \
+  /etc/systemd/journald.conf
 
 # keyboard settings
 localectl --no-convert set-keymap us-acentos

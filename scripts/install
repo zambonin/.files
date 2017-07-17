@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # various config files
-echo "exec i3 -c \$HOME/.i3config" > "$HOME/.xinitrc"
 find "$PWD" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
 ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
+mkdir -p "$HOME/.config/i3"
+ln -fs "$HOME/.files/.i3config" "$HOME/.config/i3/config"
 cp "$HOME/.files/conf/redshift.conf" "$HOME/.config"
 curl -s "https://ipinfo.io/geo"                                             \
   | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \

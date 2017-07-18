@@ -25,3 +25,5 @@ sudo sed -E -i 's/#St/St/; s/auto/volatile/; s/#C/C/; s/#(R.*Use=)/\164M/'  \
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
+
+sudo echo "AddKeysToAgent yes" >> /etc/ssh/ssh_config

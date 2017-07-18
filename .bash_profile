@@ -9,7 +9,6 @@ export PROMPT_COMMAND='history -a'
 
 if ! pstree | grep -q ssh-agent ; then
   eval "$(ssh-agent -s)"
-  ssh-add
 fi
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then

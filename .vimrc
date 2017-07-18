@@ -81,8 +81,8 @@ inoremap <F4> <Esc>:set hlsearch!<CR>
 nnoremap <F4> :set hlsearch!<CR>
 
 " toggle highlighting of unknown words
-inoremap <F5> <Esc>:set spell! spelllang=en,pt-BR<CR>
-nnoremap <F5> :set spell! spelllang=en,pt-BR<CR>
+inoremap <F5> <Esc>:set spell!<CR>
+nnoremap <F5> :set spell!<CR>
 
 inoremap <F6> <Esc>:silent make<CR>
 nnoremap <F6> :silent make<CR>
@@ -173,6 +173,9 @@ set showcmd
 
 " if a pattern has a capital letter then it is case sensitive
 set smartcase
+
+" spellcheck for these languages
+set spelllang=en,pt
 
 " display tabs as four characters wide
 set tabstop=4

@@ -25,11 +25,3 @@ sudo sed -E -i 's/#St/St/; s/auto/volatile/; s/#C/C/; s/#(R.*Use=)/\164M/'  \
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
 localectl --no-convert set-x11-keymap us pc105 intl
-
-# vim spellcheck dictionary files
-sudo pacman -S aspell-en aspell-pt
-mkdir -p "$HOME/.vim/spell"
-aspell dump master | aspell expand | tr ' ' '\n' | LC_ALL=C sort -u > /tmp/ptbr
-aspell -l en dump master > /tmp/en
-vim -E -c "mkspell ~/.vim/spell/pt-BR /tmp/ptbr" \
-    -c "mkspell ~/.vim/spell/en /tmp/en" -c q

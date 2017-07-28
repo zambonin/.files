@@ -26,6 +26,8 @@
     lc = !git --no-pager log -p -1 --format=fuller
     lg = log --graph --pretty=format:'%C(auto)%h • %ar by %an <%ae>%d %n%B'
     nb = checkout -b
+    rc = rebase --continue
+    ri = rebase --interactive
     ss = status -bs
 
 [diff]

@@ -104,7 +104,8 @@ vm() {
 }
 
 wttr() {
-  curl -sH "Accept-Language: ${LANG%_*}" "wttr.in/$1" | sed -n 2,7p ; echo
+  loc="$(curl -sN "https://ipinfo.geo" | awk -F\" '/loc/ {print $4}')"
+  curl -sH "Accept-Language: ${LANG%_*}" "wttr.in/${loc}?0Q"
 }
 
 PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '

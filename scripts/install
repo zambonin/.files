@@ -4,11 +4,7 @@
 find "$HOME/.files" -maxdepth 1 -type f -iname ".*" -exec ln -fs {} "$HOME" \;
 ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
 
-# i3 settings
-mkdir -p "$HOME/.config/i3"
-ln -fs "$HOME/.files/.i3config" "$HOME/.config/i3/config"
-
-# i3lock before suspend
+# swaylock before suspend
 sudo cp "$HOME/.files/conf/suspend@.service" /etc/systemd/system
 systemctl enable "suspend@$(whoami)"
 
@@ -24,7 +20,5 @@ sudo sed -E -i 's/#St/St/; s/auto/volatile/; s/#C/C/; s/#(R.*Use=)/\164M/'  \
 
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
-localectl --no-convert set-x11-keymap us pc105 intl \
-  compose:rwin,ctrl:nocaps,terminate:ctrl_alt_bksp
 
-sudo echo "AddKeysToAgent yes" >> /etc/ssh/ssh_config
+echo "AddKeysToAgent yes" | sudo tee -a /etc/ssh/ssh_config > /dev/null

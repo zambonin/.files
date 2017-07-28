@@ -1,11 +1,9 @@
 [Unit]
-Description=i3lock before suspend
+Description=lock before suspend
 Before=sleep.target
 
 [Service]
 User=%I
-Type=forking
-Environment=DISPLAY=:0
 ExecStart=/home/%I/.files/scripts/lock
 ExecStartPost=/bin/sleep 1
 

@@ -3,7 +3,7 @@ floating_modifier           $mod
 
 focus_follows_mouse         yes
 font                        pango:DejaVu Sans Mono 8
-for_window [class="^.*"]    border 1pixel
+default_border              pixel
 
 bindsym $mod+dead_grave     exec rofi -show run -no-show-match
 bindsym $mod+q              split vertical
@@ -19,7 +19,6 @@ bindsym $mod+Down           focus down
 bindsym $mod+Left           focus left
 bindsym $mod+Right          focus right
 bindsym $mod+Return         exec urxvtc
-bindsym $mod+Tab            exec rofi -show window -no-show-match -lines 5
 
 bindsym $mod+1              workspace α
 bindsym $mod+2              workspace β
@@ -33,8 +32,8 @@ bindsym $mod+9              workspace σ
 bindsym $mod+0              workspace ω
 
 bindsym $mod+Shift+q        kill
-bindsym $mod+Shift+r        restart
-bindsym $mod+Shift+c        reload
+bindsym $mod+Shift+r        reload
+bindsym $mod+Shift+e        exit
 
 bindsym $mod+Shift+Up       move up
 bindsym $mod+Shift+Down     move down
@@ -56,8 +55,8 @@ bindsym $mod+Shift+0        move container to workspace ω
 bindsym XF86AudioMute           exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
 bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
-bindsym --release Print         exec scrot
-bindsym --release $mod+Print    exec scrot -u
+bindsym --release Print         exec swaygrab
+bindsym --release $mod+Print    exec swaygrab -u
 
 mode "resize" {
   bindsym Up        resize shrink   height  5 px or 5 ppt
@@ -77,6 +76,6 @@ client.placeholder          #333333 #222222 #ffffff #000000
 
 exec --no-startup-id redshift
 exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id compton -b --no-fading-openclose
-exec --no-startup-id feh --bg-fill $HOME/.wallpaper.{jpg,png}
 exec --no-startup-id xrdb -merge $HOME/.Xresources
+
+output "*" background $HOME/.wallpaper.jpg fit

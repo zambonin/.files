@@ -1,7 +1,7 @@
 ! font rendering
 Xft.antialias:              true
-Xft.autohint:               0
-Xft.dpi:                    96
+Xft.autohint:               false
+Xft.dpi:                    102
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault
@@ -20,7 +20,10 @@ URxvt*saveLines:            0
 
 ! font settings
 URxvt*font:                 xft:Monospace:pixelsize=16
-URxvt*letterSpace:          -2
+URxvt*boldFont:             xft:Monospace:pixelsize=16:style=Bold
+URxvt*italicFont:           xft:Monospace:pixelsize=16:style=Oblique
+URxvt*boldItalicFont:       xft:Monospace:pixelsize=16:style=Bold Oblique
+URxvt*letterSpace:          -1
 URxvt*lineSpace:            1
 
 ! ambience Terminator color scheme

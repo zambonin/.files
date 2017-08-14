@@ -1,9 +1,14 @@
 $include /etc/inputrc
 
 set bell-style none
+set colored-stats on
 set completion-ignore-case on
 set completion-map-case on
+set completion-prefix-display-length 3
 set expand-tilde on
+set mark-symlinked-directories on
 set match-hidden-files on
 set show-all-if-ambiguous on
+set show-all-if-unmodified on
 set skip-completed-text on
+set visible-stats on

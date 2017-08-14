@@ -100,6 +100,8 @@ vm() {
     -net nic,model=virtio                                                   \
     -boot menu=on                                                           \
     -vga std                                                                \
+    -display sdl                                                            \
+    -usbdevice tablet                                                       \
     "$@"
 }
 

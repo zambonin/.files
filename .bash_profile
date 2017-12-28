@@ -1,5 +1,6 @@
 # ~/.bash_profile
 
+export BROWSER="firefox"
 export EDITOR="vim"
 export HISTFILE="$HOME/.history"
 export HISTFILESIZE=1000000

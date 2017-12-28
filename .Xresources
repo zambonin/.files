@@ -67,7 +67,7 @@ URxvt*keysym.Control-Right: \033[1;5C
 rofi.bw:                    20
 rofi.color-enabled:         true
 ! order of colors:          'bg',      'border',  'separator'
-rofi.color-window:          #a0000000, #a0000000, #00000000
+rofi.color-window:          #a0000000, #00000000, #00000000
 ! order of colors:          'bg',      'fg',      'bgalt',   'hlbg',    'hlfg'
 rofi.color-normal:          #00000000, #ffffff,   #00000000, #00000000, #5bd7ff
 rofi.color-active:          #00000000, #ffffff,   #00000000, #00000000, #ffffff

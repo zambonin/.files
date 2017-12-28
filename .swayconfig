@@ -77,5 +77,8 @@ client.placeholder          #333333 #222222 #ffffff #000000
 exec --no-startup-id redshift
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xrdb -merge $HOME/.Xresources
+exec --no-startup-id \
+    xmodmap -e "keycode 66 = comma less comma less ccedilla Ccedilla ccedilla"
+exec --no-startup-id xmodmap -e "clear lock"
 
 output "*" background $HOME/.wallpaper.jpg fit

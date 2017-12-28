@@ -6,7 +6,7 @@ ln -fP "$HOME/.files/conf/.makepkg.conf" "$HOME"
 
 # swaylock before suspend
 sudo cp "$HOME/.files/conf/suspend@.service" /etc/systemd/system
-systemctl enable "suspend@$(whoami)"
+systemctl enable --now "suspend@$(whoami)"
 
 # redshift locale config
 cp "$HOME/.files/conf/redshift.conf" "$HOME/.config"
@@ -21,4 +21,8 @@ sudo sed -E -i 's/#St/St/; s/auto/volatile/; s/#C/C/; s/#(R.*Use=)/\164M/'  \
 # keyboard settings
 localectl --no-convert set-keymap us-acentos
 
+# private key that is used during authentication will be added to ssh-agent
 echo "AddKeysToAgent yes" | sudo tee -a /etc/ssh/ssh_config > /dev/null
+
+# disable ARP probing
+echo "noarp" | sudo tee -a /etc/dhcpcd.conf > /dev/null

@@ -46,10 +46,8 @@ cd() {
 }
 
 downiso() {
-  link="$(awk -F'[ $]' '/^S/ {print $3; exit}' /etc/pacman.d/mirrorlist)"
-  path="${link}/iso/latest/"
-  file="$(curl -s "$path" | grep -oP -m1 '"\Karchl[^"]+')"
-  curl -# "${path}${file}" > "$file"
+  curl -#O "$(awk -F'[ $]' '/^S/ { print $3 "iso/latest/archlinux-" \
+    strftime("%Y.%m.01") "-x86_64.iso" ; exit }' /etc/pacman.d/mirrorlist)"
 }
 
 ll() {
@@ -112,8 +110,10 @@ wttr() {
 
 PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
 
-if pacman -Qq | grep -q pkgfile ; then
+if command -v pkgfile > /dev/null ; then
   . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
-[[ -z "$TMUX" ]] && exec tmux
+if [[ -z "$TMUX" ]] ; then
+  exec tmux
+fi

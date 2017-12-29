@@ -2,6 +2,7 @@
 
 alias back='cd -'
 alias chmod='chmod --changes --recursive'
+alias cnt='sort | uniq --count | sort --numeric-sort --reverse'
 alias cp='cp --archive --update --verbose'
 alias dd='dd status=progress'
 alias df='df --human-readable --print-type --exclude-type=tmpfs --total'

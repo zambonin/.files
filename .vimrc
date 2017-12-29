@@ -37,8 +37,6 @@ function! TrimWhitespace()
 endfunction
 
 " insert characters automatically
-inoremap <      <><Left>
-
 inoremap (      ()<Left>
 inoremap (<CR>  (<CR>)<ESC>O<Tab>
 inoremap ((     (
@@ -175,7 +173,7 @@ set showcmd
 set smartcase
 
 " spellcheck for these languages
-set spelllang=en,pt
+set spelllang=en_gb,pt
 
 " display tabs as four characters wide
 set tabstop=4

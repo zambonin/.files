@@ -11,7 +11,7 @@ aur() {
   OLDDIR="$PWD"
   for pkg in "$@" ; do
     cd "$(mktemp -d)" || exit
-    curl -Os --fail \
+    curl -Os --fail                                                           \
       "https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz"
     if [ "$?" -ne 22 ] ; then
       tar zxvf "${pkg}.tar.gz"
@@ -46,7 +46,7 @@ cd() {
 }
 
 downiso() {
-  curl -#O "$(awk -F'[ $]' '/^S/ { print $3 "iso/latest/archlinux-" \
+  curl -#O "$(awk -F'[ $]' '/^S/ { print $3 "iso/latest/archlinux-"           \
     strftime("%Y.%m.01") "-x86_64.iso" ; exit }' /etc/pacman.d/mirrorlist)"
 }
 
@@ -55,13 +55,13 @@ ll() {
 }
 
 man() {
-  env LESS_TERMCAP_mb=$'\E[01;31m'                                          \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m'                                       \
-    LESS_TERMCAP_me=$'\E[0m'                                                \
-    LESS_TERMCAP_se=$'\E[0m'                                                \
-    LESS_TERMCAP_so=$'\E[38;5;246m'                                         \
-    LESS_TERMCAP_ue=$'\E[0m'                                                \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m'                                      \
+  env LESS_TERMCAP_mb=$'\E[01;31m'                                            \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m'                                         \
+    LESS_TERMCAP_me=$'\E[0m'                                                  \
+    LESS_TERMCAP_se=$'\E[0m'                                                  \
+    LESS_TERMCAP_so=$'\E[38;5;246m'                                           \
+    LESS_TERMCAP_ue=$'\E[0m'                                                  \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m'                                        \
     man "$@"
 }
 
@@ -86,21 +86,29 @@ up() {
 }
 
 vm() {
-  [[ ! -f "$HOME/vmdisk" ]] && qemu-img create -f raw "$HOME/vmdisk" 8G
-  qemu-system-x86_64                                                        \
-    -m 2G                                                                   \
-    -cpu host                                                               \
-    -smp 2                                                                  \
-    -machine type=pc,accel=kvm                                              \
-    -monitor stdio                                                          \
-    -drive file="$HOME/vmdisk",format=raw,if=virtio,cache=none,aio=native   \
-    -net user,hostfwd=tcp::10022-:22                                        \
-    -net nic,model=virtio                                                   \
-    -boot menu=on                                                           \
-    -vga std                                                                \
-    -display sdl                                                            \
-    -usbdevice tablet                                                       \
+  disk="$1"
+  shift
+  qemu-system-x86_64                                                          \
+    -m 3G                                                                     \
+    -cpu host                                                                 \
+    -smp 2                                                                    \
+    -machine type=pc,accel=kvm                                                \
+    -monitor stdio                                                            \
+    -drive file="$disk",format=raw,if=virtio,cache=none,aio=native            \
+    -net user,smb="$HOME"                                                     \
+    -net nic                                                                  \
+    -display sdl                                                              \
+    -usb                                                                      \
+    -device usb-tablet                                                        \
     "$@"
+}
+
+vmd() {
+  vm "$HOME/debian-vm" "$@"
+}
+
+vmw() {
+  vm "$HOME/windows-vm" "$@"
 }
 
 wttr() {

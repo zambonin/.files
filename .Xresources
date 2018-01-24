@@ -54,7 +54,7 @@ URxvt*color15:              #EEEEEC
 
 ! make urls clickable
 URxvt*perl-ext-common:      default,matcher
-URxvt*url-launcher:         /usr/bin/chromium
+URxvt*url-launcher:         /usr/bin/firefox
 URxvt*matcher.button:       1
 
 ! jumping words

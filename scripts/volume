@@ -1,11 +1,9 @@
 #!/usr/bin/env awk -f
 
 BEGIN {
-    FS = "[][%]"
+    FS = "[][]"
 }
 
 /%/ {
-    qnt = int(($2 - 1) / 20) + 1
-    status = qnt < 2 ? "♫ " : qnt "♫ "
-    print ($7 ~ "off" || $2 == 0) ? "♪ " : status
+    printf "vol [%s] ", ($6 == "off") ? "--%" : $2
 }

@@ -1,0 +1,9 @@
+post_install() {
+  systemctl enable --now backup.timer
+  systemctl enable suspend@$SUDO_USER
+}
+
+pre_remove() {
+  systemctl disable --now backup.timer
+  systemctl disable suspend@$SUDO_USER
+}

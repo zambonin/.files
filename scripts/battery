@@ -1,0 +1,12 @@
+#!/usr/bin/env awk -f
+
+BEGIN {
+    FS = ", "
+}
+
+{
+    perc = $2
+    FS = "[ :]"
+    $0 = $0
+    printf "%.2d:%.2d [%d%%]\n", $6, $7, perc
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env awk -f
+
+$1 ~ interface {
+    status = "up [" int($3 * 100 / 70) "%]"
+}
+
+END {
+    print status ? status : "down"
+}

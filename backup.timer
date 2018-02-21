@@ -1,0 +1,9 @@
+[Unit]
+Description=periodically backup home and storage mounts
+
+[Timer]
+OnCalendar=hourly
+Persistent=True
+
+[Install]
+WantedBy=timers.target

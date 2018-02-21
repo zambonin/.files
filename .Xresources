@@ -1,7 +1,7 @@
 ! font rendering
 Xft.antialias:              true
 Xft.autohint:               false
-Xft.dpi:                    102
+Xft.dpi:                    123
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 Xft.lcdfilter:              lcddefault

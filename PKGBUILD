@@ -58,7 +58,17 @@ sha256sums=(
   "cf8d7cc24c05e2065cce6c642a802c5675573a203490ed47058bbc0f1a06db20"
 )
 arch=("any")
-depends=("")
+optdepends=(
+  "ntp" "ntfs-3g" "alsa-utils" "efibootmgr" "gptfdisk" "intel-ucode"
+  "rxvt-unicode" "tmux" "gvim" "git" "parallel" "openssh" "scrot" "imagemagick"
+  "unzip" "unrar" "p7zip" "atool" "rsync" "samba" "lesspipe"
+  "clang" "clang-tools-extra" "valgrind" "gdb" "qemu" "ovmf" "openmp" "perf"
+  "python" "python-pip" "python-pylint" "tk"
+  "rofi" "sway" "transmission-cli" "xorg-xrdb" "firefox" "zathura-pdf-poppler"
+  "mpv" "texlive-core" "texlive-latexextra" "texlive-pictures"
+  "redshift-wayland-git" "shellcheck-static" "steamcmd"
+  "vim-badwolf-git" "vim-gitgutter-git" "vim-lightline-git"
+)
 
 prepare() {
   patch --follow-symlinks < "changes-$(hostname).patch"

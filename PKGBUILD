@@ -29,7 +29,9 @@ source=(
   "redshift.conf"
   "suspend@.service"
   "vconsole.conf"
-  "changes-$(hostname).patch"
+  "changes-galileo.patch"
+  "changes-hubble.patch"
+  "changes-kepler.patch"
 )
 sha256sums=(
   "9321c2c84a30306119fd54592c5a508c2a4d4db7a4c6cb7b1416699e7036c3e7"
@@ -51,7 +53,9 @@ sha256sums=(
   "0e740a3617248b6433bff349a99b663d978d0016c9614eff2f271344070840aa"
   "ef4926e421c5c4365c5747b1e7a80f79d91f27df4b5a47a1a916e838cb5f5818"
   "8e90b5b82930ad5c6f69664d195e68c76d2cb4c1e44f3927d88bccc054d22039"
-  "SKIP"
+  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  "734553472c3c9cf2d2ddb8353df060f5c5e6826a920cc419d13b0ee1af618035"
+  "cf8d7cc24c05e2065cce6c642a802c5675573a203490ed47058bbc0f1a06db20"
 )
 arch=("any")
 depends=("")

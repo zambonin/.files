@@ -74,13 +74,13 @@ package() {
   install -Dm644 ".makepkg.conf" "${pkgdir}$HOME/.makepkg.conf"
 
   install -Dm644 "backup.timer"                                               \
-    "${pkgdir}/etc/systemd/system/backup.timer"
+    "${pkgdir}/usr/lib/systemd/system/backup.timer"
   install -Dm644 "backup.service"                                             \
-    "${pkgdir}/etc/systemd/system/backup.service"
+    "${pkgdir}/usr/lib/systemd/system/backup.service"
   install -Dm644 "suspend@.service"                                           \
-    "${pkgdir}/etc/systemd/system/suspend@.service"
+    "${pkgdir}/usr/lib/systemd/system/suspend@.service"
   install -Dm644 "10-journald-custom.conf"                                    \
-    "${pkgdir}/etc/systemd/journald.conf.d/10-custom-rules.conf"
+    "${pkgdir}/usr/lib/systemd/journald.conf.d/10-custom-rules.conf"
   install -Dm644 "vconsole.conf"                                              \
     "${pkgdir}/etc/vconsole.conf"
 }

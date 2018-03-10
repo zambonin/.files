@@ -184,19 +184,3 @@
 @@ -6,0 +7,2 @@ User=%I
 +Type=forking
 +Environment=DISPLAY=:0
---- scripts/lock
-+++ scripts/lock
-@@ -4 +4 @@ TMPBG="/tmp/screen.png"
--swaygrab "$TMPBG"
-+scrot "$TMPBG"
-@@ -6 +6 @@ convert "$TMPBG" -scale 50% -blur 0x5 -scale 200% "$TMPBG"
--swaylock -u -i "$TMPBG"
-+i3lock -u -i "$TMPBG"
---- scripts/power
-+++ scripts/power
-@@ -3,2 +3,3 @@
--case $(printf "lock\nhalt\nwarm\nkill" | rofi -columns 4 -dmenu -p :) in
--  lock) "$HOME/.files/scripts/lock" ;;
-+case $(printf "dark\nlock\nhalt\nwarm\nkill" | rofi -columns 5 -dmenu -p :) in
-+  dark) xset dpms force off ;;
-+  lock) "$HOME/.files/scripts/lock" && xset dpms force off ;;

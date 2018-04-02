@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z "$XDG_RUNTIME_DIR" ] && [ -z "$SWAYSOCK"] ; then
+  export XDG_RUNTIME_DIR="/run/user/$(id -u)/"
+  export SWAYSOCK=$(find $XDG_RUNTIME_DIR -iname sway*sock)
+fi
+
 if [ "$(pgrep -c sway)" -gt 0 ] ; then
   MANAGER="swaylock"
   SCREENCAP="swaygrab"

@@ -54,7 +54,7 @@ sha256sums=(
   "ef4926e421c5c4365c5747b1e7a80f79d91f27df4b5a47a1a916e838cb5f5818"
   "8e90b5b82930ad5c6f69664d195e68c76d2cb4c1e44f3927d88bccc054d22039"
   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  "734553472c3c9cf2d2ddb8353df060f5c5e6826a920cc419d13b0ee1af618035"
+  "c17abe9bd49f420807efb90941a32699aa9d725e5c77ebab0469e94d9e8b119d"
   "cf8d7cc24c05e2065cce6c642a802c5675573a203490ed47058bbc0f1a06db20"
 )
 arch=("any")
@@ -75,7 +75,7 @@ prepare() {
 }
 
 package() {
-  install -dm710 "${pkgdir}$HOME"
+  install -dm700 "${pkgdir}$HOME"
   install -dm700 "${pkgdir}$HOME/.config"
 
   install -Dm644 "redshift.conf" "${pkgdir}$HOME/.config/redshift.conf"
@@ -83,9 +83,10 @@ package() {
     | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \
     >> "${pkgdir}$HOME/.config/redshift.conf"
 
-  find $HOME/.files -maxdepth 1 -type f -iname ".*"                           \
-    -exec ln -fs {} "${pkgdir}$HOME" \;
-  install -Dm644 ".makepkg.conf" "${pkgdir}$HOME/.makepkg.conf"
+  find "$HOME/.files" -maxdepth 1 -type f -iname ".*"                         \
+    -exec install -Dm644 {} "${pkgdir}$HOME" \;
+  find "${srcdir}" -maxdepth 1 -type f -iname ".*"                            \
+    -exec install -Dm644 {} "${pkgdir}$HOME" \;
 
   install -Dm644 "backup.timer"                                               \
     "${pkgdir}/usr/lib/systemd/system/backup.timer"

@@ -16,7 +16,7 @@
 -if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
 -  exec sway -c "$HOME/.files/.swayconfig"
 +if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-+  exec startx /usr/bin/i3
++  exec startx /usr/bin/i3 -c "$HOME/.swayconfig"
 --- .bashrc
 +++ .bashrc
 @@ -47,0 +48,4 @@ cd() {
@@ -108,7 +108,7 @@
 +# Code Recommenders
 +.recommenders/
 --- .swayconfig
-+++ .i3config
++++ .swayconfig
 @@ -6 +6 @@ font                        pango:DejaVu Sans Mono 8
 -default_border              pixel
 +for_window [class="^.*"]    border 1pixel
@@ -175,10 +175,6 @@
 @@ -1 +1 @@
 -KEYMAP=us-acentos
 +KEYMAP=br-abnt2
---- /dev/null
-+++ .xinitrc
-@@ -0,0 +1 @@
-+exec /usr/bin/i3 -c "$HOME/.i3config"
 --- suspend@.service
 +++ suspend@.service
 @@ -6,0 +7,2 @@ User=%I

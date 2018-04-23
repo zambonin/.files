@@ -2,48 +2,33 @@
 +++ .Xresources
 @@ -4 +4 @@ Xft.autohint:               false
 -Xft.dpi:                    123
-+Xft.dpi:                    111
---- .bash_profile
-+++ .bash_profile
-@@ -10,4 +10,3 @@ export PROMPT_COMMAND='history -a'
--export XKB_DEFAULT_LAYOUT=us
--export XKB_DEFAULT_MODEL=pc105
--export XKB_DEFAULT_VARIANT=intl
--export XKB_DEFAULT_OPTIONS=compose:rwin,ctrl:nocaps,terminate:ctrl_alt_bksp
-+export XKB_DEFAULT_LAYOUT=br
-+export XKB_DEFAULT_MODEL=abnt2
-+export XKB_DEFAULT_OPTIONS=compose:ralt,ctrl:nocaps,terminate:ctrl_alt_bksp
++Xft.dpi:                    166
 --- .swayconfig
 +++ .swayconfig
-@@ -8 +8 @@ default_border              pixel
--bindsym $mod+dead_grave     exec rofi -show run -no-show-match
-+bindsym $mod+apostrophe     exec rofi -show run -no-show-match
-@@ -54,0 +55,2 @@ bindsym $mod+Shift+0        move container to workspace ω
-+bindsym XF86MonBrightnessDown   exec light -U 2%
-+bindsym XF86MonBrightnessUp     exec light -A 2%
-@@ -80,3 +82 @@ exec --no-startup-id xrdb -merge $HOME/.Xresources
+@@ -54,2 +54,4 @@ bindsym $mod+Shift+0        move container to workspace ω
+
++bindsym XF86MonBrightnessDown   exec light -U 1%
++bindsym XF86MonBrightnessUp     exec light -A 1%
+ bindsym XF86AudioMute           exec amixer -q set Master toggle
+@@ -79,6 +81,9 @@ exec --no-startup-id urxvtd -q -o -f
+ exec --no-startup-id xrdb -merge $HOME/.Xresources
 -exec --no-startup-id \
 -    xmodmap -e "keycode 66 = comma less comma less ccedilla Ccedilla ccedilla"
 -exec --no-startup-id xmodmap -e "clear lock"
 +exec --no-startup-id light -S 1
-@@ -84 +84,6 @@ exec --no-startup-id xmodmap -e "clear lock"
+
 -output "*" background $HOME/.wallpaper.jpg stretch
 +output "*" background $HOME/.wallpaper.png fit
 +
-+input 2:14:ETPS/2_Elantech_Touchpad {
-+    dwt enabled
-+    tap enabled
++input 1739:30383:DLL075B:01_06CB:76AF_To {
++  dwt enabled
++  tap enabled
 +}
 --- .tmux.conf
 +++ .tmux.conf
 @@ -72,0 +73,3 @@ set -g status-right '\
-+#[fg=colour244]#(awk -v interface="wlp3s0" -f \
++#[fg=colour244]#(awk -v interface="wlp58s0" -f \
 +                $HOME/.files/scripts/wireless /proc/net/wireless) | \
 +#[fg=colour244]#(acpi | awk -f $HOME/.files/scripts/battery) | \
 @@ -74,0 +78 @@ set -g status-right '\
 +set -g status-right-length 60
---- vconsole.conf
-+++ vconsole.conf
-@@ -1 +1 @@
--KEYMAP=us-acentos
-+KEYMAP=br-abnt2

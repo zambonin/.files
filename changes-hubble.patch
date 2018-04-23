@@ -14,7 +14,7 @@
 +export XKB_DEFAULT_MODEL=abnt2
 @@ -19,2 +17,2 @@ fi
 -if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
--  exec sway -c "$HOME/.files/.swayconfig"
+-  exec sway -c "$HOME/.swayconfig"
 +if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
 +  exec startx /usr/bin/i3 -c "$HOME/.swayconfig"
 --- .bashrc

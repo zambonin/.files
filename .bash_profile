@@ -17,7 +17,7 @@ if ! pstree | grep -q ssh-agent ; then
 fi
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
-  exec sway -c "$HOME/.files/.swayconfig"
+  exec sway -c "$HOME/.swayconfig"
 fi
 
 if [ -f ~/.bashrc ] ; then

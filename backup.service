@@ -1,6 +1,6 @@
 [Unit]
 Description=backup mount points with rsync
-RequiresMountsFor=/home /media/backup /media/storage
+AssertPathIsMountPoint=/home /media/backup /media/storage
 ConditionFileIsExecutable=/usr/bin/rsync
 
 [Service]

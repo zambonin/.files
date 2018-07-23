@@ -82,6 +82,7 @@ nnoremap <F4> :set hlsearch!<CR>
 inoremap <F5> <Esc>:set spell!<CR>
 nnoremap <F5> :set spell!<CR>
 
+" compile according to file type
 inoremap <F6> <Esc>:silent make<CR>
 nnoremap <F6> :silent make<CR>
 
@@ -121,6 +122,9 @@ set autoindent
 " allow backspace over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
+" centralised backup files
+set backupdir^=$HOME/.vim/backup//
+
 " ruler at 80 characters
 set colorcolumn=80
 
@@ -129,6 +133,9 @@ set confirm
 
 " highlight current line
 set cursorline
+
+" centralised swapfiles (https://vi.stackexchange.com/a/179)
+set directory^=$HOME/.vim/swapfiles//
 
 " expand tabs to spaces
 set expandtab
@@ -177,6 +184,15 @@ set spelllang=en_gb,pt
 
 " display tabs as four characters wide
 set tabstop=4
+
+" automatic word wrapping
+set textwidth=79
+
+" create undo directory
+set undodir^=$HOME/.vim/undodir//
+
+" edit history persistent across file closure
+set undofile
 
 " better command-line completion
 set wildmenu

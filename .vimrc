@@ -20,6 +20,20 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" create vim folder and its subfolders
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "", 0700)
+endif
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "", 0700)
+endif
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "", 0700)
+endif
+
 " auto-complete words based on files and a dictionary
 function! Tab_Or_Complete()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -135,7 +149,7 @@ set confirm
 set cursorline
 
 " centralised swapfiles (https://vi.stackexchange.com/a/179)
-set directory^=$HOME/.vim/swapfiles//
+set directory^=$HOME/.vim/swap//
 
 " expand tabs to spaces
 set expandtab
@@ -189,7 +203,7 @@ set tabstop=4
 set textwidth=79
 
 " create undo directory
-set undodir^=$HOME/.vim/undodir//
+set undodir^=$HOME/.vim/undo//
 
 " edit history persistent across file closure
 set undofile

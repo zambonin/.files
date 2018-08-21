@@ -180,3 +180,11 @@
 @@ -6,0 +7,2 @@ User=%I
 +Type=forking
 +Environment=DISPLAY=:0
+--- backup.service
++++ backup.service
+@@ -3 +3 @@ Description=backup mount points with rsync
+-AssertPathIsMountPoint=/home /media/backup /media/storage
++AssertPathIsMountPoint=/home /media/backup
+@@ -13,2 +12,0 @@ ExecStart=/usr/bin/rsync --archive --partial --acls --xattrs                \
+-ExecStart=/usr/bin/rsync --archive --partial --acls --xattrs                \
+-    --sparse --hard-links --verbose /media/storage /media/backup/media

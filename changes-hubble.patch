@@ -12,11 +12,6 @@
 -export XKB_DEFAULT_OPTIONS=compose:rwin,ctrl:nocaps,terminate:ctrl_alt_bksp
 +export XKB_DEFAULT_LAYOUT=br
 +export XKB_DEFAULT_MODEL=abnt2
-@@ -19,2 +17,2 @@ fi
--if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
--  exec sway -c "$HOME/.swayconfig"
-+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-+  exec startx /usr/bin/i3 -c "$HOME/.swayconfig"
 --- .bashrc
 +++ .bashrc
 @@ -47,0 +48,4 @@ cd() {
@@ -107,17 +102,20 @@
 +
 +# Code Recommenders
 +.recommenders/
---- .swayconfig
-+++ .swayconfig
-@@ -6 +6 @@ font                        pango:DejaVu Sans Mono 8
--default_border              pixel
-+for_window [class="^.*"]    border 1pixel
-@@ -8 +8 @@ default_border              pixel
+--- .tmux.conf
++++ .tmux.conf
+@@ -73 +73 @@ set -g status-right '\
+-#[fg=colour244]#(amixer get Master -M | awk -f $HOME/.files/scripts/volume)\
++#[fg=colour244]#(amixer -c 1 get Master -M | awk -f ~/.files/scripts/volume)\
+--- .wmconfig
++++ .wmconfig
+@@ -1 +1 @@
+-set $mod                    Mod1
++set $mod                    Mod4
+@@ -8 +8 @@
 -bindsym $mod+dead_grave     exec rofi -show run -no-show-match
 +bindsym $mod+apostrophe     exec rofi -show run -no-show-match
-@@ -21,0 +23 @@ bindsym $mod+Return         exec urxvtc
-+bindsym $mod+Tab            exec rofi -show window -no-show-match -lines 5
-@@ -23,10 +25,16 @@ bindsym $mod+Return         exec urxvtc
+@@ -24,10 +24,16 @@
 -bindsym $mod+1              workspace α
 -bindsym $mod+2              workspace β
 -bindsym $mod+3              workspace γ
@@ -144,47 +142,22 @@
 +bindsym $mod+3              workspace ε, workspace θ
 +bindsym $mod+4              workspace λ, workspace π
 +bindsym $mod+5              workspace σ, workspace ω
-@@ -55,5 +63,5 @@ bindsym $mod+Shift+0        move container to workspace ω
--bindsym XF86AudioMute           exec amixer -q set Master toggle
--bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
--bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
--bindsym --release Print         exec swaygrab
--bindsym --release $mod+Print    exec swaygrab -u
+@@ -56,4 +62,4 @@
+-bindsym mod5+F10            exec --no-startup-id amixer -q set Master toggle
+-bindsym mod5+F11            exec --no-startup-id amixer -q sset Master 1%-
+-bindsym mod5+F12            exec --no-startup-id amixer -q sset Master 1%+
+-bindsym Print               exec --no-startup-id scrot
 +bindsym XF86AudioMute           exec amixer -c 1 -q set Master toggle
 +bindsym XF86AudioLowerVolume    exec amixer -c 1 -q sset Master 1%-
 +bindsym XF86AudioRaiseVolume    exec amixer -c 1 -q sset Master 1%+
 +bindsym --release Print         exec scrot
-+bindsym --release $mod+Print    exec scrot -u
-@@ -78,0 +87,2 @@ exec --no-startup-id urxvtd -q -o -f
-+exec --no-startup-id compton -b --no-fading-openclose
+@@ -80 +86 @@
+-exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg
 +exec --no-startup-id feh --bg-fill --no-xinerama $HOME/.wallpaper.{jpg,png}
-@@ -80,5 +90 @@ exec --no-startup-id xrdb -merge $HOME/.Xresources
--exec --no-startup-id \
--    xmodmap -e "keycode 66 = comma less comma less ccedilla Ccedilla ccedilla"
--exec --no-startup-id xmodmap -e "clear lock"
--
--output "*" background $HOME/.wallpaper.jpg stretch
+@@ -81,0 +88 @@
 +exec --no-startup-id setxkbmap br
---- .tmux.conf
-+++ .tmux.conf
-@@ -73 +73 @@ set -g status-right '\
--#[fg=colour244]#(amixer get Master -M | awk -f $HOME/.files/scripts/volume)\
-+#[fg=colour244]#(amixer -c 1 get Master -M | awk -f ~/.files/scripts/volume)\
 --- vconsole.conf
 +++ vconsole.conf
 @@ -1 +1 @@
 -KEYMAP=us-acentos
 +KEYMAP=br-abnt2
---- suspend@.service
-+++ suspend@.service
-@@ -6,0 +7,2 @@ User=%I
-+Type=forking
-+Environment=DISPLAY=:0
---- backup.service
-+++ backup.service
-@@ -3 +3 @@ Description=backup mount points with rsync
--AssertPathIsMountPoint=/home /media/backup /media/storage
-+AssertPathIsMountPoint=/home /media/backup
-@@ -13,2 +12,0 @@ ExecStart=/usr/bin/rsync --archive --partial --acls --xattrs                \
--ExecStart=/usr/bin/rsync --archive --partial --acls --xattrs                \
--    --sparse --hard-links --verbose /media/storage /media/backup/media

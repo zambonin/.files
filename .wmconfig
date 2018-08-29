@@ -1,4 +1,4 @@
-set $mod                    Mod4
+set $mod                    Mod1
 floating_modifier           $mod
 
 focus_follows_mouse         yes
@@ -13,6 +13,7 @@ bindsym $mod+a              split horizontal
 bindsym $mod+s              layout stacking
 bindsym $mod+f              fullscreen
 bindsym $mod+z              exec --no-startup-id $HOME/.files/scripts/power
+bindsym $mod+Tab            exec rofi -show window -no-show-match -lines 5
 
 bindsym $mod+Up             focus up
 bindsym $mod+Down           focus down
@@ -52,11 +53,10 @@ bindsym $mod+Shift+8        move container to workspace π
 bindsym $mod+Shift+9        move container to workspace σ
 bindsym $mod+Shift+0        move container to workspace ω
 
-bindsym XF86AudioMute           exec amixer -q set Master toggle
-bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
-bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
-bindsym --release Print         exec swaygrab
-bindsym --release $mod+Print    exec swaygrab -u
+bindsym mod5+F10            exec --no-startup-id amixer -q set Master toggle
+bindsym mod5+F11            exec --no-startup-id amixer -q sset Master 1%-
+bindsym mod5+F12            exec --no-startup-id amixer -q sset Master 1%+
+bindsym Print               exec --no-startup-id scrot
 
 mode "resize" {
   bindsym Up        resize shrink   height  5 px or 5 ppt
@@ -77,8 +77,5 @@ client.placeholder          #333333 #222222 #ffffff #000000
 exec --no-startup-id redshift
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xrdb -merge $HOME/.Xresources
-exec --no-startup-id \
-    xmodmap -e "keycode 66 = comma less comma less ccedilla Ccedilla ccedilla"
-exec --no-startup-id xmodmap -e "clear lock"
-
-output "*" background $HOME/.wallpaper.jpg stretch
+exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg
+exec --no-startup-id compton --no-fading-openclose --sw-opti

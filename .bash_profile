@@ -16,8 +16,8 @@ if ! pstree | grep -q ssh-agent ; then
   eval "$(ssh-agent -s)"
 fi
 
-if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
-  exec sway -c "$HOME/.swayconfig"
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+  exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
 fi
 
 if [ -f ~/.bashrc ] ; then

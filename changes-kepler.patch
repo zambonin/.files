@@ -2,28 +2,14 @@
 +++ .Xresources
 @@ -4 +4 @@ Xft.autohint:               false
 -Xft.dpi:                    123
-+Xft.dpi:                    166
---- .swayconfig
-+++ .swayconfig
-@@ -54,2 +54,4 @@ bindsym $mod+Shift+0        move container to workspace ω
-
-+bindsym XF86MonBrightnessDown   exec light -U 1%
-+bindsym XF86MonBrightnessUp     exec light -A 1%
- bindsym XF86AudioMute           exec amixer -q set Master toggle
-@@ -79,6 +81,9 @@ exec --no-startup-id urxvtd -q -o -f
- exec --no-startup-id xrdb -merge $HOME/.Xresources
--exec --no-startup-id \
--    xmodmap -e "keycode 66 = comma less comma less ccedilla Ccedilla ccedilla"
--exec --no-startup-id xmodmap -e "clear lock"
-+exec --no-startup-id light -S 1
-
--output "*" background $HOME/.wallpaper.jpg stretch
-+output "*" background $HOME/.wallpaper.png fit
-+
-+input 1739:30383:DLL075B:01_06CB:76AF_To {
-+  dwt enabled
-+  tap enabled
-+}
++Xft.dpi:                    96
+--- .bash_profile
++++ .bash_profile
+@@ -19,2 +19,2 @@ fi
+-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+-  exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
++if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
++  exec sway -c "$HOME/.swayconfig"
 --- .tmux.conf
 +++ .tmux.conf
 @@ -72,0 +73,3 @@ set -g status-right '\
@@ -32,3 +18,38 @@
 +#[fg=colour244]#(acpi | awk -f $HOME/.files/scripts/battery) | \
 @@ -74,0 +78 @@ set -g status-right '\
 +set -g status-right-length 60
+--- .wmconfig
++++ .wmconfig
+@@ -1 +1 @@
+-set $mod                    Mod1
++set $mod                    Mod4
+@@ -16 +15,0 @@
+-bindsym $mod+Tab            exec rofi -show window -no-show-match -lines 5
+@@ -56,4 +55,7 @@
+-bindsym mod5+F10            exec --no-startup-id amixer -q set Master toggle
+-bindsym mod5+F11            exec --no-startup-id amixer -q sset Master 1%-
+-bindsym mod5+F12            exec --no-startup-id amixer -q sset Master 1%+
+-bindsym Print               exec --no-startup-id scrot
++bindsym XF86MonBrightnessDown   exec light -U 1%
++bindsym XF86MonBrightnessUp     exec light -A 1%
++bindsym XF86AudioMute           exec amixer -q set Master toggle
++bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
++bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
++bindsym --release Print         exec swaygrab
++bindsym --release $mod+Print    exec swaygrab -u
+@@ -80,2 +82,8 @@
+-exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg
+-exec --no-startup-id compton --no-fading-openclose --sw-opti
++exec --no-startup-id light -S 1
++
++output "*" background $HOME/.wallpaper.png fit
++
++input 1739:30383:DLL075B:01_06CB:76AF_To {
++  dwt enabled
++  tap enabled
++}
+--- suspend@.service
++++ suspend@.service
+@@ -7,2 +6,0 @@ User=%I
+-Type=forking
+-Environment=DISPLAY=:0

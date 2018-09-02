@@ -59,12 +59,12 @@ arch=("any")
 optdepends=(
   "ntp" "ntfs-3g" "alsa-utils" "efibootmgr" "gptfdisk" "intel-ucode"
   "rxvt-unicode" "tmux" "gvim" "git" "parallel" "openssh" "scrot" "imagemagick"
-  "unzip" "unrar" "p7zip" "atool" "rsync" "samba" "lesspipe"
+  "unzip" "unrar" "p7zip" "atool" "rsync" "samba" "lesspipe" "udevil"
   "clang" "clang-tools-extra" "valgrind" "gdb" "qemu" "ovmf" "openmp" "perf"
   "python" "python-pip" "python-pylint" "tk" "feh" "xorg-server" "xorg-xinit"
   "rofi" "sway" "transmission-cli" "xorg-xrdb" "firefox" "zathura-pdf-poppler"
-  "mpv" "texlive-core" "texlive-latexextra" "texlive-pictures"
-  "redshift-wayland-git" "shellcheck-static" "steamcmd"
+  "mpv" "texlive-core" "texlive-latexextra" "texlive-pictures" "freerdp"
+  "redshift-wayland-git" "shellcheck-static" "steamcmd" "pacman-contrib"
   "vim-badwolf-git" "vim-gitgutter-git" "vim-lightline-git"
 )
 

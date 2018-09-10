@@ -3,15 +3,6 @@
 @@ -4 +4 @@ Xft.autohint:               false
 -Xft.dpi:                    123
 +Xft.dpi:                    102
---- .bash_profile
-+++ .bash_profile
-@@ -10,4 +10,2 @@ export PROMPT_COMMAND='history -a'
--export XKB_DEFAULT_LAYOUT=us
--export XKB_DEFAULT_MODEL=pc105
--export XKB_DEFAULT_VARIANT=intl
--export XKB_DEFAULT_OPTIONS=compose:rwin,ctrl:nocaps,terminate:ctrl_alt_bksp
-+export XKB_DEFAULT_LAYOUT=br
-+export XKB_DEFAULT_MODEL=abnt2
 --- .bashrc
 +++ .bashrc
 @@ -47,0 +48,4 @@ cd() {
@@ -112,9 +103,6 @@
 @@ -1 +1 @@
 -set $mod                    Mod1
 +set $mod                    Mod4
-@@ -8 +8 @@
--bindsym $mod+dead_grave     exec rofi -show run -no-show-match
-+bindsym $mod+apostrophe     exec rofi -show run -no-show-match
 @@ -24,10 +24,16 @@
 -bindsym $mod+1              workspace α
 -bindsym $mod+2              workspace β
@@ -127,15 +115,15 @@
 -bindsym $mod+9              workspace σ
 -bindsym $mod+0              workspace ω
 +workspace α                 output VGA-1
-+workspace β                 output HDMI-2
++workspace β                 output HDMI-1
 +workspace γ                 output VGA-1
-+workspace δ                 output HDMI-2
++workspace δ                 output HDMI-1
 +workspace ε                 output VGA-1
-+workspace θ                 output HDMI-2
++workspace θ                 output HDMI-1
 +workspace λ                 output VGA-1
-+workspace π                 output HDMI-2
++workspace π                 output HDMI-1
 +workspace σ                 output VGA-1
-+workspace ω                 output HDMI-2
++workspace ω                 output HDMI-1
 +
 +bindsym $mod+1              workspace α, workspace β
 +bindsym $mod+2              workspace γ, workspace δ
@@ -154,10 +142,3 @@
 @@ -80 +86 @@
 -exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg
 +exec --no-startup-id feh --bg-fill --no-xinerama $HOME/.wallpaper.{jpg,png}
-@@ -81,0 +88 @@
-+exec --no-startup-id setxkbmap br
---- vconsole.conf
-+++ vconsole.conf
-@@ -1 +1 @@
--KEYMAP=us-acentos
-+KEYMAP=br-abnt2

@@ -9,7 +9,7 @@
 -if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
 -  exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
 +if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
-+  exec sway -c "$HOME/.swayconfig"
++  exec sway -c "$HOME/.wmconfig"
 --- .tmux.conf
 +++ .tmux.conf
 @@ -72,0 +73,3 @@ set -g status-right '\

@@ -54,7 +54,7 @@ sha256sums=('9321c2c84a30306119fd54592c5a508c2a4d4db7a4c6cb7b1416699e7036c3e7'
             '8e90b5b82930ad5c6f69664d195e68c76d2cb4c1e44f3927d88bccc054d22039'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             '25fc903eb625555ef7504a299d7865bb93196301e7a070921736ff32e7e7803c'
-            'f490e71905866b73d564583dfcf336a7bc022a7a8d47aab9e373fa3e7cf19e81')
+            '26e53416e1d6fab092dc77acc1da682101aed28dfa765d6890cb9533831aa642')
 arch=("any")
 optdepends=(
   "ntp" "ntfs-3g" "alsa-utils" "efibootmgr" "gptfdisk" "intel-ucode"

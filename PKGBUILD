@@ -71,33 +71,37 @@ optdepends=(
 )
 
 prepare() {
-  patch --follow-symlinks < "changes-$(hostname).patch"
+  patch --follow-symlinks < "changes-$HOSTNAME.patch"
 }
 
 package() {
-  install -dm700 "${pkgdir}$HOME"
-  install -dm700 "${pkgdir}$HOME/.config"
+  _USER="$(logname)"
+  _GROUP="$(id "$_USER" | awk -F"[()]" '{print $4}')"
 
-  install -Dm644 "redshift.conf" "${pkgdir}$HOME/.config/redshift.conf"
+  install --owner="$_USER" --group="$_GROUP" -dm700 "${pkgdir}$HOME"
+  install --owner="$_USER" --group="$_GROUP" -dm700 "${pkgdir}$HOME/.config"
+
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "redshift.conf"           \
+    "${pkgdir}$HOME/.config/redshift.conf"
   curl -s -N "https://ipinfo.io/geo"                                          \
     | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \
     >> "${pkgdir}$HOME/.config/redshift.conf"
 
-  find "$HOME/.files" -maxdepth 1 -type f -iname ".*"                         \
-    -exec install -Dm644 {} "${pkgdir}$HOME" \;
-  find "${srcdir}" -maxdepth 1 -type f -iname ".*"                            \
-    -exec install -Dm644 {} "${pkgdir}$HOME" \;
+  find "$HOME/.files" -maxdepth 1 -type f -iname ".*" -exec                   \
+    install --owner="$_USER" --group="$_GROUP" -Dm644 {} "${pkgdir}$HOME" \;
+  find "${srcdir}" -maxdepth 1 -type f -iname ".*" -exec                      \
+    install --owner="$_USER" --group="$_GROUP" -Dm644 {} "${pkgdir}$HOME" \;
 
-  install -Dm644 "backup.timer"                                               \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "backup.timer"            \
     "${pkgdir}/usr/lib/systemd/system/backup.timer"
-  install -Dm644 "backup.service"                                             \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "backup.service"          \
     "${pkgdir}/usr/lib/systemd/system/backup.service"
-  install -Dm644 "suspend@.service"                                           \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "suspend@.service"        \
     "${pkgdir}/usr/lib/systemd/system/suspend@.service"
-  install -Dm644 "10-journald-custom.conf"                                    \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "10-journald-custom.conf" \
     "${pkgdir}/usr/lib/systemd/journald.conf.d/10-custom-rules.conf"
-  install -Dm644 "99-sysctl.conf"                                             \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "99-sysctl.conf"          \
     "${pkgdir}/etc/sysctl.d/99-sysctl.conf"
-  install -Dm644 "vconsole.conf"                                              \
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "vconsole.conf"           \
     "${pkgdir}/etc/vconsole.conf"
 }

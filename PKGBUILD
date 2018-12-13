@@ -81,17 +81,13 @@ package() {
   install --owner="$_USER" --group="$_GROUP" -dm700 "${pkgdir}$HOME"
   install --owner="$_USER" --group="$_GROUP" -dm700 "${pkgdir}$HOME/.config"
 
-  install --owner="$_USER" --group="$_GROUP" -Dm644 "redshift.conf"           \
-    "${pkgdir}$HOME/.config/redshift.conf"
-  curl -s -N "https://ipinfo.io/geo"                                          \
-    | awk -F\" '/loc/ {split($4, x, ","); print "lat=" x[1] "\nlon=" x[2]}'   \
-    >> "${pkgdir}$HOME/.config/redshift.conf"
-
   find "$HOME/.files" -maxdepth 1 -type f -iname ".*" -exec                   \
     install --owner="$_USER" --group="$_GROUP" -Dm644 {} "${pkgdir}$HOME" \;
   find "${srcdir}" -maxdepth 1 -type f -iname ".*" -exec                      \
     install --owner="$_USER" --group="$_GROUP" -Dm644 {} "${pkgdir}$HOME" \;
 
+  install --owner="$_USER" --group="$_GROUP" -Dm644 "redshift.conf"           \
+    "${pkgdir}$HOME/.config/redshift.conf"
   install --owner="$_USER" --group="$_GROUP" -Dm644 "backup.timer"            \
     "${pkgdir}/usr/lib/systemd/system/backup.timer"
   install --owner="$_USER" --group="$_GROUP" -Dm644 "backup.service"          \

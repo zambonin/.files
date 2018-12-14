@@ -38,11 +38,6 @@
 @@ -2 +2 @@
 -    email = gzmbnn@gmail.com
 +    email = gustavo.zambonin@grad.ufsc.br
---- .tmux.conf
-+++ .tmux.conf
-@@ -73 +73 @@ set -g status-right '\
--#[fg=colour244]#(amixer get Master -M | awk -f $HOME/.files/scripts/volume)\
-+#[fg=colour244]#(amixer -c 1 get Master -M | awk -f ~/.files/scripts/volume)\
 --- .wmconfig
 +++ .wmconfig
 @@ -1 +1 @@
@@ -59,16 +54,16 @@
 -bindsym $mod+8              workspace π
 -bindsym $mod+9              workspace σ
 -bindsym $mod+0              workspace ω
-+workspace α                 output VGA-1
-+workspace β                 output HDMI-1
-+workspace γ                 output VGA-1
-+workspace δ                 output HDMI-1
-+workspace ε                 output VGA-1
-+workspace θ                 output HDMI-1
-+workspace λ                 output VGA-1
-+workspace π                 output HDMI-1
-+workspace σ                 output VGA-1
-+workspace ω                 output HDMI-1
++workspace α                 output DP-1
++workspace β                 output DP-2
++workspace γ                 output DP-1
++workspace δ                 output DP-2
++workspace ε                 output DP-1
++workspace θ                 output DP-2
++workspace λ                 output DP-1
++workspace π                 output DP-2
++workspace σ                 output DP-1
++workspace ω                 output DP-2
 +
 +bindsym $mod+1              workspace α, workspace β
 +bindsym $mod+2              workspace γ, workspace δ
@@ -80,9 +75,9 @@
 -bindsym mod5+F11            exec --no-startup-id amixer -q sset Master 1%-
 -bindsym mod5+F12            exec --no-startup-id amixer -q sset Master 1%+
 -bindsym Print               exec --no-startup-id scrot
-+bindsym XF86AudioMute           exec amixer -c 1 -q set Master toggle
-+bindsym XF86AudioLowerVolume    exec amixer -c 1 -q sset Master 1%-
-+bindsym XF86AudioRaiseVolume    exec amixer -c 1 -q sset Master 1%+
++bindsym XF86AudioMute           exec amixer -q set Master toggle
++bindsym XF86AudioLowerVolume    exec amixer -q sset Master 1%-
++bindsym XF86AudioRaiseVolume    exec amixer -q sset Master 1%+
 +bindsym --release Print         exec scrot
 @@ -80 +86 @@
 -exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg

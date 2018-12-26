@@ -1,0 +1,66 @@
+! font rendering
+Xft.antialias:              true
+Xft.autohint:               false
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+Xft.lcdfilter:              lcddefault
+Xft.rgba:                   rgb
+
+! general settings including transparency
+URxvt*depth:                32
+URxvt*background:           rgba:0000/0000/0000/8000
+URxvt*foreground:           White
+URxvt*cursorBlink:          true
+URxvt*cursorUnderline:      true
+URxvt*iso14755:             false
+URxvt*scrollBar:            false
+URxvt*internalBorder:       4
+URxvt*saveLines:            0
+URxvt*inheritPixmap:        true
+URxvt*transparent:          true
+URxvt*shading:              40
+
+! font settings
+URxvt*font:                 xft:Monospace:pixelsize=16
+URxvt*boldFont:             xft:Monospace:pixelsize=16:style=Bold
+URxvt*italicFont:           xft:Monospace:pixelsize=16:style=Oblique
+URxvt*boldItalicFont:       xft:Monospace:pixelsize=16:style=Bold Oblique
+URxvt*letterSpace:          -1
+URxvt*lineSpace:            1
+
+! ambience Terminator color scheme
+! black
+URxvt*color0:               #2E3436
+URxvt*color8:               #555753
+! red
+URxvt*color1:               #CC0000
+URxvt*color9:               #EF2929
+! green
+URxvt*color2:               #4E9A06
+URxvt*color10:              #8AE234
+! yellow
+URxvt*color3:               #C4A000
+URxvt*color11:              #FCE94F
+! blue
+URxvt*color4:               #3465A4
+URxvt*color12:              #729FCF
+! violet
+URxvt*color5:               #75507B
+URxvt*color13:              #AD7FA8
+! cyan
+URxvt*color6:               #06989A
+URxvt*color14:              #34E2E2
+! grey
+URxvt*color7:               #D3D7CF
+URxvt*color15:              #EEEEEC
+
+! make urls clickable
+URxvt*perl-ext-common:      default,matcher
+URxvt*url-launcher:         /usr/bin/firefox
+URxvt*matcher.button:       1
+
+! jumping words
+URxvt*keysym.Control-Up:    \033[1;5A
+URxvt*keysym.Control-Down:  \033[1;5B
+URxvt*keysym.Control-Left:  \033[1;5D
+URxvt*keysym.Control-Right: \033[1;5C

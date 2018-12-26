@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $(printf "lock|halt|warm|kill" \
+  | rofi -theme $HOME/.files/$HOSTNAME/rofi/dmenu -dmenu -sep '|') in
+  lock) "$HOME/.files/$HOSTNAME/bin/lock" ;;
+  halt) systemctl suspend ;;
+  warm) systemctl reboot ;;
+  kill) systemctl poweroff ;;
+esac

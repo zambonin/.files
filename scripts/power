@@ -1,8 +1,0 @@
-#!/bin/sh
-
-case $(printf "lock\nhalt\nwarm\nkill" | rofi -columns 4 -dmenu -p :) in
-  lock) "$HOME/.files/scripts/lock" ;;
-  halt) systemctl suspend ;;
-  warm) systemctl reboot ;;
-  kill) systemctl poweroff ;;
-esac

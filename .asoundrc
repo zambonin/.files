@@ -1,7 +1,0 @@
-pcm.!default {
-    type plug
-    slave.pcm {
-        type hw;
-        card PCH;
-    }
-}

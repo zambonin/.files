@@ -1,0 +1,40 @@
+* {
+    background-color:   rgba(0, 0, 0, 0.5);
+    text-color:         rgba(255, 255, 255, 1);
+    font:               "mono 10";
+    padding:            2px;
+}
+
+#window {
+    anchor:             north;
+    location:           north;
+    width:              99%;
+    children:           [ inputbar ];
+    y-offset:           4px;
+    transparency:       "screenshot";
+}
+
+#inputbar {
+    children:           [ textbox-prompt-colon, entry, listview ];
+}
+
+#textbox-prompt-colon {
+    expand:             false;
+    str:                "$";
+}
+
+#entry {
+    expand:             false;
+    width:              10%;
+}
+
+#listview {
+    layout:             horizontal;
+    spacing:            1.5%;
+    lines:              30;
+}
+
+#element {
+    padding:            0px 8px;
+    background-color:   rgba(0, 0, 0, 0);
+}

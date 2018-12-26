@@ -1,9 +1,0 @@
-#!/usr/bin/env awk -f
-
-BEGIN {
-    FS = "[][]"
-}
-
-/%/ {
-    printf "vol [%s] ", ($6 == "off") ? "--%" : $2
-}

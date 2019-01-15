@@ -12,7 +12,7 @@ aur() {
   for pkg in "$@" ; do
     OLDVER="$(curl -s "https://aur.archlinux.org/packages/${pkg}"             \
       | awk -v p=": ${pkg}" -F"[ <]" '$0 ~ p {print $5}')"
-    NEWVER="$(pacman -Q ${pkg} 2>/dev/null | cut -d\  -f2)"
+    NEWVER="$(pacman -Q "${pkg}" 2>/dev/null | cut -d\  -f2)"
     [ "$OLDVER" != "$NEWVER" ] || continue
     cd "$(mktemp -d)" || exit
     curl -Os --fail                                                           \
@@ -37,7 +37,7 @@ calc() {
 }
 
 cd() {
-  builtin cd "$@"
+  builtin cd "$@" || exit
   if [ -f bin/activate ] ; then
     . bin/activate
   elif [ -f requirements.txt ] ; then
@@ -52,6 +52,16 @@ cd() {
 downiso() {
   curl -#O "$(awk -F'[ $]' '/^S/ { print $3 "iso/latest/archlinux-"           \
     strftime("%Y.%m.01") "-x86_64.iso" ; exit }' /etc/pacman.d/mirrorlist)"
+}
+
+gss() {
+  parallel -j"$(nproc)" '
+    s="$(git -C {} status -s)"
+    if [ -n "$s" ] ; then
+      echo {}
+      echo "$s"
+    fi
+  ' :::: <(find "${1:-.}" -type d -name .git -printf "%h\n")
 }
 
 ll() {
@@ -73,6 +83,12 @@ pacsize() {
   expac -HM "%011m\t%-25n\t%10d"                                              \
     $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort))  \
     | sort -nr | less
+}
+
+tarball() {
+  name="$1"
+  shift
+  tar cvf "${name}.tar.bz2" --use-compress-program=pbzip2 "$@"
 }
 
 transfer() {

@@ -21,15 +21,8 @@ alias rm='rm --interactive=once --recursive --verbose'
 alias sudo='sudo '
 alias vim='vim -p'
 
-# create, folder, verbose, gzip
-alias compress='tar cfvz'
-
 # atool package
 alias ex='aunpack'
-
-# git status for all repositories under $PWD
-alias gss="parallel -j$(nproc) \
-  git -C {} status -s :::: <(find . -type d -name .git | sed 's/.git//')"
 
 # clean latex temporary files
 alias rml='latexmk -c'

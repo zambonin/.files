@@ -10,8 +10,9 @@ aur() {
   trap 'cd $OLDDIR' INT
   OLDDIR="$PWD"
   for pkg in "$@" ; do
-    OLDVER="$(curl -s "https://aur.archlinux.org/packages/${pkg}"             \
-      | awk -v p=": ${pkg}" -F"[ <]" '$0 ~ p {print $5}')"
+    OLDVER="$(curl -s                                                         \
+      "https://aur.archlinux.org/rpc.php?arg[]=${pkg}&type=info&v=5"          \
+      | awk -F\" '{print $26}')"
     NEWVER="$(pacman -Q "${pkg}" 2>/dev/null | cut -d\  -f2)"
     [ "$OLDVER" != "$NEWVER" ] || continue
     cd "$(mktemp -d)" || exit

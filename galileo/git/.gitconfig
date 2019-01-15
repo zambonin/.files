@@ -1,34 +1,61 @@
-[user]
-    email = gzmbnn@gmail.com
-    name  = Gustavo Zambonin
-
-[push]
-    default = simple
-
-[color]
-    ui = auto
-    status = always
-
-[core]
-    editor = vim
-    excludesfile = ~/.gitignore_global
-    pager = less -+FSX
-
 [alias]
-    br = branch -v
+    bd = branch --delete
+    br = !git --no-pager branch -vv
     ca = commit --amend
     ch = checkout
     cm = commit --verbose
     cp = cherry-pick
     ct = !git --no-pager shortlog --summary --numbered --email
-    df = "!for i in $(git diff --name-only) ; do git diff "$i"; done"
-    ds = diff --staged
-    lc = !git --no-pager log -p -1 --format=fuller
-    lg = log --graph --pretty=format:'%C(auto)%h • %ar by %an <%ae>%d %n%B'
+    df = diff --patch-with-stat
+    ds = df --staged
+    dp = difftool --tool=diffpdf *.pdf
+    lg = log --graph --stat
     nb = checkout -b
+    rb = checkout -m
+    ra = rebase --abort
     rc = rebase --continue
     ri = rebase --interactive
-    ss = status -bs
+    ss = status -b
+
+[blame]
+    coloring = highlightRecent
+
+[core]
+    compression = 9
+    editor = vim
+    excludesFile = ~/.gitignore_global
+    pager = less -+FSX
+
+[color]
+    status = always
 
 [diff]
-    indentHeuristic = on
+    algorithm = minimal
+    context = 0
+    indentHeuristic = true
+    mnemonicPrefix = true
+
+[difftool]
+    prompt = false
+
+[difftool "diffpdf"]
+    cmd = diff-pdf --view \"$LOCAL\" \"$REMOTE\"
+
+[grep]
+    column = true
+    fallbackToNoIndex = true
+    lineNumber = true
+
+[push]
+    default = simple
+
+[rebase]
+    missingCommitsCheck = error
+
+[status]
+    short = true
+    showStash = true
+
+[user]
+    email = gzmbnn@gmail.com
+    name = Gustavo Zambonin

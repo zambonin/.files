@@ -1,0 +1,61 @@
+[alias]
+    bd = branch --delete
+    br = !git --no-pager branch -vv
+    ca = commit --amend
+    ch = checkout
+    cm = commit --verbose
+    cp = cherry-pick
+    ct = !git --no-pager shortlog --summary --numbered --email
+    df = diff --patch-with-stat
+    ds = df --staged
+    dp = difftool --tool=diffpdf *.pdf
+    lg = log --graph --stat
+    nb = checkout -b
+    rb = checkout -m
+    ra = rebase --abort
+    rc = rebase --continue
+    ri = rebase --interactive
+    ss = status -b
+
+[blame]
+    coloring = highlightRecent
+
+[core]
+    compression = 9
+    editor = vim
+    excludesFile = ~/.gitignore_global
+    pager = less -+FSX
+
+[color]
+    status = always
+
+[diff]
+    algorithm = minimal
+    context = 0
+    indentHeuristic = true
+    mnemonicPrefix = true
+
+[difftool]
+    prompt = false
+
+[difftool "diffpdf"]
+    cmd = diff-pdf --view \"$LOCAL\" \"$REMOTE\"
+
+[grep]
+    column = true
+    fallbackToNoIndex = true
+    lineNumber = true
+
+[push]
+    default = simple
+
+[rebase]
+    missingCommitsCheck = error
+
+[status]
+    short = true
+    showStash = true
+
+[user]
+    email = gustavo.zambonin@grad.ufsc.br
+    name = Gustavo Zambonin

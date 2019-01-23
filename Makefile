@@ -23,3 +23,7 @@ kepler-u: ;
 
 build:
 	sudo pacman -Syu - < $(shell hostname)/pacman/PACKAGES.list
+hubble-i:
+	sudo systemctl enable --now backup.timer
+hubble-u:
+	sudo systemctl disable --now backup.timer

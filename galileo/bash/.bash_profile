@@ -6,6 +6,7 @@ export HISTFILE="$HOME/.history"
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTTIMEFORMAT='%F %T '
+export LESS=' -fiJMRW '
 export PROMPT_COMMAND='history -a'
 export XKB_DEFAULT_LAYOUT=us
 export XKB_DEFAULT_MODEL=pc105

@@ -1,6 +1,7 @@
 # ~/.aliases
 
 alias back='cd -'
+alias cal='cal --sunday'
 alias chmod='chmod --changes --recursive'
 alias cnt='sort | uniq --count | sort --numeric-sort --reverse'
 alias cp='cp --archive --update --verbose'

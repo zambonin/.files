@@ -38,7 +38,7 @@ calc() {
 }
 
 cd() {
-  builtin cd "$@" || exit
+  builtin cd "$@"
   if [ -f bin/activate ] ; then
     . bin/activate
   elif [ -f requirements.txt ] ; then

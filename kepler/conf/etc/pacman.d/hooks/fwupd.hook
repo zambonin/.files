@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Updating firmware through fwupdmgr...
+Depends = fwupd
+When = PostTransaction
+Exec = /usr/bin/fwupdmgr update --assume-yes --force

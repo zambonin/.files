@@ -9,7 +9,7 @@
     df = diff --patch-with-stat
     ds = df --staged
     dp = difftool --tool=diffpdf *.pdf
-    lg = log --graph --stat
+    lg = log --graph --stat --date=auto:human
     nb = checkout -b
     rb = checkout -m
     ra = rebase --abort

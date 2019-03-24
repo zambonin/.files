@@ -69,12 +69,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# color scheme              border  bg.     text    indicator
-client.focused              #333333 #444444 #ffffff #000000
-client.focused_inactive     #333333 #222222 #ffffff #000000
-client.unfocused            #333333 #222222 #ffffff #000000
-client.urgent               #333333 #222222 #ffffff #000000
-client.placeholder          #333333 #222222 #ffffff #000000
+client.focused              #333333 #444444 #ffffff #000000 #222222
+client.focused_inactive     #333333 #222222 #ffffff #000000 #222222
+client.unfocused            #333333 #222222 #ffffff #000000 #222222
+client.urgent               #333333 #222222 #ffffff #000000 #222222
 
 exec --no-startup-id redshift -l geoclue2
 exec --no-startup-id urxvtd -q -o -f

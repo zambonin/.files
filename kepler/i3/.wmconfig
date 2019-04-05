@@ -81,7 +81,14 @@ exec --no-startup-id light -S 1
 
 output "*" background $HOME/.wallpaper.png fit
 
-input 1739:30383:DLL075B:01_06CB:76AF_To {
+input 1739:30383:DLL075B:01_06CB:76AF_Touchpad {
   dwt enabled
   tap enabled
+}
+
+input * {
+  xkb_layout "us"
+  xkb_model "pc105"
+  xkb_variant "intl"
+  xkb_options "compose:caps"
 }

@@ -5,6 +5,9 @@ all: install $(shell hostname)-i
 
 clean: uninstall $(shell hostname)-u
 
+build:
+	sudo pacman -Syu - < $(shell hostname)/pacman/PACKAGES.list
+
 install:
 	stow -d $(shell hostname) --ignore=.list -t ~ $(USER_FOLDERS)
 	sudo stow -d $(shell hostname) -t / $(SYSTEM_FOLDERS)
@@ -13,6 +16,8 @@ install:
 
 galileo-i: ;
 kepler-i: ;
+hubble-i:
+	sudo systemctl enable --now backup.timer
 
 uninstall:
 	stow -d $(shell hostname) -Dt ~ $(USER_FOLDERS)
@@ -22,10 +27,5 @@ uninstall:
 
 galileo-u: ;
 kepler-u: ;
-
-build:
-	sudo pacman -Syu - < $(shell hostname)/pacman/PACKAGES.list
-hubble-i:
-	sudo systemctl enable --now backup.timer
 hubble-u:
 	sudo systemctl disable --now backup.timer

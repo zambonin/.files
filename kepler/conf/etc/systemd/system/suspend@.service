@@ -5,7 +5,7 @@ Before=sleep.target suspend.target
 [Service]
 User=%I
 Type=simple
-Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
 ExecStart=/home/%I/.files/%H/bin/lock
 
 [Install]

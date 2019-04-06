@@ -1,9 +1,8 @@
 abntex
 ca-certificates-icp_br
 libgcj17-bin
-light-git
 pdftk-bin
-redshift-wayland-git
+redshift-wlr-gamma-control-git
 shellcheck-static
 spotify
 steamcmd

@@ -2,24 +2,32 @@ set $mod                    Mod4
 floating_modifier           $mod
 
 focus_follows_mouse         yes
-font                        pango:DejaVu Sans Mono 8
+font                        DejaVu Sans Mono 8
 default_border              pixel
 
-bindsym $mod+dead_grave     exec rofi -show run -theme \
-                                $HOME/.files/$HOSTNAME/rofi/dmenu
+bindsym $mod+dead_grave     exec kitty --class=launcher sh -c \
+    'find -O3 ${PATH//:/ } -type f \
+        | fzf --with-nth=-1 --delimiter=/ \
+        | xargs -r swaymsg -t command exec'
+
+for_window [app_id="^launcher$"] {
+  floating enable
+  border none
+  resize set width 25ppt height 25ppt
+}
+
 bindsym $mod+q              split vertical
 bindsym $mod+w              layout tabbed
 bindsym $mod+e              layout toggle split
 bindsym $mod+a              split horizontal
 bindsym $mod+s              layout stacking
 bindsym $mod+f              fullscreen
-bindsym $mod+z              exec $HOME/.files/$HOSTNAME/bin/power
 
 bindsym $mod+Up             focus up
 bindsym $mod+Down           focus down
 bindsym $mod+Left           focus left
 bindsym $mod+Right          focus right
-bindsym $mod+Return         exec urxvtc
+bindsym $mod+Return         exec kitty
 
 bindsym $mod+1              workspace α
 bindsym $mod+2              workspace β
@@ -31,6 +39,9 @@ bindsym $mod+7              workspace λ
 bindsym $mod+8              workspace π
 bindsym $mod+9              workspace σ
 bindsym $mod+0              workspace ω
+
+bindsym $mod+Shift+l        exec $HOME/.files/$HOSTNAME/bin/lock
+bindsym $mod+Shift+h        exec systemctl suspend
 
 bindsym $mod+Shift+q        kill
 bindsym $mod+Shift+r        reload
@@ -53,11 +64,11 @@ bindsym $mod+Shift+8        move container to workspace π
 bindsym $mod+Shift+9        move container to workspace σ
 bindsym $mod+Shift+0        move container to workspace ω
 
-bindsym XF86MonBrightnessDown   exec light -U 1%
-bindsym XF86MonBrightnessUp     exec light -A 1%
+bindsym XF86MonBrightnessDown   exec light -U 2%
+bindsym XF86MonBrightnessUp     exec light -A 2%
 bindsym XF86AudioMute           exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioLowerVolume    exec pactl set-sink-volume 0 -1%
-bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 0 +1%
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume 0 -2%
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 0 +2%
 bindsym --release Print         exec swaygrab
 
 mode "resize" {
@@ -74,10 +85,6 @@ client.focused_inactive     #333333 #222222 #ffffff #000000 #222222
 client.unfocused            #333333 #222222 #ffffff #000000 #222222
 client.urgent               #333333 #222222 #ffffff #000000 #222222
 
-exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id xrdb -merge $HOME/.Xresources
-exec --no-startup-id light -S 1
-
 output "*" background $HOME/.wallpaper.png fit
 
 input 1739:30383:DLL075B:01_06CB:76AF_Touchpad {
@@ -91,3 +98,5 @@ input * {
   xkb_variant "intl"
   xkb_options "compose:caps"
 }
+
+xwayland disable

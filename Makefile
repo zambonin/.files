@@ -9,6 +9,7 @@ install:
 	stow -d $(shell hostname) --ignore=.list -t ~ $(USER_FOLDERS)
 	sudo stow -d $(shell hostname) -t / $(SYSTEM_FOLDERS)
 	sudo systemctl enable suspend@$(shell whoami)
+	systemctl --user enable redshift
 
 galileo-i: ;
 kepler-i: ;
@@ -17,6 +18,7 @@ uninstall:
 	stow -d $(shell hostname) -Dt ~ $(USER_FOLDERS)
 	sudo stow -d $(shell hostname) -Dt / $(SYSTEM_FOLDERS)
 	sudo systemctl disable suspend@$(shell whoami)
+	systemctl --user disable redshift
 
 galileo-u: ;
 kepler-u: ;

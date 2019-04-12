@@ -124,12 +124,18 @@ vm() {
     "$@"
 }
 
-vmd() {
-  vm "$HOME/debian-vm" "$@"
-}
+vmu() {
+  disk="$1"
+  shift
 
-vmw() {
-  vm "$HOME/windows-vm" "$@"
+  if [[ ! -f /tmp/ovmf_vars.bin ]] ; then
+    cp /usr/share/ovmf/x64/OVMF_VARS.fd /tmp/ovmf_vars.bin
+  fi
+
+  vm "$disk"                                                                   \
+    -drive if=pflash,format=raw,readonly,file=/usr/share/ovmf/x64/OVMF_CODE.fd \
+    -drive if=pflash,format=raw,file=/tmp/ovmf_vars.bin                        \
+    "$@"
 }
 
 wttr() {

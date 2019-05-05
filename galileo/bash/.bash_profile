@@ -21,6 +21,8 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
   exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
 fi
 
+sh /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
 if [ -f ~/.bashrc ] ; then
   source ~/.bashrc
 fi

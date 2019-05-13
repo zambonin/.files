@@ -150,5 +150,5 @@ if command -v pkgfile > /dev/null ; then
 fi
 
 if [[ -z "$TMUX" ]] ; then
-  exec tmux
+  exec tmux new-session -A -s main
 fi

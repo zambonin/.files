@@ -196,6 +196,9 @@ set smartcase
 " spellcheck for these languages
 set spelllang=en_gb,pt
 
+" open multiple files with `vim -p`
+set tabpagemax=64
+
 " display tabs as four characters wide
 set tabstop=4
 

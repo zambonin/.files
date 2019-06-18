@@ -73,9 +73,6 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 
-" ctrl+c for copying to external clipboard (needs +clipboard)
-vnoremap <C-c> "*y
-
 " move lines up and down
 inoremap <C-Up>     <Esc>:m-2<CR>==gi
 inoremap <C-Down>   <Esc>:m+1<CR>==gi
@@ -138,6 +135,9 @@ set backspace=indent,eol,start
 
 " centralised backup files
 set backupdir^=$HOME/.vim/backup//
+
+" set vim clipboard to usual one
+set clipboard=unnamedplus
 
 " ruler at 80 characters
 set colorcolumn=80

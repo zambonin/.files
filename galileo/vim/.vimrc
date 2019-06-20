@@ -172,6 +172,9 @@ set lazyredraw
 " enable mouse usage
 set mouse=a
 
+" disable file modification by modeline
+set nomodeline
+
 " don't always go to first character of line
 set nostartofline
 

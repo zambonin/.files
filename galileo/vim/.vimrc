@@ -34,6 +34,14 @@ if !isdirectory($HOME."/.vim/undo")
   call mkdir($HOME."/.vim/undo", "", 0700)
 endif
 
+" change makeprg temporarily (https://stackoverflow.com/a/2405131)
+function! LaTeXLint()
+  let oldmakeprg = &l:makeprg
+  setlocal errorformat=%f:%l:%c:%n:%m makeprg=chktex\ -v0\ -q\ '%'
+  make
+  let &l:makeprg = oldmakeprg
+endfunction
+
 " auto-complete words based on files and a dictionary
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -96,6 +104,10 @@ nnoremap <F5> :set spell!<CR>
 " compile according to file type
 inoremap <F6> <Esc>:silent make<CR>
 nnoremap <F6> :silent make<CR>
+
+" call linter for LaTeX files
+inoremap <F9> <Esc>:call LaTeXLint()<CR>
+nnoremap <F9> :call LaTeXLint()<CR>
 
 " group ensures that commands are applied only once
 augroup configs

@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Removing old cached packages...
+When = PostTransaction
+Exec = /usr/bin/paccache --remove --keep 1

@@ -3,8 +3,8 @@
 export BROWSER="firefox"
 export EDITOR="vim"
 export HISTFILE="$HOME/.history"
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
+export HISTFILESIZE="INFINITY"
+export HISTSIZE="INFINITY"
 export HISTTIMEFORMAT='%F %T '
 export LESS=' -fiJMRW '
 export PROMPT_COMMAND='history -a'

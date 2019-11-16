@@ -9,6 +9,7 @@ install:
 	stow -d $(shell hostname) --ignore=.list -t ~ $(USER_FOLDERS)
 	sudo stow -d $(shell hostname) -t / $(SYSTEM_FOLDERS)
 	sudo systemctl enable suspend@$(shell whoami)
+	sudo systemctl enable --now fstrim.timer
 	systemctl --user enable redshift
 
 galileo-i: ;
@@ -20,6 +21,7 @@ uninstall:
 	stow -d $(shell hostname) -Dt ~ $(USER_FOLDERS)
 	sudo stow -d $(shell hostname) -Dt / $(SYSTEM_FOLDERS)
 	sudo systemctl disable suspend@$(shell whoami)
+	sudo systemctl disable --now fstrim.timer
 	systemctl --user disable redshift
 
 galileo-u: ;

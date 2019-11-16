@@ -77,4 +77,3 @@ client.placeholder          #333333 #222222 #ffffff #000000
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xrdb -merge $HOME/.Xresources
 exec --no-startup-id feh --bg-center $HOME/.wallpaper.jpg
-exec --no-startup-id setxkbmap -layout us -variant intl

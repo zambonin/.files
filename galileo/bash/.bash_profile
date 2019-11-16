@@ -8,10 +8,6 @@ export HISTSIZE="INFINITY"
 export HISTTIMEFORMAT='%F %T '
 export LESS=' -fiJMRW '
 export PROMPT_COMMAND='history -a'
-export XKB_DEFAULT_LAYOUT=us
-export XKB_DEFAULT_MODEL=pc105
-export XKB_DEFAULT_VARIANT=intl
-export XKB_DEFAULT_OPTIONS=compose:rwin,ctrl:nocaps,terminate:ctrl_alt_bksp
 
 if ! pstree | grep -q ssh-agent ; then
   eval "$(ssh-agent -s)"

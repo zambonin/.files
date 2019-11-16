@@ -9,7 +9,7 @@
     df = diff --patch-with-stat
     ds = df --staged
     dp = difftool --tool=diffpdf *.pdf
-    lg = log --graph --stat --date=auto:human
+    lg = log --graph --stat --date=auto:human --decorate=full
     nb = checkout -b
     rb = checkout -m
     ra = rebase --abort
@@ -57,5 +57,6 @@
     showStash = true
 
 [user]
+    useConfigOnly = true
     email = gzmbnn@gmail.com
     name = Gustavo Zambonin

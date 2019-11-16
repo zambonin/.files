@@ -1,4 +1,4 @@
-USER_FOLDERS = bash git i3 pacman tmux top vim x11
+USER_FOLDERS = bash git i3 pacman tmux top vim
 SYSTEM_FOLDERS = conf
 
 all: install $(shell hostname)-i

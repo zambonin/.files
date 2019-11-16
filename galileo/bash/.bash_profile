@@ -2,10 +2,12 @@
 
 export BROWSER="firefox"
 export EDITOR="vim"
+export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
 export HISTFILE="$HOME/.history"
 export HISTFILESIZE="INFINITY"
 export HISTSIZE="INFINITY"
 export HISTTIMEFORMAT='%F %T '
+export KITTY_CONFIG_DIRECTORY="$HOME/.files/$HOSTNAME/conf"
 export LESS=' -fiJMRW '
 export PROMPT_COMMAND='history -a'
 

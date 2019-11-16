@@ -1,1 +1,0 @@
-../../../../../galileo/conf/etc/systemd/system/getty@tty11.service.d/

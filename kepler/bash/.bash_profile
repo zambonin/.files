@@ -12,6 +12,7 @@ export KITTY_ENABLE_WAYLAND=1
 export LESS=' -fiJMRW '
 export LIBVA_DRIVER_NAME=iHD
 export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland-egl
 export PROMPT_COMMAND='history -a'
 export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
 

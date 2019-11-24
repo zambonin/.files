@@ -5,21 +5,28 @@ focus_follows_mouse         yes
 font                        pango:DejaVu Sans Mono 8
 default_border              pixel
 
-bindsym $mod+apostrophe     exec rofi -show run -theme \
-                                $HOME/.files/$HOSTNAME/rofi/dmenu
+bindsym $mod+apostrophe     exec kitty --class=launcher sh -c \
+    'find -O3 ${PATH//:/ } -type f \
+        | fzf --with-nth=-1 --delimiter=/ \
+        | xargs -r i3-msg -t command exec'
+
+for_window [class="^launcher$"] \
+    floating enable \
+    border none \
+    resize set width 25ppt height 25ppt
+
 bindsym $mod+q              split vertical
 bindsym $mod+w              layout tabbed
 bindsym $mod+e              layout toggle split
 bindsym $mod+a              split horizontal
 bindsym $mod+s              layout stacking
 bindsym $mod+f              fullscreen
-bindsym $mod+z              exec $HOME/.files/$HOSTNAME/bin/power
 
 bindsym $mod+Up             focus up
 bindsym $mod+Down           focus down
 bindsym $mod+Left           focus left
 bindsym $mod+Right          focus right
-bindsym $mod+Return         exec urxvtc
+bindsym $mod+Return         exec kitty
 
 bindsym $mod+1              workspace α
 bindsym $mod+2              workspace β
@@ -31,6 +38,9 @@ bindsym $mod+7              workspace λ
 bindsym $mod+8              workspace π
 bindsym $mod+9              workspace σ
 bindsym $mod+0              workspace ω
+
+bindsym $mod+Shift+l        exec $HOME/.files/$HOSTNAME/bin/lock
+bindsym $mod+Shift+h        exec systemctl suspend
 
 bindsym $mod+Shift+q        kill
 bindsym $mod+Shift+r        reload
@@ -74,8 +84,8 @@ client.unfocused            #333333 #222222 #ffffff #000000
 client.urgent               #333333 #222222 #ffffff #000000
 client.placeholder          #333333 #222222 #ffffff #000000
 
-exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id xrdb -merge $HOME/.Xresources
-exec --no-startup-id feh --bg-fill --no-xinerama $HOME/.wallpaper.png
-exec --no-startup-id setxkbmap -layout br
-exec --no-startup-id sh $HOME/.screenlayout/$(hostname).sh
+exec --no-startup-id xrandr \
+    --output DVI-I-1 --mode 1920x1080 --pos 1080x600 --rotate normal \
+    --output DP-2 --mode 1920x1080 --pos 0x0 --rotate left
+exec --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/.wallpaper.png
+exec --no-startup-id compton -bcCGf --no-fading-openclose

@@ -40,9 +40,6 @@ bindsym $mod+8              workspace π
 bindsym $mod+9              workspace σ
 bindsym $mod+0              workspace ω
 
-bindsym $mod+Shift+l        exec $HOME/.files/$HOSTNAME/bin/lock
-bindsym $mod+Shift+h        exec systemctl suspend
-
 bindsym $mod+Shift+q        kill
 bindsym $mod+Shift+r        reload
 bindsym $mod+Shift+e        exit

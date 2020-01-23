@@ -11,21 +11,20 @@ alias diff='diff --recursive --suppress-common-lines --suppress-blank-empty'
 alias du='du --human-readable --summarize'
 alias free='free --human --wide'
 alias gdb='gdb -quiet'
+alias gss='find -O3 . -type d -name .git -exec git -C {}/.. status \;'
 alias ls='ls --color=always --group-directories-first --classify --literal'
 alias makepkg='makepkg --clean --cleanbuild --install --needed --noconfirm --rmdeps --syncdeps'
 alias mkdir='mkdir --parents'
 alias mv='mv --interactive --update --verbose'
 alias pacman='pacman --noconfirm'
-alias pingg='ping -c 3 1.1.1.1'
+alias ping='ping -A -s 16 -c 3 -w 2'
 alias rm='rm --interactive=once --recursive --verbose'
 alias sudo='sudo '
 alias vim='vim -p'
 
-# atool package
-alias ex='aunpack'
+if command -v aunpack > /dev/null ; then
+  alias ex='aunpack'
+fi
 
-# clean latex temporary files
 alias rml='latexmk -c'
-
-# clean virtualenv files
 alias rmv='rm -f bin/ include/ lib* pyvenv.cfg pip-selfcheck.json'

@@ -4,8 +4,6 @@ shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
 set -o noclobber
 stty -ixon
 
-[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
-
 aur() {
   trap 'cd $OLDDIR' INT
   OLDDIR="$PWD"
@@ -38,7 +36,7 @@ calc() {
 }
 
 cd() {
-  builtin cd "$@"
+  builtin cd "$@" || exit
   if [ -f bin/activate ] ; then
     . bin/activate
   elif [ -f requirements.txt ] ; then
@@ -51,22 +49,9 @@ cd() {
 }
 
 downiso() {
-  curl -#O "$(awk -F'[ $]' '/^S/ { print $3 "iso/latest/archlinux-"           \
-    strftime("%Y.%m.01") "-x86_64.iso" ; exit }' /etc/pacman.d/mirrorlist)"
-}
-
-gss() {
-  parallel -j"$(nproc)" '
-    s="$(git -C {} status -s)"
-    if [ -n "$s" ] ; then
-      echo {}
-      echo "$s"
-    fi
-  ' :::: <(find "${1:-.}" -type d -name .git -printf "%h\n")
-}
-
-ll() {
-  LC_COLLATE=C ls -Agho "$@" | less
+  curl -#O "$(awk -F'[ $]' '/^S/ {
+    print $3 "iso/latest/archlinux-" strftime("%Y.%m.01") "-x86_64.iso" ; exit
+  }' /etc/pacman.d/mirrorlist)"
 }
 
 man() {
@@ -86,12 +71,6 @@ pacsize() {
     | sort -nr | less
 }
 
-tarball() {
-  name="$1"
-  shift
-  tar cvf "${name}.tar.bz2" --use-compress-program=pbzip2 "$@"
-}
-
 transfer() {
   curl -sH "Max-Downloads: 1" -T "$1" "https://transfer.sh/$(basename "$1")"
   echo
@@ -109,10 +88,10 @@ up() {
 vm() {
   disk="$1"
   shift
-  qemu-system-x86_64                                                          \
-    -m 3G                                                                     \
+  sudo qemu-system-x86_64                                                     \
+    -m 4G                                                                     \
     -cpu host                                                                 \
-    -smp 2                                                                    \
+    -smp 4                                                                    \
     -machine type=pc,accel=kvm                                                \
     -monitor stdio                                                            \
     -drive file="$disk",format=raw,if=virtio,cache=none,aio=native            \
@@ -128,7 +107,7 @@ vmu() {
   disk="$1"
   shift
 
-  if [[ ! -f /tmp/ovmf_vars.bin ]] ; then
+  if [ ! -f /tmp/ovmf_vars.bin ] ; then
     cp /usr/share/ovmf/x64/OVMF_VARS.fd /tmp/ovmf_vars.bin
   fi
 
@@ -138,17 +117,24 @@ vmu() {
     "$@"
 }
 
-wttr() {
-  loc="$(curl -sN "https://ipinfo.geo" | awk -F\" '/loc/ {print $4}')"
-  curl -sH "Accept-Language: ${LANG%_*}" "wttr.in/${loc}?0Q"
-}
-
 PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
 
-if command -v pkgfile > /dev/null ; then
+if [ -f "$HOME/.aliases" ] ; then
+  . "$HOME/.aliases"
+fi
+
+if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
   . /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
-if [[ -z "$TMUX" ]] ; then
+if [ -f /usr/share/fzf/key-bindings.bash ] ; then
+  . /usr/share/fzf/key-bindings.bash
+fi
+
+if [ -f /usr/share/fzf/completion.bash ] ; then
+  . /usr/share/fzf/completion.bash
+fi
+
+if [ -z "$TMUX" ] ; then
   exec tmux new-session -A -s main
 fi

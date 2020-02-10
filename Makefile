@@ -14,8 +14,7 @@ install:
 
 galileo-i: ;
 kepler-i: ;
-hubble-i:
-	sudo systemctl enable --now backup.timer
+hubble-i: ;
 
 uninstall:
 	stow -d $(shell hostname) -Dt ~ $(USER_FOLDERS)
@@ -26,5 +25,4 @@ uninstall:
 
 galileo-u: ;
 kepler-u: ;
-hubble-u:
-	sudo systemctl disable --now backup.timer
+hubble-u: ;

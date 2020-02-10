@@ -1,9 +1,0 @@
-[Unit]
-Description=periodic backup of home folder
-
-[Timer]
-OnCalendar=hourly
-Persistent=True
-
-[Install]
-WantedBy=timers.target

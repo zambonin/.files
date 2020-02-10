@@ -15,6 +15,10 @@ export KITTY_CONFIG_DIRECTORY="$HOME/.files/$HOSTNAME/conf"
 export LESS=' -fiJMRW '
 export PROMPT_COMMAND='history -a'
 
+if command -v pbzip2 > /dev/null ; then
+  export TAR_OPTIONS="--use-compress-program=pbzip2"
+fi
+
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
   exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
 fi

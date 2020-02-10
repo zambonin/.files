@@ -20,6 +20,10 @@ export QT_QPA_PLATFORM=wayland-egl
 export PROMPT_COMMAND='history -a'
 export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
 
+if command -v pbzip2 > /dev/null ; then
+  export TAR_OPTIONS="--use-compress-program=pbzip2"
+fi
+
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
   exec sway -c "$HOME/.wmconfig"
 fi

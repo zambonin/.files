@@ -1,13 +1,14 @@
 USER_FOLDERS = bash git i3 pacman tmux top vim
 SYSTEM_FOLDERS = conf
+HOSTNAME ?= $(shell hostname)
 
-all: install $(shell hostname)-i
+all: install $(HOSTNAME)-i
 
-clean: uninstall $(shell hostname)-u
+clean: uninstall $(HOSTNAME)-u
 
 install:
-	stow -d $(shell hostname) --ignore=.list -t ~ $(USER_FOLDERS)
-	sudo stow -d $(shell hostname) -t / $(SYSTEM_FOLDERS)
+	stow -d $(HOSTNAME) --ignore=.list -t ~ $(USER_FOLDERS)
+	sudo stow -d $(HOSTNAME) -t / $(SYSTEM_FOLDERS)
 	sudo systemctl enable suspend@$(shell whoami)
 	sudo systemctl enable --now fstrim.timer
 	systemctl --user enable redshift
@@ -17,8 +18,8 @@ kepler-i: ;
 hubble-i: ;
 
 uninstall:
-	stow -d $(shell hostname) -Dt ~ $(USER_FOLDERS)
-	sudo stow -d $(shell hostname) -Dt / $(SYSTEM_FOLDERS)
+	stow -d $(HOSTNAME) -Dt ~ $(USER_FOLDERS)
+	sudo stow -d $(HOSTNAME) -Dt / $(SYSTEM_FOLDERS)
 	sudo systemctl disable suspend@$(shell whoami)
 	sudo systemctl disable --now fstrim.timer
 	systemctl --user disable redshift

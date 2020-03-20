@@ -10,6 +10,9 @@ let g:lightline = { 'colorscheme': 'seoul256' }
 " do not create .netrwhist
 let g:netrw_dirhistmax = 0
 
+" do not use plaintex as default TeX filetype
+let g:tex_flavor = "latex"
+
 " turn syntax highlighting on
 syntax on
 
@@ -114,6 +117,9 @@ augroup configs
   " clears all the commands for the current group
   autocmd!
 
+  " set syntax coloring for `sage`
+  autocmd BufRead,BufNewFile *.sage setfiletype python
+
   " before saving, remove trailing whitespaces
   autocmd BufWritePre * call TrimWhitespace()
 
@@ -183,6 +189,9 @@ set lazyredraw
 
 " enable mouse usage
 set mouse=a
+
+" do not insert two spaces after end of sentence
+set nojoinspaces
 
 " disable file modification by modeline
 set nomodeline

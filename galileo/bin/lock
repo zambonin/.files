@@ -7,7 +7,7 @@ fi
 
 if [ "$(pgrep -c sway)" -gt 0 ] ; then
   MANAGER="swaylock"
-  SCREENCAP="swaygrab"
+  SCREENCAP="grim"
 else
   MANAGER="i3lock"
   SCREENCAP="scrot"

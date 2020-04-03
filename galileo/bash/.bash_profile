@@ -13,6 +13,8 @@ export HISTSIZE="INFINITY"
 export HISTTIMEFORMAT='%F %T '
 export KITTY_CONFIG_DIRECTORY="$HOME/.files/$HOSTNAME/conf"
 export LESS=' -fiJMRW '
+export MANPAGER="vim --not-a-term -M +MANPAGER -"
+export MANWIDTH=80
 export PROMPT_COMMAND='history -a'
 
 if command -v pbzip2 > /dev/null ; then

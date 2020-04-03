@@ -56,7 +56,8 @@ downiso() {
 
 pacsize() {
   expac -HM "%011m\t%-25n\t%10d"                                              \
-    $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort))  \
+    $(comm -23 <(pacman -Qqen | sort)                                         \
+      <((pacman -Qqg base-devel ; pactree -l -d1 base) | sort -u))            \
     | sort -nr | less
 }
 

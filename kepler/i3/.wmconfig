@@ -1,4 +1,4 @@
-set $mod                    Mod4
+set $mod                    Mod1
 floating_modifier           $mod
 
 focus_follows_mouse         yes

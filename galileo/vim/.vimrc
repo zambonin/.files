@@ -1,11 +1,13 @@
-" badwolf.vim
-colorscheme badwolf
+" custom colorscheme and statusline
+try
+  colorscheme badwolf
+  let g:lightline = { 'colorscheme': 'seoul256' }
+catch
+  colorscheme ron
+endtry
 
 " smart auto-indenting
 filetype indent plugin on
-
-" lightline.vim
-let g:lightline = { 'colorscheme': 'seoul256' }
 
 " do not create .netrwhist
 let g:netrw_dirhistmax = 0
@@ -172,6 +174,9 @@ set directory^=$HOME/.vim/swap//
 " expand tabs to spaces
 set expandtab
 
+" some useful format options according to fo-table
+set formatoptions+=1 formatoptions+=j formatoptions+=n formatoptions+=p
+
 " better undo history
 set hidden
 
@@ -208,8 +213,8 @@ set pastetoggle=<F2>
 " use interactive shell on vim
 set shell=/bin/bash\ -i
 
-" 1 tab equals four spaces
-set shiftwidth=4
+" 1 tab equals tabstop spaces
+set shiftwidth=0
 
 " partial commands in last line of screen
 set showcmd

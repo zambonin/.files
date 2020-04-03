@@ -126,5 +126,7 @@ if [ -f /usr/share/fzf/completion.bash ] ; then
 fi
 
 if [ -z "$TMUX" ] ; then
-  exec tmux new-session -A -s main
+  if ! tmux has-session -t "session_tty${XDG_VTNR}" 2>/dev/null ; then
+    exec tmux new-session -A -s "session_tty${XDG_VTNR}"
+  fi
 fi

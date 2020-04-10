@@ -4,6 +4,14 @@ shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
 set -o noclobber
 stty -ixon
 
+if [ -f "$HOME/.aliases" ] ; then
+  . "$HOME/.aliases"
+fi
+
+if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
+  . /usr/share/doc/pkgfile/command-not-found.bash
+fi
+
 aur() {
   trap 'cd $OLDDIR' INT
   OLDDIR="$PWD"
@@ -108,14 +116,6 @@ vmu() {
 }
 
 PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
-
-if [ -f "$HOME/.aliases" ] ; then
-  . "$HOME/.aliases"
-fi
-
-if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
-  . /usr/share/doc/pkgfile/command-not-found.bash
-fi
 
 if [ -f /usr/share/fzf/key-bindings.bash ] ; then
   . /usr/share/fzf/key-bindings.bash

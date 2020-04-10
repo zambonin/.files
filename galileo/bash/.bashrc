@@ -128,5 +128,7 @@ fi
 if [ -z "$TMUX" ] ; then
   if ! tmux has-session -t "session_tty${XDG_VTNR}" 2>/dev/null ; then
     exec tmux new-session -A -s "session_tty${XDG_VTNR}"
+  else
+    exec tmux attach-session
   fi
 fi

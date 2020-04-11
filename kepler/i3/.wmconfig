@@ -42,7 +42,6 @@ bindsym $mod+0              workspace ω
 
 bindsym $mod+Shift+q        kill
 bindsym $mod+Shift+r        reload
-bindsym $mod+Shift+e        exit
 
 bindsym $mod+Shift+Up       move up
 bindsym $mod+Shift+Down     move down
@@ -97,3 +96,23 @@ input * {
 }
 
 xwayland disable
+
+set $lock_bg "/tmp/lock.png"
+set $lock_command grim - \
+    | convert - -scale 50% -blur 0x5 -scale 200% $lock_bg \
+    && swaylock -e -f -u -i $lock_bg
+
+exec swayidle -w \
+    timeout 300 'swaymsg "output * dpms off" && $lock_command' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep '$lock_command'
+
+mode "control" {
+  bindsym e exit
+  bindsym l exec $lock_command, mode "default"
+  bindsym s exec systemctl suspend, mode "default"
+  bindsym Shift+r exec systemctl reboot
+  bindsym Shift+p exec systemctl poweroff
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "control"

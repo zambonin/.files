@@ -41,7 +41,6 @@ bindsym $mod+0              workspace ω
 
 bindsym $mod+Shift+q        kill
 bindsym $mod+Shift+r        reload
-bindsym $mod+Shift+e        exit
 
 bindsym $mod+Shift+Up       move up
 bindsym $mod+Shift+Down     move down
@@ -83,3 +82,17 @@ client.placeholder          #333333 #222222 #ffffff #000000
 
 exec --no-startup-id feh --no-fehbg --bg-center $HOME/.wallpaper.jpg
 exec --no-startup-id compton -bcCGf --no-fading-openclose
+
+set $lock_command import -window root jpg:- \
+    | convert - -scale 50% -blur 0x5 -scale 200% rgb:- \
+    | i3lock --raw=1920x1080:rgb -e -u -i /dev/stdin
+
+mode "control" {
+  bindsym e exit
+  bindsym l exec $lock_command, mode "default"
+  bindsym s exec $lock_command && systemctl suspend, mode "default"
+  bindsym Shift+r exec systemctl reboot
+  bindsym Shift+p exec systemctl poweroff
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "control"

@@ -1,6 +1,0 @@
-#!/usr/bin/env awk -f
-
-/Mute/ {
-    result = $2; getline
-    printf "vol [%s] ", (result == "yes") ? "--%" : $5
-}

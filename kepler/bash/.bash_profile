@@ -30,6 +30,10 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
   exec sway -c "$HOME/.wmconfig"
 fi
 
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 2 ] ; then
+  exec startx /usr/bin/i3 -c "$HOME/.files/galileo/i3/.wmconfig"
+fi
+
 if [ -f ~/.bashrc ] ; then
   source ~/.bashrc
 fi

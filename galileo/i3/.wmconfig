@@ -62,7 +62,10 @@ bindsym $mod+Shift+0        move container to workspace ω
 bindsym mod5+F10            exec pactl set-sink-mute 0 toggle
 bindsym mod5+F11            exec pactl set-sink-volume 0 -1%
 bindsym mod5+F12            exec pactl set-sink-volume 0 +1%
-bindsym --release Print     exec scrot
+
+set $print_output /tmp/capture-$(date +%Y-%m-%d-%H%M%S).jpg
+bindsym --release Print         exec import -window root $print_output
+bindsym --release Shift+Print   exec import $print_output
 
 mode "resize" {
   bindsym Up        resize shrink   height  5 px or 5 ppt

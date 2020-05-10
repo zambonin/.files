@@ -1,6 +1,6 @@
 USER_FOLDERS = bash git i3 pacman tmux top vim
 SYSTEM_FOLDERS = conf
-HOSTNAME ?= $(shell hostname)
+HOSTNAME ?= $(shell cat /etc/hostname)
 
 all: install $(HOSTNAME)-i
 

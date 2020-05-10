@@ -86,10 +86,10 @@ up() {
 vm() {
   disk="$1"
   shift
-  sudo qemu-system-x86_64                                                     \
+  qemu-system-x86_64                                                          \
     -m 4G                                                                     \
     -cpu host                                                                 \
-    -smp 4                                                                    \
+    -smp 2                                                                    \
     -machine type=pc,accel=kvm                                                \
     -monitor stdio                                                            \
     -drive file="$disk",format=raw,if=virtio,cache=none,aio=native            \

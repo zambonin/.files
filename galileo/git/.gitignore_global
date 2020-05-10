@@ -12,9 +12,6 @@
 *.log.*
 *.sig
 
-pkg/
-src/
-
 # C
 # Prerequisites
 *.d

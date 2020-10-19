@@ -60,11 +60,12 @@ bindsym $mod+Shift+8        move container to workspace π
 bindsym $mod+Shift+9        move container to workspace σ
 bindsym $mod+Shift+0        move container to workspace ω
 
+bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+
 bindsym XF86MonBrightnessDown   exec light -U 2%
 bindsym XF86MonBrightnessUp     exec light -A 2%
-bindsym XF86AudioMute           exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioLowerVolume    exec pactl set-sink-volume 0 -2%
-bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 0 +2%
 bindsym --release Print         exec grim
 
 mode "resize" {

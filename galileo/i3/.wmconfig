@@ -59,9 +59,9 @@ bindsym $mod+Shift+8        move container to workspace π
 bindsym $mod+Shift+9        move container to workspace σ
 bindsym $mod+Shift+0        move container to workspace ω
 
-bindsym mod5+F10            exec pactl set-sink-mute 0 toggle
-bindsym mod5+F11            exec pactl set-sink-volume 0 -1%
-bindsym mod5+F12            exec pactl set-sink-volume 0 +1%
+bindsym mod5+F10            exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym mod5+F11            exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym mod5+F12            exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 
 set $print_output /tmp/capture-$(date +%Y-%m-%d-%H%M%S).jpg
 bindsym --release Print         exec import -window root $print_output

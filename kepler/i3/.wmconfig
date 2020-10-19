@@ -5,7 +5,7 @@ focus_follows_mouse         yes
 font                        DejaVu Sans Mono 8
 default_border              pixel
 
-bindsym $mod+dead_grave     exec kitty --class=launcher sh -c \
+bindsym $mod+dead_grave     exec alacritty --class=launcher -e sh -c \
     'find -O3 -L ${PATH//:/ } -type f \
         | fzf --with-nth=-1 --delimiter=/ \
         | xargs -r swaymsg -t command exec'
@@ -14,6 +14,7 @@ for_window [app_id="^launcher$"] {
   floating enable
   border none
   resize set width 25ppt height 25ppt
+  move absolute position center
 }
 
 bindsym $mod+q              split vertical
@@ -27,7 +28,7 @@ bindsym $mod+Up             focus up
 bindsym $mod+Down           focus down
 bindsym $mod+Left           focus left
 bindsym $mod+Right          focus right
-bindsym $mod+Return         exec kitty
+bindsym $mod+Return         exec alacritty
 
 bindsym $mod+1              workspace α
 bindsym $mod+2              workspace β

@@ -1,4 +1,4 @@
-USER_FOLDERS = bash git i3 pacman tmux top vim
+USER_FOLDERS = bash git i3 pacman term tmux top vim
 SYSTEM_FOLDERS = conf
 HOSTNAME ?= $(shell cat /etc/hostname)
 

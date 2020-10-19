@@ -11,7 +11,6 @@ export HISTFILE="$HOME/.history"
 export HISTFILESIZE="INFINITY"
 export HISTSIZE="INFINITY"
 export HISTTIMEFORMAT='%F %T '
-export KITTY_CONFIG_DIRECTORY="$HOME/.files/$HOSTNAME/conf"
 export LESS=' -fiJMRW '
 export MANPAGER="vim --not-a-term -M +MANPAGER -"
 export MANWIDTH=80

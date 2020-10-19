@@ -83,8 +83,7 @@ client.unfocused            #333333 #222222 #ffffff #000000
 client.urgent               #333333 #222222 #ffffff #000000
 client.placeholder          #333333 #222222 #ffffff #000000
 
-exec --no-startup-id feh --no-fehbg --bg-center $HOME/.wallpaper.jpg
-exec --no-startup-id compton -bcCGf --no-fading-openclose
+exec --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/.wallpaper
 
 set $lock_command import -window root jpg:- \
     | convert - -scale 50% -blur 0x5 -scale 200% rgb:- \

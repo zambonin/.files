@@ -7,7 +7,7 @@ all: install $(HOSTNAME)-i
 clean: uninstall $(HOSTNAME)-u
 
 install:
-	stow -d $(HOSTNAME) --ignore=.list -t ~ $(USER_FOLDERS)
+	stow -d $(HOSTNAME) -t ~ $(USER_FOLDERS)
 	sudo stow -d $(HOSTNAME) -t / $(SYSTEM_FOLDERS)
 	sudo systemctl enable --now fstrim.timer
 	systemctl --user enable redshift

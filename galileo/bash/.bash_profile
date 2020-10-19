@@ -2,9 +2,9 @@
 
 export BROWSER="firefox"
 export EDITOR="vim"
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'tree --dirsfirst -C {} | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap"
-export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) \
+export FZF_CTRL_T_OPTS="--preview '(cat {} || tree --dirsfirst -C {}) \
   2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
 export HISTFILE="$HOME/.history"
@@ -16,10 +16,6 @@ export LESS=' -fiJMRW '
 export MANPAGER="vim --not-a-term -M +MANPAGER -"
 export MANWIDTH=80
 export PROMPT_COMMAND='history -a'
-
-if command -v pbzip2 > /dev/null ; then
-  export TAR_OPTIONS="--use-compress-program=pbzip2"
-fi
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
   exec startx /usr/bin/i3 -c "$HOME/.wmconfig"

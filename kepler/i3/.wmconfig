@@ -81,7 +81,7 @@ client.focused_inactive     #333333 #222222 #ffffff #000000 #222222
 client.unfocused            #333333 #222222 #ffffff #000000 #222222
 client.urgent               #333333 #222222 #ffffff #000000 #222222
 
-output "*" background $HOME/.wallpaper.png fit
+output "*" background $HOME/.wallpaper fill
 
 input 1739:30383:DLL075B:01_06CB:76AF_Touchpad {
   dwt enabled

@@ -49,6 +49,9 @@
 [push]
     default = simple
 
+[pull]
+    rebase = false
+
 [rebase]
     missingCommitsCheck = error
 

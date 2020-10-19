@@ -14,7 +14,6 @@ install:
 
 galileo-i: ;
 kepler-i: ;
-hubble-i: ;
 
 uninstall:
 	stow -d $(HOSTNAME) -Dt ~ $(USER_FOLDERS)
@@ -24,4 +23,3 @@ uninstall:
 
 galileo-u: ;
 kepler-u: ;
-hubble-u: ;

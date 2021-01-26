@@ -2,9 +2,11 @@
 
 export BROWSER="firefox"
 export EDITOR="vim"
-export FZF_ALT_C_OPTS="--preview 'tree --dirsfirst -C {} | head -200'"
+export FZF_ALT_C_COMMAND="find ."
+export FZF_ALT_C_OPTS="--preview 'tree -a --dirsfirst -C {} | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap"
-export FZF_CTRL_T_OPTS="--preview '(cat {} || tree --dirsfirst -C {}) \
+export FZF_CTRL_T_COMMAND="$FZF_ALT_C_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -a --dirsfirst -C {}) \
   2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
 export HISTFILE="$HOME/.history"

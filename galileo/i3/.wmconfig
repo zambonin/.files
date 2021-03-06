@@ -85,6 +85,7 @@ client.urgent               #333333 #222222 #ffffff #000000
 client.placeholder          #333333 #222222 #ffffff #000000
 
 exec --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/.wallpaper
+exec --no-startup-id gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')
 
 set $lock_command import -window root jpg:- \
     | convert - -scale 50% -blur 0x5 -scale 200% rgb:- \

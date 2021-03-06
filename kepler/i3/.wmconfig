@@ -104,6 +104,8 @@ set $lock_command grim - \
     | convert - -scale 50% -blur 0x5 -scale 200% $lock_bg \
     && swaylock -e -f -u -i $lock_bg
 
+exec gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')
+
 exec swayidle -w \
     timeout 300 'swaymsg "output * dpms off" && $lock_command' \
     resume 'swaymsg "output * dpms on"' \

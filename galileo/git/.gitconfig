@@ -46,6 +46,9 @@
     fallbackToNoIndex = true
     lineNumber = true
 
+[init]
+    defaultBranch = "master"
+
 [push]
     default = simple
 

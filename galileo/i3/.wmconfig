@@ -84,12 +84,12 @@ client.unfocused            #333333 #222222 #ffffff #000000
 client.urgent               #333333 #222222 #ffffff #000000
 client.placeholder          #333333 #222222 #ffffff #000000
 
-exec --no-startup-id feh --no-fehbg --bg-fill --no-xinerama $HOME/.wallpaper
+exec --no-startup-id feh --no-fehbg --bg-center --no-xinerama $HOME/.wallpaper
 exec --no-startup-id gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')
 
 set $lock_command import -window root jpg:- \
     | convert - -scale 50% -blur 0x5 -scale 200% rgb:- \
-    | i3lock --raw=1920x1080:rgb -e -u -i /dev/stdin
+    | i3lock --raw=2560x1440:rgb -e -u -i /dev/stdin
 
 mode "control" {
   bindsym e exit

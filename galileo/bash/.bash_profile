@@ -17,6 +17,7 @@ export LESS=' -fiJMRW '
 export MANPAGER="vim --not-a-term -M +MANPAGER -"
 export MANWIDTH=80
 export PROMPT_COMMAND='history -a'
+export TMPDIR="/tmp"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
   exec startx /usr/bin/i3 -c "$HOME/.wmconfig"

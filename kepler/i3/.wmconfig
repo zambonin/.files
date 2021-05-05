@@ -97,7 +97,7 @@ input * {
   xkb_options "compose:caps"
 }
 
-xwayland enable
+xwayland disable
 
 set $lock_bg "/tmp/lock.png"
 set $lock_command grim - \

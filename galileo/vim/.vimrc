@@ -134,8 +134,12 @@ augroup configs
   " 2 spaces for indenting cpp files
   autocmd FileType cpp setlocal tabstop=2 shiftwidth=2
 
-  " `make` is `python`
-  autocmd FileType python setlocal makeprg=python\ '%'
+  " `make` is `python` or `sage`, depending on file extension
+  if expand("%:e") == "sage"
+      autocmd FileType python setlocal makeprg=sage\ '%'
+  else
+      autocmd FileType python setlocal makeprg=python\ '%'
+  endif
 
   " set errorformat for tex files
   autocmd FileType tex compiler tex

@@ -93,7 +93,6 @@ input 2:14:ETPS/2_Elantech_Touchpad {
 
 input "type:keyboard" {
   xkb_layout "br"
-  xkb_variant "thinkpad"
   xkb_options "caps:escape_shifted_capslock"
 }
 

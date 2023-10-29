@@ -73,3 +73,9 @@
     useConfigOnly = true
     email = gzmbnn@gmail.com
     name = Gustavo Zambonin
+
+[safe]
+	directory = *
+
+[url "https://"]
+	insteadOf = git://

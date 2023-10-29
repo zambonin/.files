@@ -95,6 +95,7 @@ mode "control" {
   bindsym e exit
   bindsym l exec $lock_command, mode "default"
   bindsym s exec $lock_command && systemctl suspend, mode "default"
+  bindsym Shift+w exec systemctl reboot --boot-loader-entry="auto-windows"
   bindsym Shift+r exec systemctl reboot
   bindsym Shift+p exec systemctl poweroff
   bindsym Escape mode "default"

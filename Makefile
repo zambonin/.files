@@ -15,7 +15,8 @@ install:
 	echo "kernel.sysrq = 1" | sudo tee $(SYSRQ_FILE) >/dev/null
 
 galileo-i: ;
-kepler-i: ;
+kepler-i:
+	systemctl --user enable --now poweralertd
 
 uninstall:
 	stow -d $(HOSTNAME) -Dt ~ $(USER_FOLDERS)
@@ -24,4 +25,5 @@ uninstall:
 	sudo $(RM) $(SYSRQ_FILE)
 
 galileo-u: ;
-kepler-u: ;
+kepler-u:
+	systemctl --user disable --now poweralertd

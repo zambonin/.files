@@ -110,6 +110,21 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep '$lock_command'
 
+exec mako \
+    --background-color=#4e4e4e \
+    --text-color=#dadada \
+    --border-size=1 \
+    --border-color=#8a8a8a \
+    --icons=0 \
+    --default-timeout=5000 \
+    --ignore-timeout=1 \
+    --layer=overlay \
+    --anchor=bottom-right
+
+bindsym $mod+x exec makoctl dismiss -a
+
+exec poweralertd -s
+
 mode "control" {
   bindsym c reload
   bindsym r restart

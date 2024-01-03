@@ -12,7 +12,7 @@ install:
 	stow -d $(HOSTNAME) -t ~ $(USER_FOLDERS)
 	sudo stow -d $(HOSTNAME) -t / $(SYSTEM_FOLDERS)
 	sudo systemctl enable --now fstrim.timer
-	echo "kernel.sysrq = 1" | sudo tee -a $(SYSRQ_FILE) >/dev/null
+	echo "kernel.sysrq = 1" | sudo tee $(SYSRQ_FILE) >/dev/null
 
 galileo-i: ;
 kepler-i: ;

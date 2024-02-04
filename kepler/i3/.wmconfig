@@ -131,7 +131,7 @@ mode "control" {
   bindsym e exit
   bindsym l exec $lock_command, mode "default"
   bindsym s exec systemctl suspend, mode "default"
-  bindsym Shift+r exec systemctl reboot
+  bindsym Shift+r exec systemctl reboot -i
   bindsym Shift+p exec systemctl poweroff -i
   bindsym Escape mode "default"
 }

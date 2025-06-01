@@ -1,0 +1,3 @@
+timeout 300 'swaymsg "output * dpms off" && swaylock'
+resume 'swaymsg "output * dpms on"'
+before-sleep 'swaylock'

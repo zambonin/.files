@@ -99,10 +99,7 @@ set $lock_command swaylock
 
 exec gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')
 
-exec swayidle -w \
-    timeout 300 'swaymsg "output * dpms off" && $lock_command' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep '$lock_command'
+exec swayidle -w
 
 exec mako
 

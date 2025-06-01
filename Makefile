@@ -1,4 +1,4 @@
-USER_FOLDERS = bash fuzzel git i3 pacman term tmux top vim
+USER_FOLDERS = alacritty bash fuzzel git i3 pacman tmux top vim
 SYSTEM_FOLDERS = conf
 HOSTNAME ?= $(shell cat /etc/hostname)
 

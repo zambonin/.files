@@ -1,0 +1,9 @@
+background-color=#4e4e4e
+text-color=#dadada
+border-size=1
+border-color=#8a8a8a
+icons=0
+default-timeout=5000
+ignore-timeout=1
+layer=overlay
+anchor=top-right

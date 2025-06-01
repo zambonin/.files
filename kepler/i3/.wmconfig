@@ -95,10 +95,7 @@ input "type:keyboard" {
 
 xwayland enable
 
-set $lock_bg "/tmp/lock.png"
-set $lock_command grim - \
-    | convert - -scale 50% -blur 0x5 -scale 200% $lock_bg \
-    && swaylock -e -f -u -i $lock_bg
+set $lock_command swaylock
 
 exec gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')
 

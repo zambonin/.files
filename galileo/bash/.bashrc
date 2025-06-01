@@ -102,16 +102,19 @@ vm() {
 }
 
 vmu() {
-  disk="$1"
+  DISK="$1"
   shift
 
-  if [ ! -f /tmp/ovmf_vars.bin ] ; then
-    cp /usr/share/ovmf/x64/OVMF_VARS.fd /tmp/ovmf_vars.bin
+  SOURCE_OVMF="/usr/share/ovmf/x64/OVMF_VARS.4m.fd"
+  TARGET_OVMF="/tmp/ovmf_vars.bin"
+
+  if [ ! -f "$TARGET_OVMF" ] ; then
+    cp "$SOURCE_OVMF" "$TARGET_OVMF"
   fi
 
-  vm "$disk"                                                                   \
-    -drive if=pflash,format=raw,readonly,file=/usr/share/ovmf/x64/OVMF_CODE.fd \
-    -drive if=pflash,format=raw,file=/tmp/ovmf_vars.bin                        \
+  vm "$DISK"                                                                   \
+    -drive if=pflash,format=raw,readonly=on,file=$SOURCE_OVMF                  \
+    -drive if=pflash,format=raw,file=$TARGET_OVMF                              \
     "$@"
 }
 

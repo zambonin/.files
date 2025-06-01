@@ -66,8 +66,8 @@ bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioMicMute        exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym XF86MonBrightnessDown   exec light -U 2%
-bindsym XF86MonBrightnessUp     exec light -A 2%
+bindsym XF86MonBrightnessDown   exec brightnessctl s 2%-
+bindsym XF86MonBrightnessUp     exec brightnessctl s +2%
 bindsym --release Print         exec grim
 
 mode "resize" {

@@ -1,0 +1,5 @@
+set database sqlite
+set guioptions shv
+set show-signature-information true
+set statusbar-home-tilde true
+set zoom-max 10000

@@ -28,15 +28,13 @@ export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -a --dirsfirst -C {}) \
   2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
 export LESS=' -fiJMRW '
-export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export QT_QPA_PLATFORM=wayland-egl
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
-export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-  exec startx /usr/bin/i3 -c "$HOME/.wmconfig"
+if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
+  exec niri --session
 fi
-
-sh /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 if [ -f ~/.bashrc ] ; then
   source ~/.bashrc

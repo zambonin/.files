@@ -26,7 +26,7 @@ unfocused_hollow = false
 TERM = "xterm-256color"
 
 [font]
-size = 11.0
+size = 15.0
 
 [font.offset]
 x = -1

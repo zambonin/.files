@@ -3,7 +3,7 @@
     br = !git --no-pager branch -vv
     ca = commit --amend
     ch = checkout
-    cm = commit --verbose
+    cm = commit
     cp = cherry-pick
     ct = !git --no-pager shortlog --summary --numbered --email
     df = diff --patch-with-stat
@@ -20,20 +20,30 @@
 [blame]
     coloring = highlightRecent
 
+[branch]
+    sort = -committerdate
+
 [core]
     compression = 9
     editor = vim
-    excludesFile = ~/.gitignore_global
     pager = less -+FSX
 
 [color]
     status = always
 
+[column]
+    ui = auto
+
+[commit]
+    verbose = true
+
 [diff]
-    algorithm = minimal
+    algorithm = histogram
+    colorMoved = plain
     context = 0
     indentHeuristic = true
     mnemonicPrefix = true
+    renames = true
 
 [difftool]
     prompt = false
@@ -41,10 +51,18 @@
 [difftool "diffpdf"]
     cmd = diff-pdf --view \"$LOCAL\" \"$REMOTE\"
 
+[fetch]
+    all = true
+    prune = true
+    pruneTags = true
+
 [grep]
     column = true
     fallbackToNoIndex = true
     lineNumber = true
+
+[help]
+    autocorrect = prompt
 
 [init]
     defaultBranch = "master"
@@ -57,17 +75,25 @@
     prompt = false
 
 [push]
-    default = simple
+    autoSetupRemote = true
+    followTags = true
 
 [pull]
-    rebase = false
+    rebase = true
 
 [rebase]
     missingCommitsCheck = error
 
+[rerere]
+    autoupdate = true
+    enabled = true
+
 [status]
     short = true
     showStash = true
+
+[tag]
+    sort = version:refname
 
 [user]
     useConfigOnly = true

@@ -27,18 +27,16 @@ export FZF_CTRL_T_COMMAND="$FZF_ALT_C_COMMAND"
 export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -a --dirsfirst -C {}) \
   2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
-export GRIM_DEFAULT_DIR="$TMPDIR"
 export LESS=' -fiJMRW '
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland-egl
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
-export SWAYSOCK="/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock"
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
-  exec sway -c "$HOME/.wmconfig"
+  exec niri --session
 fi
 
 if [ -f ~/.bashrc ] ; then

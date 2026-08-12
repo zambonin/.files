@@ -24,12 +24,11 @@
     sort = -committerdate
 
 [core]
-    compression = 9
     editor = vim
     pager = less -+FSX
 
 [color]
-    status = always
+    status = auto
 
 [column]
     ui = auto
@@ -40,10 +39,7 @@
 [diff]
     algorithm = histogram
     colorMoved = plain
-    context = 0
-    indentHeuristic = true
     mnemonicPrefix = true
-    renames = true
 
 [difftool]
     prompt = false
@@ -69,7 +65,7 @@
 
 [merge]
     tool = vimdiff
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [mergetool]
     prompt = false
@@ -83,6 +79,7 @@
 
 [rebase]
     missingCommitsCheck = error
+    updateRefs = true
 
 [rerere]
     autoupdate = true
@@ -96,12 +93,8 @@
     sort = version:refname
 
 [user]
-    useConfigOnly = true
     email = gzmbnn@gmail.com
     name = Gustavo Zambonin
-
-[safe]
-	directory = *
 
 [url "https://"]
 	insteadOf = git://

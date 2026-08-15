@@ -28,4 +28,3 @@ if command -v aunpack > /dev/null ; then
 fi
 
 alias rml='latexmk -c'
-alias rmv='rm -f bin/ include/ lib* pyvenv.cfg pip-selfcheck.json'

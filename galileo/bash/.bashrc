@@ -43,19 +43,6 @@ calc() {
   bc -l <<< "$@"
 }
 
-cd() {
-  builtin cd "$@"
-  if [ -f bin/activate ] ; then
-    . bin/activate
-  elif [ -f requirements.txt ] ; then
-    python -m venv "$PWD"
-    . bin/activate
-    pip install -r requirements.txt
-  elif [[ "$VIRTUAL_ENV" == "$PWD"* ]] ; then
-    deactivate
-  fi
-}
-
 downiso() {
   curl -#O "$(awk -F'[ $]' '/^S/ {
     print $3 "iso/latest/archlinux-" strftime("%Y.%m.01") "-x86_64.iso" ; exit

@@ -119,8 +119,8 @@ augroup configs
   " clears all the commands for the current group
   autocmd!
 
-  " set syntax coloring for `sage`
-  autocmd BufRead,BufNewFile *.sage setfiletype python
+  " vim detects *.sage on its own; borrow python's syntax and indent files
+  autocmd FileType sage runtime! syntax/python.vim indent/python.vim
 
   " before saving, remove trailing whitespaces
   autocmd BufWritePre * call TrimWhitespace()
@@ -134,12 +134,9 @@ augroup configs
   " 2 spaces for indenting cpp files
   autocmd FileType cpp setlocal tabstop=2 shiftwidth=2
 
-  " `make` is `python` or `sage`, depending on file extension
-  if expand("%:e") == "sage"
-      autocmd FileType python setlocal makeprg=sage\ '%'
-  else
-      autocmd FileType python setlocal makeprg=python\ '%'
-  endif
+  " `make` runs the file with its own interpreter
+  autocmd FileType python setlocal makeprg=python\ '%'
+  autocmd FileType sage setlocal makeprg=sage\ '%'
 
   " set errorformat for tex files
   autocmd FileType tex compiler tex
@@ -215,7 +212,7 @@ set number
 set pastetoggle=<F2>
 
 " use interactive shell on vim
-set shell=/bin/bash\ -i
+set shell=/bin/bash
 
 " 1 tab equals tabstop spaces
 set shiftwidth=0

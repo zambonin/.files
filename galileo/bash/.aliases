@@ -21,7 +21,7 @@ alias pacman='pacman --noconfirm'
 alias ping='ping -A -s 16 -c 3 -w 2'
 alias rm='rm --interactive=once --recursive --verbose'
 alias sudo='sudo '
-alias vim='vim -p'
+alias vim='vim --servername VIM -p'
 
 if command -v aunpack > /dev/null ; then
   alias ex='aunpack'

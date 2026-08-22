@@ -1,5 +1,6 @@
 set database sqlite
 set guioptions shv
+set selection-clipboard clipboard
 set synctex-editor-command "vim --servername VIM --remote-silent +%{line} %{input}"
 set show-signature-information true
 set statusbar-home-tilde true

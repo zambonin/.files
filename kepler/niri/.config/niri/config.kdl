@@ -1,12 +1,13 @@
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE"
 spawn-at-startup "mako"
 spawn-at-startup "poweralertd" "-s"
 spawn-at-startup "swayidle" "-w"
 spawn-at-startup "sh" "-c" "swaybg -m fill -i ~/.wallpaper"
-spawn-at-startup "sh" "-c" "gammastep -l $(curl -s ipinfo.io/loc | sed 's/,/:/')"
-spawn-at-startup "xwayland-satellite"
 
 environment {
   DISPLAY ":0"
+  XDG_CURRENT_DESKTOP "niri"
+  XDG_SESSION_TYPE "wayland"
 }
 
 prefer-no-csd
@@ -122,7 +123,7 @@ binds {
   Shift+Print { screenshot; }
 
   XF86AudioRaiseVolume allow-when-locked=true {
-    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
+    spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "0.1+";
   }
   XF86AudioLowerVolume allow-when-locked=true {
     spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";

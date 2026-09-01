@@ -35,3 +35,7 @@ y = 1
 [window.padding]
 x = 6
 y = 6
+
+[terminal.shell]
+program = "tmux"
+args = ["new-session", "-A", "-s", "main"]

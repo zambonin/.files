@@ -33,7 +33,7 @@ export QT_QPA_PLATFORM=wayland-egl
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
-  exec niri --session
+  exec niri-session
 fi
 
 if [ -f ~/.bashrc ] ; then

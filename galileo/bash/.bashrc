@@ -1,8 +1,10 @@
 # ~/.bashrc
 
-shopt -s autocd cdspell checkwinsize cmdhist dirspell histappend
+[[ $- != *i* ]] && return
+
+shopt -s autocd cdspell dirspell globstar histappend
 set -o noclobber
-stty -ixon
+[ -t 0 ] && stty -ixon
 
 if [ -f "$HOME/.aliases" ] ; then
   . "$HOME/.aliases"
@@ -13,24 +15,24 @@ if [ -f /usr/share/doc/pkgfile/command-not-found.bash ] ; then
 fi
 
 aur() {
-  trap 'cd $OLDDIR' INT
   OLDDIR="$PWD"
+  trap 'cd "$OLDDIR" ; trap - INT' INT
   for pkg in "$@" ; do
     OLDVER="$(curl -s                                                         \
       "https://aur.archlinux.org/rpc.php?arg[]=${pkg}&type=info&v=5"          \
       | awk -F\" '{print $26}')"
     NEWVER="$(pacman -Q "${pkg}" 2>/dev/null | cut -d\  -f2)"
     [ "$OLDVER" != "$NEWVER" ] || continue
-    cd "$(mktemp -d)" || exit
-    curl -Os --fail                                                           \
-      "https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz"
-    if [ "$?" -ne 22 ] ; then
+    cd "$(mktemp -d)" || break
+    if curl -Os --fail                                                        \
+      "https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz" ; then
       tar zxvf "${pkg}.tar.gz"
-      cd "$pkg" || exit
+      cd "$pkg" || break
       makepkg
     fi
   done
-  cd "$OLDDIR" || exit
+  cd "$OLDDIR"
+  trap - INT
 }
 
 backup() {
@@ -56,18 +58,13 @@ pacsize() {
     | sort -nr | less
 }
 
-transfer() {
-  curl -sH "Max-Downloads: 1" -T "$1" "https://transfer.sh/$(basename "$1")"
-  echo
-}
-
 up() {
   dir=""
   limit=${1:-1}
   for _ in $(seq 1 "$limit") ; do
     dir="../${dir}"
   done
-  cd "${dir}" || exit
+  cd "${dir}" || return 1
 }
 
 vm() {
@@ -92,16 +89,17 @@ vmu() {
   DISK="$1"
   shift
 
-  SOURCE_OVMF="/usr/share/ovmf/x64/OVMF_VARS.4m.fd"
+  CODE_OVMF="/usr/share/ovmf/x64/OVMF_CODE.4m.fd"
+  VARS_OVMF="/usr/share/ovmf/x64/OVMF_VARS.4m.fd"
   TARGET_OVMF="/tmp/ovmf_vars.bin"
 
   if [ ! -f "$TARGET_OVMF" ] ; then
-    cp "$SOURCE_OVMF" "$TARGET_OVMF"
+    cp "$VARS_OVMF" "$TARGET_OVMF"
   fi
 
   vm "$DISK"                                                                   \
-    -drive if=pflash,format=raw,readonly=on,file=$SOURCE_OVMF                  \
-    -drive if=pflash,format=raw,file=$TARGET_OVMF                              \
+    -drive if=pflash,format=raw,readonly=on,file="$CODE_OVMF"                  \
+    -drive if=pflash,format=raw,file="$TARGET_OVMF"                            \
     "$@"
 }
 

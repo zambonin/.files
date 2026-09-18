@@ -103,7 +103,15 @@ vmu() {
     "$@"
 }
 
-PS1='\[\e[01;34m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
+case ${HOSTNAME%%.*} in
+  galileo) prompt_color=4 ;;
+  kepler)  prompt_color=10 ;;
+  hypatia) prompt_color=13 ;;
+  *)       prompt_color=9 ;;
+esac
+
+PS1='\[\e[01;38;5;'"$prompt_color"'m\]\w \[\e[01;37m\]\\$\[\e[0m\] '
+unset prompt_color
 
 if [ -f /usr/share/fzf/key-bindings.bash ] ; then
   . /usr/share/fzf/key-bindings.bash

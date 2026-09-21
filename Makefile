@@ -12,12 +12,12 @@ SYSTEM_FILES = \
 SYSTEM_TARGETS = $(addprefix /,$(SYSTEM_FILES))
 SYSTEMD_DIR = $(HOME)/.config/systemd
 HOSTNAME ?= $(shell uname -n)
-$(if $(filter $(HOSTNAME),galileo kepler),,\
-	$(error unsupported host '$(HOSTNAME)', expected galileo or kepler))
+$(if $(filter $(HOSTNAME),galileo hypatia kepler),,\
+	$(error unsupported host '$(HOSTNAME)', expected galileo, hypatia or kepler))
 
 .PHONY: all clean install uninstall install-user uninstall-user \
 	install-system uninstall-system force \
-	galileo-i galileo-u kepler-i kepler-u
+	galileo-i galileo-u hypatia-i hypatia-u kepler-i kepler-u
 
 all: install $(HOSTNAME)-i
 
@@ -53,9 +53,11 @@ $(SYSTEMD_DIR):
 force:
 
 galileo-i: ;
+hypatia-i: ;
 kepler-i:
 	systemctl --user enable --now poweralertd
 
 galileo-u: ;
+hypatia-u: ;
 kepler-u:
 	systemctl --user disable --now poweralertd

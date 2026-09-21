@@ -34,7 +34,8 @@ export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
 export QT_QPA_PLATFORM=wayland-egl
 export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 
-if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
+if command -v niri-session >/dev/null 2>&1 && \
+  [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] ; then
   exec niri-session
 fi
 

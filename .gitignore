@@ -1,1 +1,4 @@
 !/hypatia/conf/etc/**/*.d/
+
+!/hypatia/conf/usr/lib/
+!/hypatia/conf/usr/lib/firmware/edid/hypatia-1080p.bin

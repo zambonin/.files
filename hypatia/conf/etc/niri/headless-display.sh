@@ -12,4 +12,7 @@ if [[ -z "$card" ]]; then
   printf 'AMD graphics device did not appear: %s\n' "$card_link" >&2
   exit 1
 fi
+if [[ "${1:-on}" == on ]]; then
+  printf 'HDMI-A-1:edid/hypatia-1080p.bin' > /sys/module/drm/parameters/edid_firmware
+fi
 printf '%s\n' "${1:-on}" > "/sys/class/drm/${card##*/}-HDMI-A-1/status"

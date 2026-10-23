@@ -12,7 +12,7 @@ debug {
 }
 
 output "HDMI-A-1" {
-  mode custom=true "1920x1080@60"
+  mode "1920x1080@60"
   scale 1
   focus-at-startup
 }

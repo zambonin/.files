@@ -16,7 +16,8 @@ USER_FOLDERS += autostart guacamole
 SYSTEM_FILES += \
 	etc/niri/headless-display.sh \
 	etc/systemd/system/hypatia-headless-display.service \
-	etc/systemd/system/getty@tty1.service.d/autologin.conf
+	etc/systemd/system/getty@tty1.service.d/autologin.conf \
+	usr/lib/firmware/edid/hypatia-1080p.bin
 endif
 SYSTEM_TARGETS = $(addprefix /,$(SYSTEM_FILES))
 SYSTEMD_DIR = $(HOME)/.config/systemd

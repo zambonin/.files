@@ -1,0 +1,46 @@
+# ~/.bash_profile
+
+export BROWSER="firefox"
+export EDITOR="vim"
+export TMPDIR="/tmp"
+
+export MANPAGER="vim --not-a-term -M +MANPAGER -c 'set noma' -"
+export MANWIDTH=80
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+mkdir -p "${XDG_STATE_HOME}/bash" "${XDG_STATE_HOME}/less"
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+export HISTFILESIZE=-1
+export HISTSIZE=-1
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T '
+export PROMPT_COMMAND='history -a'
+
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export DOT_SAGE="${XDG_CONFIG_HOME}/sage"
+export FZF_ALT_C_COMMAND="find ."
+export FZF_ALT_C_OPTS="--preview 'tree -a --dirsfirst -C {} | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap"
+export FZF_CTRL_T_COMMAND="$FZF_ALT_C_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -a --dirsfirst -C {}) \
+  2> /dev/null | head -200'"
+export FZF_DEFAULT_OPTS="--cycle --inline-info --prompt='$ ' --reverse"
+export LESS=' -fiJMRW '
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+export QT_QPA_PLATFORM=wayland-egl
+export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
+
+if [[ $- == *i* ]] && command -v niri-session >/dev/null 2>&1 && \
+  [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && \
+  [ "$(tty)" = /dev/tty1 ] && \
+  ! systemctl --user -q is-active niri.service ; then
+  exec niri-session -l
+fi
+
+if [ -f ~/.bashrc ] ; then
+  source ~/.bashrc
+fi

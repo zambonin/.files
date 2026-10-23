@@ -9,9 +9,17 @@ SYSTEM_FILES = \
 	etc/sysctl.d/99-sysrq.conf \
 	etc/systemd/journald.conf.d/10-journald-custom.conf \
 	etc/vconsole.conf
+HOSTNAME ?= $(shell uname -n)
+ifeq ($(HOSTNAME),hypatia)
+USER_FOLDERS := $(filter-out swayidle swaylock-effects,$(USER_FOLDERS))
+USER_FOLDERS += autostart
+SYSTEM_FILES += \
+	etc/niri/headless-display.sh \
+	etc/systemd/system/hypatia-headless-display.service \
+	etc/systemd/system/getty@tty1.service.d/autologin.conf
+endif
 SYSTEM_TARGETS = $(addprefix /,$(SYSTEM_FILES))
 SYSTEMD_DIR = $(HOME)/.config/systemd
-HOSTNAME ?= $(shell uname -n)
 $(if $(filter $(HOSTNAME),galileo hypatia kepler),,\
 	$(error unsupported host '$(HOSTNAME)', expected galileo, hypatia or kepler))
 
@@ -53,7 +61,10 @@ $(SYSTEMD_DIR):
 force:
 
 galileo-i: ;
-hypatia-i: ;
+hypatia-i:
+	sudo systemctl daemon-reload
+	sudo systemctl set-default multi-user.target
+	sudo systemctl enable --now hypatia-headless-display.service getty@tty1.service
 kepler-i:
 	systemctl --user enable --now poweralertd
 

@@ -1,0 +1,14 @@
+[Unit]
+Description=AMD headless HDMI output for Steam Remote Play
+After=systemd-udev-trigger.service
+Before=getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /etc/niri/headless-display.sh on
+ExecStop=/usr/bin/bash /etc/niri/headless-display.sh detect
+RemainAfterExit=yes
+TimeoutStartSec=15
+
+[Install]
+WantedBy=multi-user.target

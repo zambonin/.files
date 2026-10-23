@@ -12,7 +12,7 @@ SYSTEM_FILES = \
 HOSTNAME ?= $(shell uname -n)
 ifeq ($(HOSTNAME),hypatia)
 USER_FOLDERS := $(filter-out swayidle swaylock-effects,$(USER_FOLDERS))
-USER_FOLDERS += autostart
+USER_FOLDERS += autostart guacamole
 SYSTEM_FILES += \
 	etc/niri/headless-display.sh \
 	etc/systemd/system/hypatia-headless-display.service \
@@ -62,6 +62,9 @@ force:
 
 galileo-i: ;
 hypatia-i:
+	docker compose --project-directory $(HOME)/guacamole build wayvnc
+	docker compose --project-directory $(HOME)/guacamole up -d guacd guacamole
+	systemctl --user enable guacamole-desktop.service
 	sudo systemctl daemon-reload
 	sudo systemctl set-default multi-user.target
 	sudo systemctl enable --now hypatia-headless-display.service getty@tty1.service

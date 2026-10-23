@@ -1,0 +1,59 @@
+services:
+  guacd:
+    image: guacamole/guacd:1.6.0
+    container_name: guacd
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - guacamole
+
+  guacamole:
+    image: guacamole/guacamole:1.6.0
+    container_name: guacamole
+    restart: unless-stopped
+    depends_on:
+      - guacd
+    environment:
+      GUACD_HOSTNAME: guacd
+      GUACAMOLE_HOME: /etc/guacamole
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - ./config:/etc/guacamole:ro
+    networks:
+      - guacamole
+
+  wayvnc:
+    build: ./wayvnc
+    image: hypatia-wayvnc:local
+    pull_policy: never
+    container_name: guacamole-wayvnc
+    profiles: [desktop]
+    restart: on-failure
+    depends_on:
+      guacd:
+        condition: service_started
+    network_mode: service:guacd
+    user: "1000:1000"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    environment:
+      XDG_RUNTIME_DIR: /run/wayland
+      WAYLAND_DISPLAY: wayland-0
+    volumes:
+      - type: bind
+        source: ${XDG_RUNTIME_DIR:-/run/user/1000}/${WAYLAND_DISPLAY:-wayland-0}
+        target: /run/wayland/wayland-0
+        read_only: true
+        bind:
+          create_host_path: false
+
+networks:
+  guacamole:
+    name: guacamole

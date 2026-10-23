@@ -1,0 +1,20 @@
+[Unit]
+Description=Guacamole desktop access for the Niri session
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+ConditionPathExists=%h/guacamole/compose.yml
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=%h/guacamole
+ExecStart=/usr/bin/docker compose up --no-deps --force-recreate --detach --wait --wait-timeout 20 wayvnc
+ExecStop=/usr/bin/docker compose stop --timeout 5 wayvnc
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=30
+TimeoutStopSec=15
+
+[Install]
+WantedBy=niri.service

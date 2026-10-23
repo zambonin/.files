@@ -1,0 +1,44 @@
+pkgname=dotfiles-hypatia-meta
+pkgver=1
+pkgrel=1
+arch=('any')
+options=('!debug')
+depends=(
+  'alacritty'
+  'amd-ucode'
+  'bc'
+  'caddy'
+  'docker'
+  'docker-buildx'
+  'docker-compose'
+  'expac'
+  'fuzzel'
+  'fzf'
+  'fwupd'
+  'git'
+  'gnome-keyring'
+  'lib32-vulkan-radeon'
+  'mako'
+  'niri'
+  'openssh'
+  'pacman-contrib'
+  'pipewire'
+  'pipewire-audio'
+  'pipewire-pulse'
+  'pkgfile'
+  'rtkit'
+  'steam'
+  'stow'
+  'swaybg'
+  'tailscale'
+  'tmux'
+  'vim'
+  'vulkan-radeon'
+  'wireplumber'
+  'xdg-desktop-portal-gnome'
+  'xwayland-satellite'
+)
+
+package() {
+  :
+}
